@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* root */
+
+:root{
+    font-family: "Montserrat", sans-serif;
+}
+
+
+
+/* Général */
+
+
+footer {
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: #1D8C56;
+}
+
+.bg-primary {
+    background: #1D8C56;
+}
+
+.color-primary {
+    color: #1D8C56;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-family: "Montserrat";
+    margin: 0rem;
+}
+
+.btn-secondary {
+    width: auto;
+    color: #1D8C56;
+    background: #fff;
+    border-radius: 4px;
+    
+}

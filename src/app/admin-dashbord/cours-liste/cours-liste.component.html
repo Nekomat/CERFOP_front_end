@@ -1,0 +1,14 @@
+
+ <div>
+    <button nz-button nzType="primary" routerLink="/admin_portail/add_course">Ajouter un cours</button>
+ </div>
+
+<div class="card-cours">
+<nz-card *ngFor="let i of [1,2,3,4,5,6,7]" nzHoverable class="cours" style="width:240px; border-radius: 0.5rem;" [nzCover]="coverTemplate">
+    <nz-card-meta nzTitle="Devenir un Leader dans votre milieu de travail" nzDescription="Apprenez a devenir le leader dont votre equipe a besoin pour diriger"></nz-card-meta>
+  </nz-card>
+  <ng-template #coverTemplate>
+    <img alt="cours-leadership" src="../../../assets/what-is-leadership.jpg.optimal.jpg" />
+  </ng-template>
+
+</div>

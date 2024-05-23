@@ -1,0 +1,59 @@
+<div class="n-container">
+  <div class="calc-vert">
+
+    <div class="all-content">
+
+ 
+   <div class="content">
+      
+      
+       <div class="text-container">
+          <div class="text-entete">
+            <h1 class="titre" style="color: #fff; max-width: 100%;">Connectez-vous !</h1>
+          </div>
+          
+          
+          <div [align]="'center'" style="width: 18rem; max-width: 100%; margin-top: 3rem;" >
+              <form  [formGroup]="loginForm">
+                  <input style="background: transparent; color: #fff; border: none; border-bottom: 1px solid #fff;" nz-input  type="text" formControlName="email" placeholder="Email"> 
+                  <nz-input-group class="n-input" [nzSuffix]="suffixTemplate">
+                      <input 
+                      class="all-input"
+                        [type]="passwordVisible ? 'text' : 'password'"
+                        nz-input
+                        placeholder="Mot de passe"
+                         formControlName="password"
+                      />
+          
+                    </nz-input-group>
+                    <ng-template #suffixTemplate>
+                      <span 
+                      style="cursor: pointer; color: #fff;"
+                        nz-icon
+                        [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                        (click)="passwordVisible = !passwordVisible"
+                      ></span>
+                    </ng-template>
+              </form>
+          
+              <button style="margin-top: 1rem; width: 100%; max-width: 100%;" class="btn-secondary" nz-button nzType="primary" (click)="login()" [disabled]="!loginForm.valid" [nzLoading]="loader"> Se connecter </button> 
+          </div>
+          
+          </div>
+          <!-- <div class="animation-container">
+          
+            <div class="cercle-1">
+                <div class="cercle-2"></div>
+            </div>
+            
+        </div> -->
+          </div>
+      
+  </div>
+</div>
+
+  <footer>
+      © 2024 Plateforme de formation - CNT | République de Guinée 
+  </footer>
+</div>
+

@@ -1,0 +1,89 @@
+
+ 
+ <nz-skeleton [nzActive]="skeleton" *ngIf="skeleton"></nz-skeleton>
+ 
+ <div *ngIf="!skeleton">
+    <div style="margin-bottom: 8px;">
+        <button style="margin-right: 10px;" nz-button nzType="primary" (click)="UaddModal=true" >Ajout unitaire</button> 
+        <button nz-button nzType="primary" (click)="importModal=true"> Importer un fichier excel </button>
+      </div>
+    <div>
+        <nz-table #basicTable [nzData]="dataSet" [nzPageSize]="10">
+            <thead>
+              <tr>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Téléphone</th>
+                <th>Organisation</th>
+                <th>Action</th> 
+              </tr>
+            </thead>
+            <tbody> 
+              <tr *ngFor="let data of basicTable.data">
+                <td>{{data.first_name}}</td>
+                <td>{{data.last_name}}</td>
+                  <td> {{data.email}} </td>
+                <td>{{data.phone_number}}</td>
+                 <td> {{data.entity.name}} </td> 
+                <td>
+                  <button nz-button nzType="primary">detail</button>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+    </div> 
+ </div>
+ 
+
+<nz-modal [(nzVisible)]="UaddModal" nzTitle="Ajout unitaire d'un utilisateur" (nzOnCancel)="UCancel()" (nzOnOk)="UOk()"
+ nzOkText="Ajouter"
+ nzCancelText="Fermé"
+ [nzOkDisabled]="!addForm.valid"
+ [nzOkLoading]="loader"
+>
+    <ng-container *nzModalContent>
+        <form [formGroup]="addForm">
+            <div class="row">
+                <div class="col-md-4">
+                   <input nz-input formControlName="first_name"  type="text" placeholder="Prénom" >
+                </div>
+                <div class="col-md-4">
+                   <input nz-input formControlName="last_name"  type="text" placeholder="Nom" >
+                </div>
+                <div class="col-md-4">
+                   <input nz-input formControlName="email"  type="text" placeholder="Email" >
+                </div>
+                <div class="col-md-4">
+                   <input nz-input formControlName="phone_number"  type="text" placeholder="Numero de téléphone" >
+             </div>
+             <div class="col-md-4">
+               <nz-select nzShowSearch nzAllowClear nzPlaceHolder="choisir l'organisation" formControlName="entityId" >
+                   <nz-option *ngFor="let data of allEntity" nzLabel="{{data.name}}" nzValue="{{data.id}}"></nz-option>
+                 </nz-select>
+             </div>
+             </div>
+        </form>
+      
+      
+    </ng-container>
+  </nz-modal>
+
+  <nz-modal [(nzVisible)]="importModal" nzTitle="Import d'utilisateur en groupe" (nzOnCancel)="handleCancelImport()" (nzOnOk)="handleOkImport()"
+    nzOkText="Enregistrer"
+    nzCancelText="Fermé" 
+    [nzOkLoading]="loader2"
+  >
+    <ng-container *nzModalContent>
+       <div class="row"> 
+         <div class="col-md-6">
+            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="choisir l'organisation" [(ngModel)]="entityId" >
+                <nz-option *ngFor="let data of allEntity" nzLabel="{{data.name}}" nzValue="{{data.id}}"></nz-option>
+              </nz-select>
+         </div>
+         <div class="col-md-6">
+        <input type="file" (change)="handleChangeImport($event)" class="form-control">
+         </div>
+       </div>
+    </ng-container>
+  </nz-modal> 

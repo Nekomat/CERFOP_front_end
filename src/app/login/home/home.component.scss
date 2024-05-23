@@ -1,0 +1,121 @@
+
+body {
+    background: #1D8C56;
+}
+
+.container {
+    min-height: 100vh;
+    display: grid;
+    grid:
+      "header" auto
+      "content" 1fr
+      "footer" auto /
+      auto;
+  
+     
+  }
+
+  .content {
+    display: flex;
+    padding: 2.5rem 0rem;
+    
+      .text-container {
+        display: flex;
+        flex-direction: column;
+        flex: 2;
+        padding: 1.5rem;
+        justify-content: center;
+
+        .titre {
+            color: var(--White, #FFF);
+            font-size: 4rem;
+            font-weight: 400;
+            line-height: 4rem; 
+
+            
+            
+        }
+
+        .sous-titre {
+            color: var(--White, #FFF);
+            font-size: 1.2rem;
+            font-weight: 200;
+            line-height: normal;
+        }
+
+        button {
+            background: white;
+            border: none;
+            width: 22rem;
+            height: 3.75;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            margin: 3rem 0rem ;
+
+box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.15);
+
+
+            h5 {
+                font-weight: normal;
+            }
+
+        }
+      }
+
+      .animation-container {
+        display: flex ;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        padding: 1rem 1.5rem 1.5rem 2rem;
+        
+
+        .cercle-1 {
+            border: 1rem solid #f9c718;
+            width: 24rem;
+            height: 24rem;
+            border-radius: 50%;
+            position: relative;
+            
+            
+        }
+
+        .cercle-2 {
+            border: 1rem solid #c00029;
+            width: 14rem;
+            height: 14rem;
+            border-radius: 50%;
+            position: absolute;
+            top: -6rem;
+            left: -3rem;
+        }
+      }
+  }
+
+header {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    
+}
+
+.logo-container {
+    width: 10rem;
+height: 4rem;
+border-radius: 16px;
+background: var(--White, #FFF);
+
+display: flex;
+flex-direction: row;
+
+}
+
+
+
+
+
+
+
+

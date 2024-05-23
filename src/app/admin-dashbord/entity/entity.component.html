@@ -1,0 +1,42 @@
+
+<nz-skeleton [nzActive]="skeleton" *ngIf="skeleton"></nz-skeleton> 
+ 
+ <div *ngIf="skeleton==false">
+<div style="margin-bottom: 8px;">
+    <button nz-button nzType="primary" (click)="isVisible=true"> Ajouter une organisation </button>
+</div>
+
+<nz-table #basicTable [nzData]="organisation">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Date d'ajout</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{data.name}}</td>
+        <td>{{data.createdAt | date:"short"}}</td>
+        <td> 
+         <button nz-button nzType="primary" routerLink="/admin_portail/organisation_detail/{{data.id}}">detail</button> 
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+ </div>
+
+
+  <nz-modal [(nzVisible)]="isVisible" nzTitle="Enregistrer une organisation" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" 
+   nzCancelText="Fermé" 
+   nzOkText="Enregistrer" 
+   [nzOkLoading]="loader"
+  >
+    <ng-container *nzModalContent>
+       <div class="row">
+       <div class="col-md-12">
+        <input nz-input [(ngModel)]="entityName" type="text" placeholder="le nom de l'organisation">
+       </div>
+       </div>
+    </ng-container> 
+  </nz-modal>

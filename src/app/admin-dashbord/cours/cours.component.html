@@ -1,0 +1,71 @@
+
+<nz-steps [nzCurrent]="current">
+    <nz-step nzTitle="Detail sur le cour"></nz-step>
+    <nz-step nzTitle="Les chapitres du cours"></nz-step>
+    <nz-step nzTitle="Les videos par chapitres"></nz-step>
+    <nz-step nzTitle="Le quiz du cour"></nz-step>
+  </nz-steps>
+
+  <div class="steps-content" *ngIf="current==0"> 
+    <form [formGroup]="section1">
+      <div class="row">
+        <div class="col-md-6">
+           <input nz-input type="text" name="" formControlName="name" placeholder="nom du cours"> 
+        </div>
+   
+        <div class="col-md-6">
+           <input nz-input type="text" name="" formControlName="duree" id="" placeholder="durée"> 
+        </div>
+       </div>
+       <div class="row">
+         <div class="col-md-6">
+           <textarea nz-input placeholder="Description du cours" formControlName="description" nzAutosize></textarea>
+         </div>
+         <div class="col-md-6">
+         <input type="file" name="" (change)="saveCoursPicture($event)" id="" class="form-control"> 
+         </div>
+       </div>
+    </form> 
+    <div>
+   <button nz-button nzType="primary" [nzLoading]="courseLoader" [disabled]="!section1.valid" (click)="saveCourse()"> Enregistrer </button>
+    </div>
+</div>
+
+  <div class="steps-content" *ngIf="current==1"> 
+    <input nz-input type="text" placeholder="nom du chapitre" > 
+    <div>
+        <button nz-button nzType="primary" >Enregistrer</button>
+    </div>
+   </div>
+
+  <div class="steps-content" *ngIf="current==2"> 
+      <div class="row">
+        <div class="col-md-6">
+            <nz-select nzShowSearch nzAllowClear  nzPlaceHolder="chosir le chapitre">
+                <nz-option nzLabel="Les Drama" nzValue="2"></nz-option>
+                <nz-option nzLabel="Les Drama 2" nzValue="1"></nz-option>
+             </nz-select>
+        </div>
+        <div class="col-md-6">
+            <input type="file" class="form-control">
+        </div>
+          <div> 
+            <button nz-button nzType="primary"> Enregistrer </button>
+          </div>
+      </div>
+  
+  </div>
+
+  <div class="steps-content" *ngIf="current==3"></div>
+
+  <!-- <div class="steps-action">
+    <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
+      <span>Previous</span>
+    </button>
+    <button nz-button nzType="default" (click)="next()" *ngIf="current < 3">
+      <span>Changer le step</span>
+    </button>
+    <button nz-button nzType="primary" (click)="done()" *ngIf="current === 3">
+      <span>Done</span>
+    </button>
+  </div> -->
