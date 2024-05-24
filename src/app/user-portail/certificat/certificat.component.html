@@ -1,1 +1,21 @@
-<p>certificat works!</p>
+
+
+<div class="card-cours">
+    <nz-card *ngFor="let i of [1,2,3,4]" nzHoverable class="cours" style="width:30%; min-width: 16rem; border-radius: 0.5rem;" [nzCover]="coverTemplate">
+
+      <div class="mon-content">
+
+    
+        <nz-card-meta style="height: 6.5rem; max-height: 100%;" nzTitle="Attestation- CEFORP" nzDescription="Devenir le leader dont votre equipe a besoin pour diriger "></nz-card-meta>
+  
+        <button style="display: flex; width: fit-content; align-items: center;"  nz-button nzType="primary">
+            <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span>
+          Télécharger
+        </button>
+    </div>
+      </nz-card>
+      <ng-template #coverTemplate>
+        
+      </ng-template>
+    
+    </div>

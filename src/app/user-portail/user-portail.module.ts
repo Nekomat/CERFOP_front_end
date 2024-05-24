@@ -9,6 +9,9 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzListModule } from 'ng-zorro-antd/list';
+
 
 @NgModule({
   declarations: [DashbordComponent , FormationComponent ,CoursComponent,CertificatComponent ],
@@ -17,7 +20,12 @@ import { NzCardModule } from 'ng-zorro-antd/card';
     UserPortailRouterModule ,
     NzLayoutModule ,
     NzIconModule,
-    NzMenuModule
+    NzMenuModule ,
+    NzCardModule,
+    NzButtonModule,
+    NzListModule,
+    
+   
   ] 
 })
 export class UserPortailModule { }

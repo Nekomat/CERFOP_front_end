@@ -1,0 +1,82 @@
+
+img {
+    width: 100%;
+    height: 8rem;
+    object-fit: cover;
+
+}
+
+.card-cours {
+display: flex;
+flex-flow: row wrap;
+text-align: left;
+
+.cours {
+    margin: 1rem;
+}
+}
+
+button {
+    margin-top: 1rem;
+   
+    
+}
+
+.timing {
+    background: #eee;
+    border-radius: 0.2rem;
+    width: auto;
+    padding: 0.1rem 0.4rem;
+    margin: 0.3rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.mon-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-term {
+    display: flex;
+    flex-flow: row;
+
+    overflow-x: auto;
+    text-align: left;
+    width: 100%;
+    
+    .cours {
+        margin: 1rem;
+    }
+    }
+    
+    button {
+        margin-top: 1rem;
+       
+        
+    }
+    
+    .timing {
+        background: #eee;
+        border-radius: 0.2rem;
+        width: auto;
+        padding: 0.1rem 0.4rem;
+        margin: 0.3rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+    
+    .mon-content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tous-module {
+        text-align: left;
+
+        h4 {
+            margin: 1rem;
+        }
+    }
