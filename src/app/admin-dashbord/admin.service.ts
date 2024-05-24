@@ -50,5 +50,6 @@ export class AdminService {
 
  addVideo(data):Observable<any>{
    return this.http.post('/api/v1/video/add_video',data) as Observable<any>
- }
+ } 
+ 
 }
