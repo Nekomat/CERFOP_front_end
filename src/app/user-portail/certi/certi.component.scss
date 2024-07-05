@@ -1,0 +1,82 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f7f7f7;
+    font-family: 'Lato', sans-serif;
+}
+
+.certificate-container {
+    width: 900px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.certificate-border {
+    border: 15px solid #d4af37;
+    padding: 20px;
+    position: relative;
+}
+
+.certificate-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 5px solid #fff;
+    margin: 10px;
+}
+
+.certificate-content {
+    text-align: center;
+    padding: 40px;
+    border: 5px solid #d4af37;
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+.certificate-content h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3em;
+    margin-bottom: 0.5em;
+    color: #333;
+}
+
+.certificate-content p {
+    font-size: 1.2em;
+    margin: 0.5em 0;
+    color: #555;
+}
+
+.certificate-content h2 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.5em;
+    margin: 0.5em 0;
+    color: #d4af37;
+}
+
+.certificate-content h3 {
+    font-size: 1.8em;
+    margin: 0.5em 0;
+    color: #333;
+}
+
+.certificate-content h4 {
+    font-size: 1.5em;
+    margin: 0.5em 0;
+    color: #555;
+}
+
+.signature {
+    margin-top: 40px;
+    font-size: 1em;
+    color: #555;
+}

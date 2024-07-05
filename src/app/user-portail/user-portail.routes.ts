@@ -6,6 +6,7 @@ import { CoursComponent } from "./cours/cours.component";
 import { CoursDetailComponent } from "./cours-detail/cours-detail.component";
 import { MonCompteComponent } from "./mon-compte/mon-compte.component";
 import { CertificatComponent } from "./certificat/certificat.component";
+import { CertiComponent } from "./certi/certi.component";
 
 const routes:Routes = [
     {
@@ -21,7 +22,7 @@ const routes:Routes = [
                 component:CoursComponent
             },
             {
-                path:'cours_detail' ,
+                path:'cours_detail/:id' ,
                 component:CoursDetailComponent
             },
             {
@@ -31,7 +32,12 @@ const routes:Routes = [
             {
                 path:'certificat',
                 component:CertificatComponent
-            }
+            },
+            {
+                path:'certi',
+                component:CertiComponent
+            },
+            
         ]
     }
 ]

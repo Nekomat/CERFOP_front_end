@@ -55,6 +55,7 @@ export class UtilisateursComponent implements OnInit{
    this.loader=true
    this.adminService.addUser(this.addForm.value).subscribe({
     next:()=>{
+      Swal.fire("Succces","Utilisateur ajouté","success")
       this.UaddModal=false
       this.loader=false
       this.ngOnInit() 

@@ -34,7 +34,7 @@ export class ResetPasswordComponent {
          if(decode.role=="admin"){
           this.router.navigateByUrl('/admin_portail/utilisateurs')
          }else{
-          this.router.navigateByUrl("/user_portail/acceuil") 
+          this.router.navigateByUrl("/user_portail/formations") 
          }
       },
       error:(err)=>{ 

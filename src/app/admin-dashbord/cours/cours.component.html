@@ -32,31 +32,56 @@
 </div>
 
   <div class="steps-content" *ngIf="current==1"> 
-    <input nz-input type="text" placeholder="nom du chapitre" > 
+    <input nz-input type="text" [(ngModel)]="chapitreName" placeholder="nom du chapitre" > 
     <div>
-        <button nz-button nzType="primary" >Enregistrer</button>
+        <button nz-button nzType="primary" (click)="saveChapitre()" [nzLoading]="loaderChapitre" >Enregistrer</button> 
+        <button nz-button nzType="primary" (click)="current = current+1" > suivant </button>
     </div>
    </div>
 
   <div class="steps-content" *ngIf="current==2"> 
+    <form [formGroup]="sectionVideo">
       <div class="row">
         <div class="col-md-6">
-            <nz-select nzShowSearch nzAllowClear  nzPlaceHolder="chosir le chapitre">
-                <nz-option nzLabel="Les Drama" nzValue="2"></nz-option>
-                <nz-option nzLabel="Les Drama 2" nzValue="1"></nz-option>
-             </nz-select>
-        </div>
+            <nz-select nzShowSearch nzAllowClear  nzPlaceHolder="chosir le chapitre" formControlName="chapitreId">
+                <nz-option *ngFor="let data of allChapiter" nzLabel="{{data.name}}" [nzValue]="data.id"></nz-option>
+             </nz-select>  
+        </div> 
+
         <div class="col-md-6">
-            <input type="file" class="form-control">
-        </div>
-          <div> 
-            <button nz-button nzType="primary"> Enregistrer </button>
-          </div>
+          <input nz-input type="text" class="form-control" placeholder="le nom du cours" formControlName="name"> 
       </div>
+
+      <div class="col-md-6">
+        <input nz-input type="number" class="form-control" placeholder="duree" formControlName="duration"> 
+    </div>
+
+        <div class="col-md-6">
+            <input type="file" class="form-control" (change)="saveFileVideo($event)" > 
+        </div>
+      </div>
+    </form>
+    <div> 
+      <button nz-button nzType="primary" [disabled]="!sectionVideo.valid" (click)="addVideoBYChapiter()" [nzLoading]="videoLoader"> Enregistrer </button> 
+      <button nz-button nzType="primary" (click)="current+1"> Suivant </button> 
+    </div>
   
   </div>
 
-  <div class="steps-content" *ngIf="current==3"></div>
+  <div class="steps-content" *ngIf="current==3"> 
+      <form >
+        <div>
+          <textarea style="margin: 4px;" nz-input placeholder="La Question"  nzAutosize></textarea>  
+          
+          <textarea style="margin: 4px;" nz-input placeholder="La Bonne reponse"  nzAutosize></textarea> 
+
+          <textarea style="margin: 4px;" nz-input placeholder="La mauvaise reponse"  nzAutosize></textarea> 
+
+           <button nz-button nzType="primary" (click)="addQuiz()" [nzLoading]="quizLoader"> Valider </button> 
+         </div>
+      </form>
+       
+  </div>
 
   <!-- <div class="steps-action">
     <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">

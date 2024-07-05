@@ -21,6 +21,13 @@ export class CoursComponent {
     description:["",Validators.required] ,
     duree:["",Validators.required],
     photo:["",Validators.required] 
+  }) 
+
+  sectionVideo : FormGroup = this.formCtrl.group({
+    chapitreId : ["",Validators.required] ,
+    video:["",Validators.required] ,
+    name:["",Validators.required],
+    duration:["",Validators.required]
   })
 
   allCourseData = new FormData
@@ -73,13 +80,58 @@ export class CoursComponent {
       }
     })
   }
-  
- chapiterSelected=""
+videoByChapiter = new FormData
+saveFileVideo(event){
+  this.videoByChapiter.set('video',event.target.files[0]) 
+  this.sectionVideo.patchValue({video:"okok"}) 
+}
+
+ chapiterSelected="" 
+ videoLoader = false
  addVideoBYChapiter(){
-  if(this.chapiterSelected){
-    
+   if(this.sectionVideo.valid){
+    this.videoLoader = true
+    this.videoByChapiter.set('videoDetail',JSON.stringify(this.sectionVideo.value))
+      this.adminService.addVideo(this.videoByChapiter).subscribe({
+        next:()=>{
+          Swal.fire("Succes","Video ajoutée avec succes","success")
+          this.videoLoader=false 
+          this.sectionVideo.reset()
+        },
+        error:()=>{
+          Swal.fire('Erreur',"Erreur veuillez reessayer","error")
+          this.videoLoader=false
+        }
+      })
+   }else{
+    Swal.fire('Error','Veuillez bien remplir le formulaire','error')
+   }
   }
+
+  // ajout des quiz 
+
+  sectionQuiz:FormGroup = this.formCtrl.group({
+    question:["", Validators.required],
+    correct:["", Validators.required],
+    incorrect:["", Validators.required],
+  })
+   quizLoader=false
+  addQuiz(){
+    this.quizLoader = true 
+    this.adminService.addQuiz({quizData : this.sectionQuiz.value , coursId:this.savedCour.id}).subscribe({
+      next:()=>{
+        Swal.fire('Succes','Quiz ajoutés avec succes','success')
+        this.quizLoader=false 
+        this.sectionQuiz.reset()  
+      },
+      error:(err)=>{
+      Swal.fire('Erreur',err.error.message , "error") 
+      this.quizLoader = false
+      } 
+    })
   }
+ 
+
 
 
 

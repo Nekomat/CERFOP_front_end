@@ -1,6 +1,6 @@
 
-<div class="tous-module">
-    <h4 style="justify-self: left;">Formations <span style="color: #1D8C56; font-weight: bold;">  Terminées(3)</span></h4>
+<div class="tous-module" *ngIf="skeleton==false">
+    <!-- <h4 style="justify-self: left;">Formations <span style="color: #1D8C56; font-weight: bold;">  Terminées(3)</span></h4> -->
   
 
 
@@ -23,18 +23,18 @@
     
     </div>
 
-    <h4 style="justify-self: left;">Formations <span style="color: #1D8C56; font-weight: bold;">  en Cours(3)</span></h4>
+    <h4 style="justify-self: left;">Formations <span style="color: #1D8C56; font-weight: bold;">  en Cours({{userHisCourse.length}})</span></h4>
 
 <div class="card-cours">
-    <nz-card *ngFor="let i of [1,2,3,4]" nzHoverable class="cours" style="width:30%; min-width: 16rem; border-radius: 0.5rem;" [nzCover]="coverTemplate">
+    <nz-card routerLink="/user_portail/cours_detail/{{i.id}}" *ngFor="let i of userHisCourse" nzHoverable class="cours" style="width:30%; min-width: 16rem; border-radius: 0.5rem;" [nzCover]="coverTemplate">
 
-      <div class="mon-content">
+      <div class="mon-content"> 
 
     
-        <nz-card-meta style="height: 6.5rem; max-height: 100%;" nzTitle="Devenir un Leader dans votre milieu de travail" nzDescription="Apprenez a devenir le leader dont votre equipe a besoin pour diriger "></nz-card-meta>
+        <nz-card-meta style="height: 6.5rem; max-height: 100%;" nzTitle="{{i.name}}" nzDescription="{{i.description}}"></nz-card-meta>
   
         <button style="display: flex; width: fit-content; align-items: center;"  nz-button nzType="primary">
-          <span nz-icon nzType="right" nzTheme="outline"></span>
+          <span nz-icon nzType="right" nzTheme="outline" ></span>
           Continuer
         </button>
     </div>
@@ -44,4 +44,6 @@
       </ng-template>
     
     </div>
-</div>
+</div>  
+
+<nz-skeleton *ngIf="skeleton" [nzActive]="true" ></nz-skeleton> 

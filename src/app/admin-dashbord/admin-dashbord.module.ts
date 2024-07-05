@@ -25,9 +25,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EntityDetailComponent } from './entity-detail/entity-detail.component'; 
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { QuizComponent } from './quiz/quiz.component';
 @NgModule({
   declarations: [AjoutCoursComponent , CoursComponent , DashbordComponent , EntityComponent , UtilisateursComponent,CoursDetailComponent , CoursListeComponent ,
-    EntityDetailComponent
+    EntityDetailComponent ,
+    QuizComponent
   ],
   imports: [
     CommonModule,

@@ -3,5 +3,6 @@ export interface cours {
     description:string 
     duree : string 
     photo:string 
-    id:number
+    id:number ,
+    loader:boolean
 }

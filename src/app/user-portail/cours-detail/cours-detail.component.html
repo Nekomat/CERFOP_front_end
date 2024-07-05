@@ -1,1 +1,70 @@
-<p>cours-detail works!</p>
+
+<div class="content" *ngIf="skeleton==false">
+
+
+<div class="v-content">
+
+
+<!-- Video -->
+<div class="v-video">
+<video #videoPlayer  controls  src="{{videoLink}}" (ended)="videoEnded()"></video>
+</div>
+
+
+
+
+<!-- Tab -->
+<nz-tabset style="text-align: left;" >
+    <nz-tab nzTitle="Description"> {{oneCourse.description}} </nz-tab>
+    <nz-tab nzTitle="Passer à l'évaluation"> 
+
+    <div [align]="'center'" *ngIf="oneCourse.userCourse.courseCompleted">
+       <button nz-button nzType="primary" (click)="openQuizModal()"> ouvrir l'évaluation </button>
+    </div>
+
+    <div [align]="'center'" *ngIf="oneCourse.userCourse.courseCompleted == false">
+        <p> Vous n'avez pas encore fini le cours </p> 
+    </div>
+
+    </nz-tab>
+  </nz-tabset>
+</div>
+
+
+  <!-- Sidebar -->
+  
+ <div class="sidebar"> 
+    <nz-collapse style="overflow-y: auto;" nzAccordion> 
+        @for (chapiter of oneCourse.userCourse.chapiter; track chapiter ;let i = $index) {
+          <nz-collapse-panel style="text-align: left; font-weight: bold;" nzHeader="Chapitre {{i}} - {{chapiter.name}}" [nzActive]="true">
+            <ul style="font-weight: normal;"> 
+                <li (click)="clickOneCourse(data)"  [ngClass]="{'active':data.active}"  *ngFor="let data of chapiter.videos"> <span style="font-size: 20px;" nz-icon nzType="play-circle" nzTheme="outline"></span> <button [disabled]="data.disable" nz-button nzType="link" > {{data.name}} : {{data.duration}} minutes </button></li>
+            </ul> 
+          </nz-collapse-panel> 
+        }
+      </nz-collapse>  
+ </div>
+</div>
+
+<nz-skeleton *ngIf="skeleton"></nz-skeleton> 
+
+<!-- control de de quiz  -->
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" nzCancelText="fermé" nzOkText="Suivant" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzOkDisabled]="!allQuiz[0]">
+    <ng-container *nzModalContent> 
+        @if (allQuiz[0]) {
+            @for (item of allQuiz; track $index) {
+                @if (item.active) {
+                    <h6> {{item.question}} ?</h6>
+                <p>Chosir la reponse</p> 
+               <nz-radio-group  nzName="radiogroup" [(ngModel)]="chosedResponse">
+                   <label *ngFor="let response of item.quiz_choix" nz-radio nzValue="{{response.isCorrect}}"> {{response.text}} </label> 
+                 </nz-radio-group>
+                }
+            }
+        } @else {
+            <p>Votre resultat est de  {{compteTrueResponse}} </p>
+        }
+    
+    </ng-container>
+  </nz-modal>

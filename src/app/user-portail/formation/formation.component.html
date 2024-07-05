@@ -1,18 +1,23 @@
-<div class="card-cours">
-  <nz-card *ngFor="let i of [1,2,3,4]" nzHoverable class="cours" style="width:30%; border-radius: 0.5rem;" [nzCover]="coverTemplate">
-    <div class="timing">
-      <p>8h30min</p>
+<div class="card-cours" *ngIf="skeleton==false">
+  <nz-card  *ngFor="let i of allCours" nzHoverable class="cours" style="width:30%; border-radius: 0.5rem;" [nzCover]="coverTemplate">
+    
+    <div class="image">
+      <div class="timing">
+        <p> {{i.duree}} </p>
+      </div>
+      <img alt="cours-leadership" src="{{i.photo}}" />
     </div>
-      <nz-card-meta style="height: 6.5rem; max-height: 100%;" nzTitle="Devenir un Leader dans votre milieu de travail" nzDescription="Apprenez a devenir le leader dont votre equipe a besoin pour diriger "></nz-card-meta>
+      <nz-card-meta style="height: 6.5rem; max-height: 100%; margin-top: 1rem;" nzTitle="{{i.name}}" nzDescription="{{i.description}}"></nz-card-meta>
 
-      <button style="display: flex; align-items: center;"  nz-button nzType="primary">
+      <button (click)="addCours(i)" [nzLoading]="i.loader" style="display: flex; align-items: center;"  nz-button nzType="primary">
         <span nz-icon nzType="right" nzTheme="outline"></span>
         Suivre
       </button>
-  
     </nz-card>
     <ng-template #coverTemplate>
-      <img alt="cours-leadership" src="../../../assets/what-is-leadership.jpg.optimal.jpg" />
-    </ng-template>
-  
+      
+    </ng-template> 
   </div>
+
+  <nz-skeleton *ngIf="skeleton" [nzActive]="true"></nz-skeleton> 
+  

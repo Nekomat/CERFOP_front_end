@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, retryWhen } from 'rxjs';
 import { entity } from './interfaces/entity';
 import { User } from './interfaces/user';
 import { cours } from './interfaces/cours';
@@ -51,5 +51,15 @@ export class AdminService {
  addVideo(data):Observable<any>{
    return this.http.post('/api/v1/video/add_video',data) as Observable<any>
  } 
+
+ addQuiz(data):Observable<any>{
+  return this.http.post('/api/v1/quiz/create_quiz',{data:data}) 
+ } 
+
+//  get all course 
+
+allCourse():Observable<cours[]>{
+  return this.http.get('/api/v1/cours/all_courses') as Observable<cours[]>
+}
  
 }

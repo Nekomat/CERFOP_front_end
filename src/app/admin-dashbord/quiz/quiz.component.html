@@ -1,0 +1,22 @@
+
+<form [formGroup]="section" >
+    <div class="d-flex">
+        <div>
+          <nz-select nzPlaceHolder="selectioner le cours" formControlName="coursId">
+             @for (item of allCours; track $index) {
+                <nz-option  nzLabel="{{item.name}}" nzValue="{{item.id}}"></nz-option>
+             }
+          </nz-select>
+        </div>
+      
+        <div style="margin-left: 10px;" class="input_item">
+         <input   type="text" nz-input placeholder="Question reponse" formControlName="question"> 
+         <input type="text" nz-input placeholder="Bonne réponse" formControlName="correct"> 
+         <input type="text" nz-input placeholder="mauvaise reponse" formControlName="incorrect"> 
+
+         <div style="margin-top: 10px;">
+          <button nz-button (click)="addQuiz()" [nzLoading]="loader" nzType="primary"> Enrégistrer </button>
+         </div>
+        </div>
+      </div>
+</form>

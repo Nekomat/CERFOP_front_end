@@ -8,6 +8,7 @@ import { AjoutCoursComponent } from './ajout-cours/ajout-cours.component';
 import { CoursDetailComponent } from './cours-detail/cours-detail.component';
 import { CoursListeComponent } from './cours-liste/cours-liste.component';
 import { EntityDetailComponent } from './entity-detail/entity-detail.component';
+import { QuizComponent } from './quiz/quiz.component';
 
 const routes :Routes = [
     {
@@ -45,6 +46,10 @@ const routes :Routes = [
             {
                path:"add_course",
                component:CoursComponent 
+            },
+            {
+                path:'quiz',
+                component:QuizComponent
             }
         ]
     }
