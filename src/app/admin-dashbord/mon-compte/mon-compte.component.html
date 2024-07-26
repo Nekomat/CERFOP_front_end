@@ -1,0 +1,170 @@
+<body class="body">
+  <div class="body-content">
+    <div class="body-content-info">
+      <h2>Mon compte</h2>
+
+      <form
+        nz-form
+        [formGroup]="identityForm"
+        nzLayout="vertical"
+        (ngSubmit)="submitIdentityForm()"
+      >
+        <h5>Identité</h5>
+        <nz-form-item>
+          <nz-form-label nzFor="firstName" nzRequired>
+            <span>Prénom(s) </span>
+          </nz-form-label>
+          <nz-form-control nzErrorTip="Veuillez bien saisir votre prénom">
+            <input
+              nz-input
+              id="firstName"
+              formControlName="firstName"
+              placeholder="Entrez votre prénom"
+            />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="lastName" nzRequired>
+            <span>Nom de famille</span>
+          </nz-form-label>
+          <nz-form-control
+            nzErrorTip="Veuillez bien saisir votre nom de famille"
+          >
+            <input
+              nz-input
+              id="lastName"
+              formControlName="lastName"
+              placeholder="Entrez votre nom de famille"
+            />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item nz-row class="register-area">
+          <nz-form-control>
+            <button nz-button nzType="primary">Modifier</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+
+      <form
+        nz-form
+        [formGroup]="credentialsForm"
+        nzLayout="vertical"
+        (ngSubmit)="submitCredentialsForm()"
+      >
+        <h5>Mes identifiants</h5>
+
+        <nz-form-item>
+          <nz-form-label nzFor="email" nzRequired>E-mail</nz-form-label>
+          <nz-form-control
+            nzErrorTip="Veuillez saisir une adresse E-mail valide !"
+          >
+            <input
+              nz-input
+              formControlName="email"
+              id="email"
+              placeholder="Entrez votre adresse email"
+            />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="phoneNumber" nzRequired
+            >Numéro de téléphone</nz-form-label
+          >
+          <nz-form-control
+            nzErrorTip="Veuillez saisir un numéro de téléphone valide !"
+          >
+            <input
+              formControlName="phoneNumber"
+              id="phoneNumber"
+              nz-input
+              placeholder="Entrez votre numéro de téléphone"
+            />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item nz-row class="register-area">
+          <nz-form-control>
+            <button nz-button nzType="primary">Modifier</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+
+      <form
+        nz-form
+        [formGroup]="passwordForm"
+        nzLayout="vertical"
+        (ngSubmit)="submitPasswordForm()"
+      >
+        <h5>Changer mon mot de passe</h5>
+
+        <nz-form-item>
+          <nz-form-label nzFor="lastPassword" nzRequired
+            >Ancien mot de passe</nz-form-label
+          >
+          <nz-form-control
+            nzErrorTip="Veuillez saisir un mot de passe valide !"
+          >
+            <input
+              nz-input
+              placeholder="Entrez votre ancien mot de passe"
+              type="password"
+              id="lastPassword"
+              formControlName="lastPassword"
+              (ngModelChange)="updateConfirmValidator()"
+            />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="newPassword" nzRequired
+            >Nouveau mot de passe</nz-form-label
+          >
+          <nz-form-control
+            nzErrorTip="Veuillez saisir un mot de passe valide !"
+          >
+            <input
+              nz-input
+              placeholder="Entrez votre noveau mot de passe"
+              type="password"
+              id="newPassword"
+              formControlName="newPassword"
+              (ngModelChange)="updateConfirmValidator()"
+            />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="checkPassword" nzRequired
+            >Confirmer le nouveau mot de passe</nz-form-label
+          >
+          <nz-form-control [nzErrorTip]="errorTpl">
+            <input
+              nz-input
+              placeholder="Confirmer votre nouveau mot de passe"
+              type="password"
+              formControlName="checkPassword"
+              id="checkPassword"
+            />
+            <ng-template #errorTpl let-control>
+              <ng-container *ngIf="control.errors?.['required']">
+                Veuillez confirmer votre mot de passe !
+              </ng-container>
+              <ng-container *ngIf="control.errors?.['confirm']">
+                Les deux mots de passe ne sont pas identiques !
+              </ng-container>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item nz-row class="register-area">
+          <nz-form-control>
+            <button nz-button nzType="primary">Modifier</button>
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </div>
+  </div>
+</body>

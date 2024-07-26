@@ -1,13 +1,37 @@
+<body>
+  <div class="header">
+    <div class="header__button">
+      <button nz-button routerLink="/admin_portail/add_course">
+        Ajouter une nouvelle formation
+      </button>
+    </div>
 
- <div>
-    <button nz-button nzType="primary" routerLink="/admin_portail/add_course">Ajouter un cours</button>
- </div>
+    <div class="header__search">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input type="text" nz-input placeholder="Rechercher une formation" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+    </div>
+  </div>
 
-<div class="card-cours" *ngIf="skeleton==false">
-<nz-card *ngFor="let cour of coursList" nzHoverable class="cours" style="width:240px; border-radius: 0.5rem;">
-  <img alt="cours-leadership" src="{{cour.photo}}"/>
-    <nz-card-meta nzTitle=" {{cour.name}} " nzDescription="{{cour.description}}"></nz-card-meta> 
-  </nz-card>
-</div>
+  <nz-skeleton [nzActive]="true" *ngIf="skeleton"></nz-skeleton>
 
-<nz-skeleton [nzActive]="true" *ngIf="skeleton" ></nz-skeleton> 
+  <div class="content">
+    <div class="card-cours" *ngIf="skeleton == false">
+      <nz-card
+        *ngFor="let cour of coursList"
+        nzHoverable
+        class="cours"
+        style="width: 240px; border-radius: 0.5rem"
+      >
+        <img alt="cours-leadership" src="{{ cour.photo }}" />
+        <nz-card-meta
+          nzTitle=" {{ cour.name }} "
+          nzDescription="{{ cour.description }}"
+        ></nz-card-meta>
+      </nz-card>
+    </div>
+  </div>
+</body>

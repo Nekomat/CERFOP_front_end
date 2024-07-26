@@ -1,42 +1,81 @@
+<body>
+  <div class="header">
+    <div class="header__button">
+      <button nz-button (click)="isVisible = true">
+        Ajouter un nouveau groupe
+      </button>
+      <button nz-button routerLink="/admin_portail/utilisateurs">
+        Voir tous les utilisateurs
+      </button>
+    </div>
 
-<nz-skeleton [nzActive]="skeleton" *ngIf="skeleton"></nz-skeleton> 
- 
- <div *ngIf="skeleton==false">
-<div style="margin-bottom: 8px;">
-    <button nz-button nzType="primary" (click)="isVisible=true"> Ajouter une organisation </button>
-</div>
+    <div class="header__search">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input type="text" nz-input placeholder="Rechercher un groupe" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+    </div>
+  </div>
 
-<nz-table #basicTable [nzData]="organisation" >
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Date d'ajout</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{data.name}}</td>
-        <td>{{data.createdAt | date:"short"}}</td>
-        <td> 
-         <button nz-button nzType="primary" routerLink="/admin_portail/organisation_detail/{{data.id}}">detail</button> 
-        </td>
-      </tr>
-    </tbody>
-  </nz-table>
- </div>
+  <div class="content">
+    <nz-skeleton [nzActive]="skeleton" *ngIf="skeleton"></nz-skeleton>
 
+    <div *ngIf="skeleton == false">
+      <nz-table #basicTable [nzData]="organisation">
+        <thead>
+          <tr>
+            <th>Nom du groupe</th>
+            <th>Ajouté le</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of basicTable.data">
+            <td class="content__name">{{ data.name }}</td>
+            <td>{{ data.createdAt | date : "short" }}</td>
+            <td>
+              <div class="content__button">
+                <button
+                  nz-button
+                  routerLink="/admin_portail/organisation_detail/{{ data.id }}"
+                >
+                  Voir les {{ 34 }} utilisateurs
+                </button>
+                <button nz-button routerLink="/admin_portail/utilisateurs">
+                  Ajouter un utilisateur
+                </button>
+                <button nz-button (click)="isVisible = true">Renommer</button>
+                <button nz-button>Supprimer</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</body>
 
-  <nz-modal [(nzVisible)]="isVisible" nzTitle="Enregistrer une organisation" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" 
-   nzCancelText="Fermé" 
-   nzOkText="Enregistrer" 
-   [nzOkLoading]="loader"
-  >
-    <ng-container *nzModalContent>
-       <div class="row">
-       <div class="col-md-12">
-        <input nz-input [(ngModel)]="entityName" type="text" placeholder="le nom de l'organisation">
-       </div>
-       </div>
-    </ng-container> 
-  </nz-modal>
+<nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="Ajouter une nouvelle organisation"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  nzCancelText="Annuler"
+  nzOkText="Ajouter"
+  [nzOkLoading]="loader"
+>
+  <ng-container *nzModalContent>
+    <div class="row">
+      <div class="col-md-12">
+        <input
+          nz-input
+          [(ngModel)]="entityName"
+          type="text"
+          placeholder="Entrer le nom de l'organisation"
+        />
+      </div>
+    </div>
+  </ng-container>
+</nz-modal>

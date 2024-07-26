@@ -1,23 +1,1190 @@
-<div class="card-cours" *ngIf="skeleton==false">
-  <nz-card  *ngFor="let i of allCours" nzHoverable class="cours" style="width:30%; border-radius: 0.5rem;" [nzCover]="coverTemplate">
-    
+<!-- <div class="card-cours" *ngIf="skeleton == false">
+  <nz-card
+    *ngFor="let i of allCours"
+    nzHoverable
+    class="cours"
+    style="width: 30%; border-radius: 0.5rem"
+    [nzCover]="coverTemplate"
+  >
     <div class="image">
       <div class="timing">
-        <p> {{i.duree}} </p>
+        <p>{{ i.duree }}</p>
       </div>
-      <img alt="cours-leadership" src="{{i.photo}}" />
+      <img alt="cours-leadership" src="{{ i.photo }}" />
     </div>
-      <nz-card-meta style="height: 6.5rem; max-height: 100%; margin-top: 1rem;" nzTitle="{{i.name}}" nzDescription="{{i.description}}"></nz-card-meta>
+    <nz-card-meta
+      style="height: 6.5rem; max-height: 100%; margin-top: 1rem"
+      nzTitle="{{ i.name }}"
+      nzDescription="{{ i.description }}"
+    ></nz-card-meta>
 
-      <button (click)="addCours(i)" [nzLoading]="i.loader" style="display: flex; align-items: center;"  nz-button nzType="primary">
-        <span nz-icon nzType="right" nzTheme="outline"></span>
-        Suivre
-      </button>
-    </nz-card>
-    <ng-template #coverTemplate>
-      
-    </ng-template> 
+    <button
+      (click)="addCours(i)"
+      [nzLoading]="i.loader"
+      style="display: flex; align-items: center"
+      nz-button
+      nzType="primary"
+    >
+      <span nz-icon nzType="right" nzTheme="outline"></span>
+      Suivre
+    </button>
+  </nz-card>
+  <ng-template #coverTemplate> </ng-template>
+</div>
+
+<nz-skeleton *ngIf="skeleton" [nzActive]="true"></nz-skeleton>
+ -->
+
+<div class="body">
+  <div class="body-content">
+    <nz-tabset [nzTabBarExtraContent]="extraTemplate" class="body-content-tabs">
+      <!-- Tout -->
+      <nz-tab nzTitle="Tout (120)" class="body-content-tabs-tout">
+        <!-- Dernière formations ajoutées  -->
+        <div class="body-content-tabs-formations">
+          <div class="body-content-tabs-formations-content">
+            <!-- S'inscrire -->
+            <div class="body-content-tabs-formations-content-card">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+
+              <button routerLink="user_portail/cours-detail">S'inscrire</button>
+            </div>
+
+            <!-- En cours -->
+            <div class="body-content-tabs-formations-content-card">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+              <nz-progress [nzPercent]="80"></nz-progress>
+
+              <button class="continuer">Continuer</button>
+            </div>
+
+            <!-- Terminée -->
+            <div class="body-content-tabs-formations-content-card terminee">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+
+              <nz-progress [nzPercent]="100"></nz-progress>
+
+              <button class="voir">Voir</button>
+            </div>
+
+            <!-- S'inscrire -->
+            <div class="body-content-tabs-formations-content-card">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+
+              <button>S'inscrire</button>
+            </div>
+
+            <!-- En cours -->
+            <div class="body-content-tabs-formations-content-card">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+              <nz-progress [nzPercent]="80"></nz-progress>
+
+              <button class="continuer">Continuer</button>
+            </div>
+
+            <!-- Terminée -->
+            <div class="body-content-tabs-formations-content-card terminee">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+
+              <nz-progress [nzPercent]="100"></nz-progress>
+
+              <button class="voir">Voir</button>
+            </div>
+
+            <!-- S'inscrire -->
+            <div class="body-content-tabs-formations-content-card">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+
+              <button>S'inscrire</button>
+            </div>
+
+            <!-- En cours -->
+            <div class="body-content-tabs-formations-content-card">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+              <nz-progress [nzPercent]="80"></nz-progress>
+
+              <button class="continuer">Continuer</button>
+            </div>
+
+            <!-- Terminée -->
+            <div class="body-content-tabs-formations-content-card terminee">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+
+              <nz-progress [nzPercent]="100"></nz-progress>
+
+              <button class="voir">Voir</button>
+            </div>
+
+            <!-- S'inscrire -->
+            <div class="body-content-tabs-formations-content-card">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+
+              <button>S'inscrire</button>
+            </div>
+
+            <!-- En cours -->
+            <div class="body-content-tabs-formations-content-card">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+              <nz-progress [nzPercent]="80"></nz-progress>
+
+              <button class="continuer">Continuer</button>
+            </div>
+
+            <!-- Terminée -->
+            <div class="body-content-tabs-formations-content-card terminee">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+
+              <nz-progress [nzPercent]="100"></nz-progress>
+
+              <button>Voir</button>
+            </div>
+
+            <!-- S'inscrire -->
+            <div class="body-content-tabs-formations-content-card">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+
+              <button>S'inscrire</button>
+            </div>
+
+            <!-- En cours -->
+            <div class="body-content-tabs-formations-content-card">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+              <nz-progress [nzPercent]="80"></nz-progress>
+
+              <button class="continuer">Continuer</button>
+            </div>
+
+            <!-- Terminée -->
+            <div class="body-content-tabs-formations-content-card terminee">
+              <div
+                class="body-content-tabs-formations-content-card-image-and-time"
+              >
+                <img
+                  src="../../../assets/test-leader.jpeg"
+                  alt="image du cours"
+                />
+                <span>
+                  <i class="fa-regular fa-clock"></i>
+
+                  6 heures 25 mins
+                </span>
+              </div>
+
+              <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+              <div
+                class="body-content-tabs-formations-content-card-title-and-description"
+              >
+                <h4 class="formation-title">
+                  Comprendre le processus législatif
+                </h4>
+                <p class="formation-description">
+                  Découvrez les étapes clés du processus législatif, de la
+                  proposition de loi à son adoption, pour améliorer votre
+                  efficacité en tant que parlementaire. Découvrez les étapes
+                  clés du processus législatif, de la proposition de loi à son
+                  adoption, pour améliorer votre efficacité en tant que
+                  parlementaire.
+                </p>
+              </div>
+
+              <nz-progress [nzPercent]="100"></nz-progress>
+
+              <button class="voir">Voir</button>
+            </div>
+          </div>
+        </div>
+      </nz-tab>
+
+      <!-- En cours -->
+      <nz-tab nzTitle="En cours (8)">
+        <div *ngif="false" class="empty">
+          <p>Vous avez aucune formation en cours</p>
+        </div>
+        <div class="body-content-tabs-formations-content">
+          <!-- En cours -->
+          <div class="body-content-tabs-formations-content-card">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+            <nz-progress [nzPercent]="80"></nz-progress>
+
+            <button class="continuer">Continuer</button>
+          </div>
+
+          <!-- En cours -->
+          <div class="body-content-tabs-formations-content-card">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+            <nz-progress [nzPercent]="80"></nz-progress>
+
+            <button class="continuer">Continuer</button>
+          </div>
+
+          <!-- En cours -->
+          <div class="body-content-tabs-formations-content-card">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+            <nz-progress [nzPercent]="80"></nz-progress>
+
+            <button class="continuer">Continuer</button>
+          </div>
+
+          <!-- En cours -->
+          <div class="body-content-tabs-formations-content-card">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+            <nz-progress [nzPercent]="80"></nz-progress>
+
+            <button class="continuer">Continuer</button>
+          </div>
+
+          <!-- En cours -->
+          <div class="body-content-tabs-formations-content-card">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+            <nz-progress [nzPercent]="80"></nz-progress>
+
+            <button class="continuer">Continuer</button>
+          </div>
+          <!-- En cours -->
+          <div class="body-content-tabs-formations-content-card">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+            <nz-progress [nzPercent]="80"></nz-progress>
+
+            <button class="continuer">Continuer</button>
+          </div>
+        </div>
+      </nz-tab>
+
+      <!-- Tab s'inscrire -->
+      <nz-tab nzTitle="S'inscrire (100)">
+        <div *ngif="false" class="empty">
+          <p>Aucune formation n'est disponible pour le moment</p>
+        </div>
+        <div class="body-content-tabs-formations-content">
+          <!-- S'inscrire -->
+          <div class="body-content-tabs-formations-content-card">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+
+            <button>S'inscrire</button>
+          </div>
+          <!-- S'inscrire -->
+          <div class="body-content-tabs-formations-content-card">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+
+            <button>S'inscrire</button>
+          </div>
+          <!-- S'inscrire -->
+          <div class="body-content-tabs-formations-content-card">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+
+            <button>S'inscrire</button>
+          </div>
+          <!-- S'inscrire -->
+          <div class="body-content-tabs-formations-content-card">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+
+            <button>S'inscrire</button>
+          </div>
+        </div>
+      </nz-tab>
+      <!-- tab terminées -->
+      <nz-tab nzTitle="Terminée(s) (4)">
+        <div *ngif="false" class="empty">
+          <p>Vous avez aucune formation terminée</p>
+        </div>
+        <div class="body-content-tabs-formations-content">
+          <!-- Terminée -->
+          <div class="body-content-tabs-formations-content-card terminee">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+
+            <nz-progress [nzPercent]="100"></nz-progress>
+
+            <button class="voir">Voir</button>
+          </div>
+
+          <!-- Terminée -->
+          <div class="body-content-tabs-formations-content-card terminee">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+
+            <nz-progress [nzPercent]="100"></nz-progress>
+
+            <button class="voir">Voir</button>
+          </div>
+
+          <!-- Terminée -->
+          <div class="body-content-tabs-formations-content-card terminee">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+
+            <nz-progress [nzPercent]="100"></nz-progress>
+
+            <button class="voir">Voir</button>
+          </div>
+
+          <!-- Terminée -->
+          <div class="body-content-tabs-formations-content-card terminee">
+            <div
+              class="body-content-tabs-formations-content-card-image-and-time"
+            >
+              <img
+                src="../../../assets/test-leader.jpeg"
+                alt="image du cours"
+              />
+              <span>
+                <i class="fa-regular fa-clock"></i>
+
+                6 heures 25 mins
+              </span>
+            </div>
+
+            <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+            <div
+              class="body-content-tabs-formations-content-card-title-and-description"
+            >
+              <h4 class="formation-title">
+                Comprendre le processus législatif
+              </h4>
+              <p class="formation-description">
+                Découvrez les étapes clés du processus législatif, de la
+                proposition de loi à son adoption, pour améliorer votre
+                efficacité en tant que parlementaire. Découvrez les étapes clés
+                du processus législatif, de la proposition de loi à son
+                adoption, pour améliorer votre efficacité en tant que
+                parlementaire.
+              </p>
+            </div>
+
+            <nz-progress [nzPercent]="100"></nz-progress>
+
+            <button class="voir">Voir</button>
+          </div>
+        </div>
+      </nz-tab>
+    </nz-tabset>
+
+    <!-- barre de recherche -->
+    <ng-template #extraTemplate>
+      <div class="custom-search-container">
+        <nz-input-group
+          class="body-content-rechercher-input-group"
+          [nzSuffix]="suffixIconSearch"
+        >
+          <input
+            type="text"
+            nz-input
+            placeholder="Rechercher une formation en tapant son titre"
+          />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+          <span nz-icon><i class="fa-solid fa-magnifying-glass"></i></span>
+        </ng-template>
+      </div>
+    </ng-template>
   </div>
-
-  <nz-skeleton *ngIf="skeleton" [nzActive]="true"></nz-skeleton> 
-  
+</div>

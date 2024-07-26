@@ -1,0 +1,28 @@
+//normal button
+@mixin button {
+  padding: 0.5rem 2rem;
+  border: none;
+  outline: none;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+//style of ant design button
+@mixin nz-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 2rem;
+  @include button;
+}
+
+@mixin primary-button {
+  background-color: var(--primary);
+  color: white;
+}
+
+@mixin primary-button {
+  background-color: var(--primary);
+  color: white;
+}

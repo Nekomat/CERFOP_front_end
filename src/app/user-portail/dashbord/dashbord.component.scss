@@ -1,40 +1,389 @@
-.logo {
-    height: 32px;
-    background: rgba(255, 255, 255, 0.2);
-    margin: 16px;
+@import "../../../assets/mixins.scss";
+
+.body {
+  min-height: 100vh;
+  margin-left: 250px;
+  transition: margin-left 0.2s ease-in-out;
+
+  &:has(.ant-layout-sider-collapsed) {
+    margin-left: 80px;
+    transition: all 0.2s ease-in-out;
   }
 
-  .layout {
-    min-height: 100vh;
-  }
+  /* sidebar */
 
-  nz-sider {
+  &-sidebar {
     overflow: auto;
     height: 100%;
     position: fixed;
     left: 0;
+
+    .ant-layout-sider {
+      background-color: #f0f2f5;
+      height: 100vh;
+      padding: 1rem 0;
+    }
+
+    ::ng-deep .ant-layout-sider-children {
+      position: relative;
+      border-right: 1px solid var(--white-dark);
+    }
+
+    /* logo */
+
+    &-logo {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 1rem 0 1rem 1rem;
+      gap: 0.5rem;
+      cursor: pointer;
+
+      img {
+        width: 3.5rem;
+      }
+      span {
+        font-size: 1.3rem;
+        color: #1d8c56;
+        font-weight: 500;
+      }
+    }
+
+    /* Lorsque le menu est complet */
+
+    .ant-menu /* liste des menus */ {
+      display: flex;
+      flex-direction: column;
+      margin-top: 1rem;
+      border: 0;
+
+      .ant-menu-item /* element du menu */ {
+        font-size: 1.2rem;
+        height: 3.8rem;
+        margin: 0;
+        color: var(--blue-dark);
+
+        i {
+          font-size: 1.2rem;
+        }
+
+        ::ng-deep .ant-menu-title-content {
+          display: flex;
+          align-items: center;
+          gap: 0.2rem;
+        }
+
+        &:hover {
+          background-color: rgb(#1d8c56, 30%);
+
+          i {
+            animation-name: tada;
+            animation-duration: 1s;
+          }
+        }
+
+        &-selected  /* menu actif */ {
+          background-color: #1d8c56;
+          color: #fff;
+
+          i {
+            font-size: 1.2rem;
+          }
+
+          &:hover {
+            background-color: #1d8c56;
+          }
+        }
+      }
+    }
+
+    .disconnect {
+      position: absolute;
+      bottom: 0;
+
+      &:hover {
+        color: red !important;
+      }
+    }
+
+    ::ng-deep .ant-layout-sider-trigger {
+      border-top: 1px solid var(--white-dark);
+      border-right: 0 !important;
+      .anticon {
+        color: var(--blue-dark) !important;
+        font-weight: 800 !important;
+
+        font-size: 1rem;
+      }
+
+      &:hover {
+        .anticon {
+          color: var(--primary) !important;
+          animation-name: fadeOutLeft;
+          animation-duration: 1.5s;
+          animation-iteration-count: infinite;
+        }
+      }
+    }
+
+    /* Lorsque le menu est reduit */
+    &.ant-layout-sider-collapsed {
+      background-color: var(--primary);
+
+      ::ng-deep .ant-layout-sider-children {
+        border-right: 0;
+      }
+
+      .body-sidebar-logo {
+        padding: 1rem 0;
+        justify-content: center;
+        img {
+          width: 3.5rem;
+          //margin-right: 0.2rem;
+        }
+        span {
+          visibility: hidden;
+        }
+      }
+
+      .ant-menu /* liste des menus */ {
+        background-color: var(--primary);
+
+        .ant-menu-item /* element du menu */ {
+          color: white;
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            background-color: rgb(white, 30%);
+          }
+
+          &-selected  /* menu actif */ {
+            background-color: var(--secondary);
+            color: white;
+
+            i {
+              font-size: 1.2rem;
+            }
+
+            &:hover {
+              background-color: var(--secondary);
+            }
+          }
+        }
+      }
+
+      ::ng-deep .ant-layout-sider-trigger {
+        background-color: var(--primary);
+
+        border-color: var(--white-dark) !important;
+
+        .anticon {
+          color: white !important;
+        }
+
+        &:hover {
+          .anticon {
+            //color: var(--primary) !important;
+            animation-name: fadeOutRight;
+            animation-duration: 1.5s;
+            animation-iteration-count: infinite;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* content */
+
+/* sticky */
+
+.sticky-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  transition: padding 0.3s ease, font-size 0.3s ease;
+  z-index: 1000;
+}
+
+/* sticky lorsqu'on scroll */
+
+nz-header {
+  background: #fff;
+  line-height: 1.4rem;
+  padding: 2.8rem 2rem 2.8rem 1rem;
+
+  @include row-between;
+
+  .button-menu-and-name {
+    @include row-between;
+    gap: 2rem;
+
+    .name {
+      display: flex;
+      flex-direction: column;
+      h2 {
+        font-weight: 300;
+        font-size: 1.7rem;
+
+        .last-name {
+          color: var(--primary);
+        }
+      }
+    }
+
+    /* button */
+
+    .menu-button {
+      //margin-left: 1rem;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--blue-dark);
+
+      &:hover {
+        color: var(--primary);
+      }
+    }
   }
 
-  .right-layout {
-    margin-left: 200px;
+  /* icon */
+
+  .icon {
+    display: flex;
+    gap: 2rem;
+
+    .icon-setting,
+    .icon-bell,
+    .icon-award {
+      background-color: rgb(#1d8c56, 10%);
+      padding: 1rem 1.2rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+
+      &:hover {
+        @include tada;
+      }
+
+      i {
+        font-size: 1.2rem;
+      }
+    }
+
+    .icon-bell {
+      position: relative;
+
+      &-count {
+        position: absolute;
+        top: -0.5rem;
+        left: -0.5rem;
+        background-color: var(--secondary);
+        padding: 0.1rem 0.3rem;
+        border-radius: 5rem;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+.shrink {
+  padding: 1rem 2rem 1rem 0.5rem;
+
+  .name {
+    h2 {
+      font-size: 1.5rem !important;
+    }
   }
 
-  nz-header {
-    background: #fff;
-    padding: 0;
+  .icon {
+    .icon-setting,
+    .icon-bell,
+    .icon-award {
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+
+      &:hover {
+        @include tada;
+      }
+
+      i {
+        font-size: 1rem;
+      }
+
+      .icon-bell {
+        &-count {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+/*  content */
+
+nz-content {
+  padding: 1rem;
+}
+
+/* footer */
+
+nz-footer {
+  text-align: center;
+}
+
+/* Notifiaction */
+
+::ng-deep .ant-drawer-title {
+  font-weight: 500 !important;
+  font-size: 1.5rem;
+}
+
+.notification-card {
+  // background-color: rgb(#1d8c56, 15%);
+
+  opacity: 0.7;
+  padding: 0.4rem 1rem;
+  border-radius: 0.5rem;
+  @include row-between;
+  gap: 0.8rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+
+  i {
+    font-size: 1.4rem;
   }
 
-  nz-content {
-    margin: 24px 16px 0;
-    overflow: initial;
+  &:hover {
+    transform: scale(1.02);
+    i {
+      color: var(--primary);
+    }
+    .fa-eye {
+      transform: scale(1.2);
+      transition: all 1s;
+      animation-name: tada;
+      animation-duration: 1s;
+      animation-iteration-count: infinite;
+    }
   }
 
-  .inner-content {
-    padding: 24px;
-    background: #fff;
-    text-align: center;
+  &-content {
+    .disponible {
+      font-weight: 500;
+    }
+    &-date {
+      font-size: 0.7rem;
+      color: var(--blue-dark);
+    }
   }
+}
 
-  nz-footer {
-    text-align: center;
-  }
+.active {
+  background-color: rgb(#1d8c56, 15%);
+  border: none !important;
+  opacity: 1;
+  font-weight: 600;
+}

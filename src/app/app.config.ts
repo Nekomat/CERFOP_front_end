@@ -12,5 +12,11 @@ import { provideHttpClient } from '@angular/common/http';
 registerLocaleData(fr);
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes , withHashLocation()), provideNzI18n(fr_FR), importProvidersFrom(FormsModule), provideAnimationsAsync(), provideHttpClient()]
+  providers: [
+    provideRouter(routes, withHashLocation()),
+    provideNzI18n(fr_FR),
+    importProvidersFrom(FormsModule),
+    provideAnimationsAsync(),
+    provideHttpClient(),
+  ],
 };

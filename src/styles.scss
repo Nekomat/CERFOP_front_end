@@ -1,47 +1,180 @@
+@forward "./assets/partial_mixins/flex-mixin";
+@import "animate.css";
+
 /* You can add global styles to this file, and also import other style files */
 
 /* root */
 
-:root{
-    font-family: "Montserrat", sans-serif;
+body {
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-
-
-/* Général */
-
-
-footer {
-    display: flex;
-    flex-direction: row;
-    height: 4rem;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background: #1D8C56;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
 }
 
-.bg-primary {
-    background: #1D8C56;
+:root {
+  font-family: "Montserrat", sans-serif;
+  --primary: #1d8c56;
+  --secondary: #f9c718;
+  --white-dark: #f4f4f4;
+  --blue-dark: #6d7c90;
+}
+
+/* particular color */
+
+.particular-secondary {
+  color: var(--secondary);
 }
 
 .color-primary {
-    color: #1D8C56;
+  color: var(--primary);
+}
+
+/* Général */
+
+footer {
+  display: flex;
+  flex-direction: row;
+  height: 4rem;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: #1d8c56;
+}
+
+.bg-primary {
+  background: #1d8c56;
+}
+
+.bg-secondary {
+  background-color: var(--secondary) !important;
+}
+
+.color-primary {
+  color: #1d8c56;
 }
 
 .bold {
-    font-weight: bold;
+  font-weight: bold;
 }
 
-h1, h2, h3, h4, h5, h6, p {
-    font-family: "Montserrat";
-    margin: 0rem;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: "Montserrat";
+  margin: 0rem;
+  padding: 0;
 }
 
 .btn-secondary {
-    width: auto;
-    color: #1D8C56;
-    background: #fff;
-    border-radius: 4px;
-    
+  width: auto;
+  color: #1d8c56;
+  background: #fff;
+  border-radius: 4px;
+}
+
+/* popup */
+
+div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm {
+  background-color: var(--primary) !important;
+}
+
+div:where(.swal2-container) button:where(.swal2-styled) {
+  box-shadow: 0 0 0 3px rgba(249, 199, 24, 0) !important;
+}
+
+/* title */
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  border-bottom: 1.5px solid rgb(black, 10%);
+
+  h3 {
+    font-size: 1.3rem;
+  }
+
+  div {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .voir-plus {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+      i {
+        animation-name: tada;
+        animation-duration: 1s;
+      }
+      color: var(--primary);
+    }
+  }
+}
+
+/* badge */
+
+.badge {
+  background-color: #f9c718;
+  color: black;
+  padding: 0.3rem 0.4rem;
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+/* button to scroll */
+
+.icon-scroll {
+  display: flex;
+  gap: 1rem;
+
+  i {
+    cursor: pointer;
+    font-size: 1.2rem;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+/* retourner */
+
+.retourner {
+  display: flex;
+  gap: 0.4rem;
+
+  font-size: 1.2rem;
+
+  &:hover {
+    i {
+      animation-name: bounce;
+      animation-duration: 1s;
+    }
+  }
+}
+
+/* progress */
+
+::ng-deep .ant-progress-bg {
+  background-color: var(--secondary) !important;
 }

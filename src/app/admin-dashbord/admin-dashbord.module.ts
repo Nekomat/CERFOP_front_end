@@ -19,44 +19,74 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { adminInterceptor } from './admin.interceptor';
-import { AdminService } from './admin.service'; 
+import { AdminService } from './admin.service';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EntityDetailComponent } from './entity-detail/entity-detail.component'; 
+import { EntityDetailComponent } from './entity-detail/entity-detail.component';
 import { NzStepsModule } from 'ng-zorro-antd/steps';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { QuizComponent } from './quiz/quiz.component';
+import { NzDividerModule } from 'ng-zorro-antd/divider';
+import { NzInputNumberModule } from 'ng-zorro-antd/input-number';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { EventsComponent } from './events/events.component';
+import { CertificatsComponent } from './certificats/certificats.component';
+import { BiblioComponent } from './biblio/biblio.component';
+import { MonCompteComponent } from './mon-compte/mon-compte.component';
+
+import { QuillModule } from 'ngx-quill';
+
 @NgModule({
-  declarations: [AjoutCoursComponent , CoursComponent , DashbordComponent , EntityComponent , UtilisateursComponent,CoursDetailComponent , CoursListeComponent ,
-    EntityDetailComponent ,
-    QuizComponent
+  declarations: [
+    AjoutCoursComponent,
+    CoursComponent,
+    DashbordComponent,
+    EntityComponent,
+    UtilisateursComponent,
+    CoursDetailComponent,
+    CoursListeComponent,
+    EntityDetailComponent,
+    QuizComponent,
+    EventsComponent,
+    CertificatsComponent,
+    BiblioComponent,
+    MonCompteComponent,
   ],
   imports: [
     CommonModule,
-    adminRouter ,
-    NzLayoutModule , 
+    adminRouter,
+    NzLayoutModule,
     NzMenuModule,
-    NzIconModule ,
-    NzTableModule ,
-    NzButtonModule ,
-    NzModalModule ,
-    NzInputModule , 
-    NzSelectModule ,
-    NzUploadModule ,
-    HttpClientModule ,
-    NzSkeletonModule  ,
+    NzIconModule,
+    NzTableModule,
+    NzButtonModule,
+    NzModalModule,
+    NzInputModule,
+    NzSelectModule,
+    NzUploadModule,
+    HttpClientModule,
+    NzSkeletonModule,
     FormsModule,
-    ReactiveFormsModule ,
-    NzStepsModule ,
-    NzCardModule
+    ReactiveFormsModule,
+    NzStepsModule,
+    NzCardModule,
+    NzDividerModule,
+    NzInputNumberModule,
+    NzRadioModule,
+    NzFormModule,
+    ReactiveFormsModule,
+
+    QuillModule,
+    QuillModule.forRoot(),
   ],
-  providers:[
+  providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: adminInterceptor,
       multi: true,
     },
-    AdminService
-  ]
+    AdminService,
+  ],
 })
-export class AdminDashbordModule { }
+export class AdminDashbordModule {}

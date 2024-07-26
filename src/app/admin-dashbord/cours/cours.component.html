@@ -1,89 +1,4 @@
-
-<nz-steps [nzCurrent]="current">
-    <nz-step nzTitle="Detail sur le cour"></nz-step>
-    <nz-step nzTitle="Les chapitres du cours"></nz-step>
-    <nz-step nzTitle="Les videos par chapitres"></nz-step>
-    <nz-step nzTitle="Le quiz du cour"></nz-step>
-  </nz-steps>
-
-  <div class="steps-content" *ngIf="current==0"> 
-    <form [formGroup]="section1">
-      <div class="row">
-        <div class="col-md-6">
-           <input nz-input type="text" name="" formControlName="name" placeholder="nom du cours"> 
-        </div>
-   
-        <div class="col-md-6">
-           <input nz-input type="text" name="" formControlName="duree" id="" placeholder="durée"> 
-        </div>
-       </div>
-       <div class="row">
-         <div class="col-md-6">
-           <textarea nz-input placeholder="Description du cours" formControlName="description" nzAutosize></textarea>
-         </div>
-         <div class="col-md-6">
-         <input type="file" name="" (change)="saveCoursPicture($event)" id="" class="form-control"> 
-         </div>
-       </div>
-    </form> 
-    <div>
-   <button nz-button nzType="primary" [nzLoading]="courseLoader" [disabled]="!section1.valid" (click)="saveCourse()"> Enregistrer </button>
-    </div>
-</div>
-
-  <div class="steps-content" *ngIf="current==1"> 
-    <input nz-input type="text" [(ngModel)]="chapitreName" placeholder="nom du chapitre" > 
-    <div>
-        <button nz-button nzType="primary" (click)="saveChapitre()" [nzLoading]="loaderChapitre" >Enregistrer</button> 
-        <button nz-button nzType="primary" (click)="current = current+1" > suivant </button>
-    </div>
-   </div>
-
-  <div class="steps-content" *ngIf="current==2"> 
-    <form [formGroup]="sectionVideo">
-      <div class="row">
-        <div class="col-md-6">
-            <nz-select nzShowSearch nzAllowClear  nzPlaceHolder="chosir le chapitre" formControlName="chapitreId">
-                <nz-option *ngFor="let data of allChapiter" nzLabel="{{data.name}}" [nzValue]="data.id"></nz-option>
-             </nz-select>  
-        </div> 
-
-        <div class="col-md-6">
-          <input nz-input type="text" class="form-control" placeholder="le nom du cours" formControlName="name"> 
-      </div>
-
-      <div class="col-md-6">
-        <input nz-input type="number" class="form-control" placeholder="duree" formControlName="duration"> 
-    </div>
-
-        <div class="col-md-6">
-            <input type="file" class="form-control" (change)="saveFileVideo($event)" > 
-        </div>
-      </div>
-    </form>
-    <div> 
-      <button nz-button nzType="primary" [disabled]="!sectionVideo.valid" (click)="addVideoBYChapiter()" [nzLoading]="videoLoader"> Enregistrer </button> 
-      <button nz-button nzType="primary" (click)="current+1"> Suivant </button> 
-    </div>
-  
-  </div>
-
-  <div class="steps-content" *ngIf="current==3"> 
-      <form >
-        <div>
-          <textarea style="margin: 4px;" nz-input placeholder="La Question"  nzAutosize></textarea>  
-          
-          <textarea style="margin: 4px;" nz-input placeholder="La Bonne reponse"  nzAutosize></textarea> 
-
-          <textarea style="margin: 4px;" nz-input placeholder="La mauvaise reponse"  nzAutosize></textarea> 
-
-           <button nz-button nzType="primary" (click)="addQuiz()" [nzLoading]="quizLoader"> Valider </button> 
-         </div>
-      </form>
-       
-  </div>
-
-  <!-- <div class="steps-action">
+<!-- <div class="steps-action">
     <button nz-button nzType="default" (click)="pre()" *ngIf="current > 0">
       <span>Previous</span>
     </button>
@@ -94,3 +9,473 @@
       <span>Done</span>
     </button>
   </div> -->
+
+<body>
+  <div class="header">
+    <div class="retourner">
+      <a (click)="goBack()">
+        <i class="fa-solid fa-arrow-left"></i>
+        Voir toutes les formations</a
+      >
+    </div>
+  </div>
+
+  <div class="content">
+    <nz-steps [nzCurrent]="current">
+      <nz-step nzTitle="Détails de la formation"></nz-step>
+      <nz-step nzTitle="Contenu - Chapitres"></nz-step>
+      <!-- <nz-step nzTitle="Vidéo par chapitre"></nz-step> -->
+      <nz-step nzTitle="Ressources"></nz-step>
+      <nz-step nzTitle="Quiz"></nz-step>
+    </nz-steps>
+
+    <!-- detail de la formation -->
+    <div class="detail-formation" *ngIf="current == 1">
+      <form class="form" [formGroup]="section1">
+        <div class="form__left">
+          <div>
+            <!-- Nom de la formation -->
+            <div class="form__elem form__elem--name">
+              <p>Nom de la formation</p>
+              <input
+                nz-input
+                type="text"
+                name=""
+                formControlName="name"
+                placeholder="Entrez le nom de la formation"
+              />
+            </div>
+
+            <!-- Nom de la formation -->
+            <div class="form__elem form__elem--categorie">
+              <p>Catégorie de la formation</p>
+              <nz-select
+                nzShowSearch
+                nzAllowClear
+                formControlName="categorie"
+                [nzDropdownRender]="categorieFormation"
+                nzPlaceHolder="Choisir une catégorie ou ajouter la directement"
+              >
+                <nz-option
+                  *ngFor="let item of listOfItem"
+                  [nzLabel]="item"
+                  [nzValue]="item"
+                ></nz-option>
+              </nz-select>
+              <ng-template #categorieFormation>
+                <hr />
+                <div class="select__elem">
+                  <input
+                    class="select__input"
+                    type="text"
+                    placeholder="Saisir le nom de la catégorie qui n'est pas mentionnée dans la liste"
+                    nz-input
+                    #inputElement
+                  />
+                  <button (click)="addItem(inputElement)">
+                    Ajouter une nouvelle
+                  </button>
+                </div>
+              </ng-template>
+            </div>
+
+            <!-- Durée -->
+            <div class="form__elem form__elem--time">
+              <p>Durée de la formation</p>
+              <input
+                nz-input
+                type="text"
+                name=""
+                formControlName="duree"
+                id=""
+                placeholder="Ex : 2 semaines ou 1 jours, ou 2 jour 30 heures, ou 20 heures 40 min etc"
+              />
+            </div>
+
+            <!-- courte description -->
+            <div class="form__elem form__elem--courte-description">
+              <p>Courte description de 30 mots maximum</p>
+              <textarea
+                nz-input
+                rows="6"
+                placeholder="Saisir un résumé de la description complète pour un maximum de 30 mots"
+                formControlName="courteDescription"
+                nzAutosize
+              ></textarea>
+            </div>
+
+            <!-- image -->
+            <div class="form__elem form__elem--image">
+              <p>Charger une image de mise en avant de la formation</p>
+              <input
+                type="file"
+                name=""
+                (change)="saveCoursPicture($event)"
+                id=""
+                class="form-control"
+              />
+            </div>
+
+            <div class="form__button">
+              <button
+                nz-button
+                nzType="primary"
+                [nzLoading]="courseLoader"
+                [disabled]="!section1.valid"
+                (click)="saveCourse()"
+              >
+                Enregistrer et continuer
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="form__right">
+          <div class="form__elem form__elem--longue-description">
+            <p>Description complète de la formation</p>
+            <quill-editor
+              formControlName="longueDescription"
+              [modules]="editorModules"
+              [placeholder]="'Description complète de la formation...'"
+              [readOnly]="false"
+              (onEditorCreated)="onEditorCreated($event)"
+              (onContentChanged)="onContentChanged($event)"
+            >
+            </quill-editor>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- contenu - chapitre -->
+    <div class="contenu-chapitre" *ngIf="current == 1">
+      <div class="contenu-chapitre__elem contenu-chapitre__elem--head">
+        <h3>Choisissez le nombre total des chapitres de la formation</h3>
+
+        <div class="contenu-chapitre__number">
+          <p>Chapitre(s)</p>
+          <nz-input-number
+            [nzMin]="1"
+            [nzMax]="10"
+            [nzStep]="1"
+            [(ngModel)]="chapterCount"
+            [nzPlaceHolder]="'0'"
+          ></nz-input-number>
+        </div>
+
+        <button
+          nz-button
+          nzType="primary"
+          (click)="generateChapitres(chapterCount)"
+        >
+          Valider
+        </button>
+      </div>
+
+      <div
+        class="contenu-chapitre__content"
+        *ngFor="let chapitre of chapitres; let i = index"
+      >
+        <div class="contenu-chapitre__generate-chapter">
+          <h5 class="chapter-title">
+            Chapitre <span>{{ i + 1 }} </span>:
+          </h5>
+          <div class="contenu-chapitre__generate-chapter--name">
+            <label>
+              Nom de ce chapitre
+              <input
+                nz-input
+                type="text"
+                [(ngModel)]="chapitre.chapitreName"
+                placeholder="Entrer le nom de ce chapitre"
+              />
+            </label>
+          </div>
+
+          <div class="contenu-chapitre__generate-chapter--video">
+            <h5>Contenu(s) de ce chapitre</h5>
+            <div
+              *ngFor="let contenu of chapitre.contenus; let j = index"
+              class="contenu-chapitre__generate-cotenu"
+            >
+              <label>
+                Sous chapitre <span class="color-primary">{{ j + 1 }}</span> :
+                <input
+                  nz-input
+                  type="text"
+                  [(ngModel)]="contenu.sousChapitreName"
+                  placeholder="Entrer le nom de ce sous chapitre"
+                />
+              </label>
+              <label>
+                Charger la vidéo de ce sous chapitre :
+                <nz-upload
+                  nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                  [nzHeaders]="{ authorization: 'authorization-text' }"
+                  (nzChange)="handleChange($event)"
+                  nzAccept="video/*"
+                >
+                  <button nz-button>
+                    <span nz-icon nzType="upload"></span>
+                    Charger la vidéo
+                  </button>
+                </nz-upload>
+              </label>
+            </div>
+
+            <div class="contenu-chapitre__generate-contenu--button">
+              <button nz-button (click)="addContenu(i)">
+                Ajouter un autre contenu
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="contenu-chapitre__add-chapter-button"
+        *ngIf="showAddChapterButton"
+      >
+        <button nz-button nzType="default" (click)="addAnotherChapitre()">
+          Ajouter un autre chapitre
+        </button>
+      </div>
+
+      <div class="contenu-chapitre__button">
+        <button nz-button nzType="primary" (click)="current = current - 1">
+          Précédent
+        </button>
+        <button
+          nz-button
+          nzType="primary"
+          (click)="saveChapitre()"
+          [nzLoading]="loaderChapitre"
+        >
+          Enregistrer
+        </button>
+
+        <button nz-button nzType="primary" (click)="current = current + 1">
+          suivant
+        </button>
+      </div>
+    </div>
+
+    <!-- video par chapitre -->
+
+    <!-- <div class="steps-content" *ngIf="current == 0">
+      <form [formGroup]="sectionVideo">
+        <div class="row">
+          <div class="col-md-6">
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="chosir le chapitre"
+              formControlName="chapitreId"
+            >
+              <nz-option
+                *ngFor="let data of allChapiter"
+                nzLabel="{{ data.name }}"
+                [nzValue]="data.id"
+              ></nz-option>
+            </nz-select>
+          </div>
+
+          <div class="col-md-6">
+            <input
+              nz-input
+              type="text"
+              class="form-control"
+              placeholder="le nom du cours"
+              formControlName="name"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <input
+              nz-input
+              type="number"
+              class="form-control"
+              placeholder="duree"
+              formControlName="duration"
+            />
+          </div>
+
+          <div class="col-md-6">
+            <input
+              type="file"
+              class="form-control"
+              (change)="saveFileVideo($event)"
+            />
+          </div>
+        </div>
+      </form>
+      <div>
+        <button
+          nz-button
+          nzType="primary"
+          [disabled]="!sectionVideo.valid"
+          (click)="addVideoBYChapiter()"
+          [nzLoading]="videoLoader"
+        >
+          Enregistrer
+        </button>
+        <button nz-button nzType="primary" (click)="(current + 1)">
+          Suivant
+        </button>
+      </div>
+    </div> -->
+
+    <!-- Ressources -->
+
+    <div class="ressources" *ngIf="current == 2">
+      <div class="ressources__content">
+        <h5>Ajoutez tous documents pdf en rapport avec la formation</h5>
+
+        <nz-upload
+          nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+          [nzHeaders]="{ authorization: 'authorization-text' }"
+          (nzChange)="handleChangepdf($event)"
+          nzAccept="application/pdf"
+        >
+          <button nz-button>
+            <span nz-icon nzType="upload"></span>
+            Ajouter les pdf
+          </button>
+        </nz-upload>
+      </div>
+
+      <div class="ressources__button">
+        <button nz-button nzType="primary" (click)="current = current - 1">
+          Précédent
+        </button>
+        <button
+          nz-button
+          nzType="primary"
+          (click)="saveChapitre()"
+          [nzLoading]="loaderChapitre"
+        >
+          Enregistrer
+        </button>
+
+        <button nz-button nzType="primary" (click)="current = current + 1">
+          suivant
+        </button>
+      </div>
+    </div>
+
+    <!-- Quiz -->
+
+    <div class="quiz" *ngIf="current == 0">
+      <h5>Ajouter une à une chaque question par chapitre</h5>
+
+      <div class="quiz__head">
+        <label>
+          Choisir le chapitre
+          <nz-select
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="Choisir le chapitre"
+            [(ngModel)]="selectedChapitre"
+          >
+            <nz-option nzLabel="chapitre 1" nzValue="chapitre 1"></nz-option>
+            <nz-option nzLabel="chapitre 2" nzValue="chapitre 2"></nz-option>
+          </nz-select>
+        </label>
+
+        <p>
+          Total des questions : <span>{{ questions.length }}</span>
+        </p>
+
+        <div class="quiz__button">
+          <button
+            nz-button
+            nzType="primary"
+            [disabled]="!selectedChapitre"
+            (click)="addVraiFauxQuestion()"
+          >
+            Ajouter une question de VRAI/FAUX
+          </button>
+          <button
+            nz-button
+            nzType="primary"
+            [disabled]="!selectedChapitre"
+            (click)="addChoixQuestion()"
+          >
+            Ajouter une question à CHOIX UNIQUE
+          </button>
+        </div>
+      </div>
+
+      <ng-container *ngFor="let question of questions">
+        <div *ngIf="question.type === 'vrai-faux'" class="quiz__vrai-faux">
+          <label class="question">
+            Vrai ou Faux
+            <textarea
+              nz-input
+              placeholder="Entrez la question"
+              [(ngModel)]="question.question"
+              nzAutosize
+            ></textarea>
+          </label>
+
+          <div class="quiz__response">
+            <p>Choisir la réponse</p>
+            <nz-radio-group [(ngModel)]="question.correctAnswer">
+              <label nz-radio nzValue="true">Vrai</label>
+              <label nz-radio nzValue="false">Faux</label>
+            </nz-radio-group>
+          </div>
+        </div>
+
+        <div *ngIf="question.type === 'choix'" class="quiz__choix">
+          <label class="question">
+            Choix unique
+            <textarea
+              nz-input
+              placeholder="Saisir la question à choix"
+              [(ngModel)]="question.question"
+              nzAutosize
+            ></textarea>
+          </label>
+
+          <div class="quiz__response">
+            <label>
+              Bonne réponse
+              <textarea
+                nz-input
+                placeholder="Saisir la bonne réponse"
+                [(ngModel)]="question.correctAnswer"
+                nzAutosize
+              ></textarea>
+            </label>
+            <label
+              *ngFor="
+                let incorrectAnswer of question.incorrectAnswers;
+                let i = index
+              "
+            >
+              Mauvaise réponse {{ i + 1 }}
+              <textarea
+                nz-input
+                placeholder="Saisir une mauvaise réponse"
+                [(ngModel)]="question.incorrectAnswers[i]"
+                nzAutosize
+              ></textarea>
+            </label>
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="quiz__button">
+        <button
+          nz-button
+          nzType="primary"
+          (click)="addQuiz()"
+          [nzLoading]="quizLoader"
+        >
+          Valider le quiz
+        </button>
+      </div>
+    </div>
+  </div>
+</body>

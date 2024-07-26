@@ -1,40 +1,294 @@
+<nz-layout class="body">
+  <nz-sider
+    [nzCollapsed]="isCollapsed"
+    nzCollapsible
+    nzWidth="250px"
+    nzTheme="light"
+    class="body-sidebar"
+  >
+    <div class="body-sidebar-logo" routerLink="/user_portail/home">
+      <img src="../../../assets/favicon-logo-cerfop.webp" alt="logo cerfop" />
+      <span nz-icon>monPortail</span>
+    </div>
 
-<nz-layout class="layout" >
-    <nz-sider nzTheme="light">
-      <div class="logo"> 
-        <div class="d-flex">
-          <img width="30" height="30" src="../../../assets/319931854_719109509697986_3899177884070259744_n.jpg" alt="">
-          <p>CERFOP</p>
+    <ul class="body-sidebar-content" nz-menu nzTheme="light" nzMode="inline">
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/user_portail/home">
+        <span nz-icon><i class="fa-solid fa-house"></i></span>
+        <span>Accueil</span>
+      </li>
+      <li
+        nz-menu-item
+        [nzMatchRouter]="true"
+        routerLink="/user_portail/formations"
+      >
+        <span nz-icon><i class="fa-solid fa-book-open-reader"></i></span>
+        <span>Mes formations</span>
+      </li>
+
+      <li
+        nz-menu-item
+        [nzMatchRouter]="true"
+        routerLink="/user_portail/cours_suivis"
+      >
+        <span nz-icon><i class="fa-solid fa-chalkboard-user"></i></span>
+        <span>En cours </span>
+      </li>
+      <li nz-menu-item [nzMatchRouter]="true" routerLink="/user_portail/events">
+        <span nz-icon><i class="fa-solid fa-calendar-days"></i></span>
+        <span>Événements</span>
+      </li>
+
+      <li
+        nz-menu-item
+        [nzMatchRouter]="true"
+        routerLink="/user_portail/certificat"
+      >
+        <span nz-icon><i class="fa-solid fa-award"></i></span>
+        <span>Mes certificats</span>
+      </li>
+      <li
+        nz-menu-item
+        [nzMatchRouter]="true"
+        routerLink="/user_portail/bibliotheque"
+      >
+        <span nz-icon><i class="fa-solid fa-book"></i></span>
+        <span>Bibliothèque</span>
+      </li>
+      <li
+        nz-menu-item
+        [nzMatchRouter]="true"
+        routerLink="/user_portail/mon_compte"
+      >
+        <span nz-icon><i class="fa-solid fa-gear"></i></span>
+        <span>Mon compte</span>
+      </li>
+
+      <li nz-menu-item routerLink="/" class="disconnect">
+        <span nz-icon><i class="fa-solid fa-right-from-bracket"></i></span>
+        <span>Se deconnecter</span>
+      </li>
+    </ul>
+  </nz-sider>
+  <nz-layout class="body-content">
+    <nz-header id="stickyHeader" class="body-content-header sticky-header">
+      <div class="button-menu-and-name">
+        <span class="menu-button" (click)="toggleCollapse()">
+          <span *ngIf="isCollapsed" class="menu-button-reduced"
+            ><i class="fa-solid fa-bars"></i
+          ></span>
+          <span *ngIf="!isCollapsed" class="menu-button-opened"
+            ><i class="fa-solid fa-bars"></i
+          ></span>
+        </span>
+
+        <div class="name">
+          <h2>
+            Bonjour
+            <span class="last-name">KOUROUMA</span>
+          </h2>
+          <!-- <p>Vous avez terminé 3 formations et 4 cours et ...</p> -->
         </div>
       </div>
-      <ul nz-menu nzTheme="light" nzMode="inline">
-        <li nz-menu-item [nzMatchRouter]="true" routerLink="/user_portail/formations">
-          <span nz-icon nzType="file"></span>
-          <span>Les Formations</span>
-        </li>
-        <li nz-menu-item [nzMatchRouter]="true" routerLink="/user_portail/cours_suivis">
-          <span nz-icon nzType="video-camera"></span>
-          <span>Les cours suivis</span>
-        </li>
-        <li nz-menu-item [nzMatchRouter]="true"  routerLink="/user_portail/certificat">
-          <span nz-icon nzType="upload"></span>
-          <span>Certificats</span>
-        </li> 
-        <!-- <li nz-menu-item [nzMatchRouter]="true" routerLink="/user_portail/mon_compte">
-          <span nz-icon nzType="upload"></span>
-          <span>Mon compte</span>
-        </li>  -->
-      </ul>
-    </nz-sider>
-    <nz-layout class="right-layout">
-      <nz-header>
-        <p style="text-align: center;">PLATEFORME DES COURS DE RENFORCEMENT DE NIVEAU CERFOP </p>
-      </nz-header>
-      <nz-content>
-        <div class="inner-content">
-          <router-outlet /> 
-        </div>
-      </nz-content>
-      <nz-footer>Ant Design ©2020 Implement By Angular</nz-footer> 
-    </nz-layout>
+
+      <div class="icon">
+        <span class="icon-award" routerLink="/user_portail/certificat">
+          <i class="fa-solid fa-award"></i>
+        </span>
+
+        <span class="icon-setting" routerLink="/user_portail/formations">
+          <i class="fa-solid fa-book-open-reader"></i>
+        </span>
+
+        <span class="icon-bell" (click)="openTemplate()">
+          <i class="fa-regular fa-bell"></i>
+          <span class="icon-bell-count">03</span>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <router-outlet />
+    </nz-content>
+    <nz-footer>&#64; 2024 CERFOP | CNT - République de Guinée</nz-footer>
   </nz-layout>
+
+  <ng-template #drawerTemplate let-drawerRef="drawerRef">
+    <div>
+      <!-- notifiaction non lue-->
+
+      <!-- attestation -->
+      <div
+        class="notification-card active"
+        routerLink="/user_portail/certificat"
+        (click)="drawerRef.close()"
+      >
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <div class="notification-card-content">
+          <p>Rediger un projet de developpement disponible nationale</p>
+          <span class="notification-card-content-date">08 / 12 / 2024</span>
+        </div>
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+      </div>
+      <!-- formation -->
+      <div
+        class="notification-card active"
+        routerLink="/user_portail/formations"
+        (click)="drawerRef.close()"
+      >
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-book-open-reader"></i>
+        </div>
+        <div class="notification-card-content">
+          <p>
+            <span>Comprendre le fonction d'une économie</span>
+            <span class="disponible"> est disponible !</span>
+          </p>
+          <span class="notification-card-content-date">08 / 12 / 2024</span>
+        </div>
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+      </div>
+
+      <!-- events -->
+      <div
+        class="notification-card active"
+        routerLink="/user_portail/events"
+        (click)="drawerRef.close()"
+      >
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <div class="notification-card-content">
+          <p>Seminaire à l'hôtel Noom sur la formation parlementaire</p>
+          <span class="notification-card-content-date">08 / 12 / 2024</span>
+        </div>
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+      </div>
+
+      <!-- notification lue -->
+
+      <!-- attestation -->
+      <div
+        class="notification-card"
+        routerLink="/user_portail/certificat"
+        (click)="drawerRef.close()"
+      >
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <div class="notification-card-content">
+          <p>Rediger un projet de developpement disponible nationale</p>
+          <span class="notification-card-content-date">08 / 12 / 2024</span>
+        </div>
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+      </div>
+
+      <!-- formation -->
+      <div
+        class="notification-card"
+        routerLink="/user_portail/formations"
+        (click)="drawerRef.close()"
+      >
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-book-open-reader"></i>
+        </div>
+        <div class="notification-card-content">
+          <p>
+            <span>Comprendre le fonction d'une économie</span>
+            <span class="disponible"> est disponible !</span>
+          </p>
+          <span class="notification-card-content-date">08 / 12 / 2024</span>
+        </div>
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+      </div>
+
+      <!-- events -->
+      <div
+        class="notification-card"
+        routerLink="/user_portail/events"
+        (click)="drawerRef.close()"
+      >
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <div class="notification-card-content">
+          <p>Seminaire à l'hôtel Noom sur la formation parlementaire</p>
+          <span class="notification-card-content-date">08 / 12 / 2024</span>
+        </div>
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+      </div>
+      <!-- attestation -->
+      <div
+        class="notification-card"
+        routerLink="/user_portail/certificat"
+        (click)="drawerRef.close()"
+      >
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <div class="notification-card-content">
+          <p>Rediger un projet de developpement disponible nationale</p>
+          <span class="notification-card-content-date">08 / 12 / 2024</span>
+        </div>
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+      </div>
+
+      <!-- formation -->
+      <div
+        class="notification-card"
+        routerLink="/user_portail/formations"
+        (click)="drawerRef.close()"
+      >
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-book-open-reader"></i>
+        </div>
+        <div class="notification-card-content">
+          <p>
+            <span>Comprendre le fonction d'une économie</span>
+            <span class="disponible"> est disponible !</span>
+          </p>
+          <span class="notification-card-content-date">08 / 12 / 2024</span>
+        </div>
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+      </div>
+
+      <!-- events -->
+      <div
+        class="notification-card"
+        routerLink="/user_portail/events"
+        (click)="drawerRef.close()"
+      >
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-calendar-days"></i>
+        </div>
+        <div class="notification-card-content">
+          <p>Seminaire à l'hôtel Noom sur la formation parlementaire</p>
+          <span class="notification-card-content-date">08 / 12 / 2024</span>
+        </div>
+        <div class="notification-card-icon">
+          <i class="fa-solid fa-eye"></i>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <!-- <ng-template #drawerFooterTemplate let-drawerRef="drawerRef">
+    <p>Date d'aujourd'hui</p>
+  </ng-template> -->
+</nz-layout>

@@ -1,0 +1,84 @@
+@import "../../../assets/mixins.scss";
+
+.body {
+  &-content {
+    &-tab {
+      @include grid-list(30rem);
+
+      &-card {
+        background-color: white;
+        border-radius: 0.5rem;
+        padding: 1rem;
+        line-height: 1.5rem;
+
+        @include column-between;
+
+        &:hover {
+          transform: scale(1.02);
+          transition: all 0.3s ease;
+        }
+
+        &-head {
+          display: flex;
+          gap: 0.5rem;
+
+          h5 {
+            line-height: 2rem;
+
+            //@include couper-la-phrase;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          img {
+            width: 4rem;
+          }
+        }
+
+        &-content {
+          margin: 1rem 0;
+
+          display: flex;
+          gap: 1rem;
+
+          span {
+            font-weight: bold;
+          }
+
+          p:first-child {
+            border-right: 1px solid var(--primary);
+            padding-right: 0.8rem;
+          }
+        }
+
+        &-footer {
+          button {
+            border: none;
+            outline: none;
+            padding: 0.5rem 2rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 0.5rem;
+
+            i {
+              margin-left: 0.5rem;
+            }
+
+            &:hover {
+              background-color: var(--secondary);
+
+              @include tada;
+
+              i {
+                animation-iteration-count: infinite;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

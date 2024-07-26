@@ -1,46 +1,40 @@
+@import "../../../assets/mixins.scss";
 
-img {
-    width: 100%;
-    height: 8rem;
-    object-fit: cover;
+.body {
+  &-content {
+    .empty {
+      color: var(--primary);
+    }
 
-}
+    .custom-search-container {
+      .ant-input-affix-wrapper {
+        width: 20rem;
+      }
 
-.card-cours {
-display: flex;
-flex-flow: row wrap;
-text-align: left;
+      i {
+        font-size: 1.2rem;
+      }
+    }
 
-.cours {
-    margin: 1rem;
-}
-}
+    &-tabs {
+      &-formations {
+        &-content {
+          padding-top: 1rem;
+          padding-bottom: 2rem;
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+          grid-auto-flow: auto;
+          padding-right: 2rem;
 
-button {
-    margin-top: 1.5rem;
-    
-}
+          gap: 3rem;
 
-.timing {
-    background: #eee;
-    border-radius: 0.2rem;
-    width: auto;
-    padding: 0.1rem 0.4rem;
-    margin: 0.3rem;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
+          @include formation-card-terminee;
 
-.image {
-    width: fit-content;
-}
-
-.ant-card-meta-detail {
-    padding: 24px;
-
-}
-
-.ant-card-body {
-    padding: 0px;
+          &-card {
+            @include formation-card;
+          }
+        }
+      }
+    }
+  }
 }

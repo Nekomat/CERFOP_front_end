@@ -1,0 +1,505 @@
+<body class="home">
+  <div class="home__statistique">
+    <div class="home__card">
+      <span>Utilisateur(s) ajouté(s)</span>
+      <span> 15 </span>
+    </div>
+    <div class="home__card">
+      <span>Groupe(s) ajouté(s) </span>
+      <span> 1 </span>
+    </div>
+    <div class="home__card">
+      <span>Formation(s) ajoutée(s)</span>
+      <span> 20 </span>
+    </div>
+    <div class="home__card">
+      <span>Formation(s) suivie(s)</span>
+      <span> 5 </span>
+    </div>
+    <div class="home__card">
+      <span>Certificat(s) obtenu(s)</span>
+      <span> 5 </span>
+    </div>
+
+    <div class="home__card">
+      <span>Documents / Livres </span>
+      <span> 5 </span>
+    </div>
+  </div>
+
+  <!-- events -->
+  <div class="home__events">
+    <div class="title">
+      <h3>Derniers évènements ajoutés</h3>
+      <div>
+        <div class="icon-scroll">
+          <span
+            ><i class="fa-solid fa-arrow-left" (click)="scrollLeft()"></i
+          ></span>
+          <span
+            ><i class="fa-solid fa-arrow-right" (click)="scrollRight()"></i
+          ></span>
+        </div>
+        <a class="voir-plus" routerLink="/admin_portail/events"
+          >Voir plus
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="events scroll-content" #events>
+      <!-- card -->
+      <div class="events__card" routerLink="/admin_portail/events">
+        <div class="events__head">
+          <div class="events__categorie">
+            <i class="fa-solid fa-calendar-days"></i>
+            <p>Atelier</p>
+          </div>
+        </div>
+        <div class="events__body">
+          <h5>Législation et les politiques publiques</h5>
+          <p>Date : 15 / 07 / 2024</p>
+          <p>Durée : 2 jours</p>
+          <p>Lieu : Palais du congrès, Conakry</p>
+        </div>
+      </div>
+
+      <!-- card -->
+      <div class="events__card" routerLink="/admin_portail/events">
+        <div class="events__head">
+          <div class="events__categorie">
+            <i class="fa-solid fa-calendar-days"></i>
+            <p>Atelier</p>
+          </div>
+        </div>
+        <div class="events__body">
+          <h5>Législation et les politiques publiques</h5>
+          <p>Date : 15 / 07 / 2024</p>
+          <p>Durée : 2 jours</p>
+          <p>Lieu : Palais du congrès, Conakry</p>
+        </div>
+      </div>
+
+      <!-- card -->
+      <div class="events__card" routerLink="/admin_portail/events">
+        <div class="events__head">
+          <div class="events__categorie">
+            <i class="fa-solid fa-calendar-days"></i>
+            <p>Atelier</p>
+          </div>
+        </div>
+        <div class="events__body">
+          <h5>Législation et les politiques publiques</h5>
+          <p>Date : 15 / 07 / 2024</p>
+          <p>Durée : 2 jours</p>
+          <p>Lieu : Palais du congrès, Conakry</p>
+        </div>
+      </div>
+
+      <!-- card -->
+      <div class="events__card" routerLink="/admin_portail/events">
+        <div class="events__head">
+          <div class="events__categorie">
+            <i class="fa-solid fa-calendar-days"></i>
+            <p>Atelier</p>
+          </div>
+        </div>
+        <div class="events__body">
+          <h5>Législation et les politiques publiques</h5>
+          <p>Date : 15 / 07 / 2024</p>
+          <p>Durée : 2 jours</p>
+          <p>Lieu : Palais du congrès, Conakry</p>
+        </div>
+      </div>
+
+      <!-- card -->
+      <div class="events__card" routerLink="/admin_portail/events">
+        <div class="events__head">
+          <div class="events__categorie">
+            <i class="fa-solid fa-calendar-days"></i>
+            <p>Atelier</p>
+          </div>
+        </div>
+        <div class="events__body">
+          <h5>Législation et les politiques publiques</h5>
+          <p>Date : 15 / 07 / 2024</p>
+          <p>Durée : 2 jours</p>
+          <p>Lieu : Palais du congrès, Conakry</p>
+        </div>
+      </div>
+
+      <!-- card -->
+      <div class="events__card" routerLink="/admin_portail/events">
+        <div class="events__head">
+          <div class="events__categorie">
+            <i class="fa-solid fa-calendar-days"></i>
+            <p>Atelier</p>
+          </div>
+        </div>
+        <div class="events__body">
+          <h5>Législation et les politiques publiques</h5>
+          <p>Date : 15 / 07 / 2024</p>
+          <p>Durée : 2 jours</p>
+          <p>Lieu : Palais du congrès, Conakry</p>
+        </div>
+      </div>
+
+      <!-- card -->
+      <div class="events__card" routerLink="/admin_portail/events">
+        <div class="events__head">
+          <div class="events__categorie">
+            <i class="fa-solid fa-calendar-days"></i>
+            <p>Atelier</p>
+          </div>
+        </div>
+        <div class="events__body">
+          <h5>Législation et les politiques publiques</h5>
+          <p>Date : 15 / 07 / 2024</p>
+          <p>Durée : 2 jours</p>
+          <p>Lieu : Palais du congrès, Conakry</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dernière formations ajoutées  -->
+  <div class="home__formations">
+    <div class="title">
+      <h3>Dernières formations ajoutées</h3>
+      <div>
+        <div class="icon-scroll">
+          <span
+            ><i class="fa-solid fa-arrow-left" (click)="scrollLeft3()"></i
+          ></span>
+          <span
+            ><i class="fa-solid fa-arrow-right" (click)="scrollRight3()"></i
+          ></span>
+        </div>
+        <a class="voir-plus" routerLink="/admin_portail/events"
+          >Voir plus
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="formations scroll-content" #dernieresFormations>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+      <!-- card -->
+
+      <div class="formations-card">
+        <div class="formations-card__image-and-time">
+          <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+          <span>
+            <i class="fa-regular fa-clock"></i>
+
+            6 heures 25 mins
+          </span>
+        </div>
+
+        <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+        <div class="formations-card__title-and-description">
+          <h4 class="formations-card__title">
+            Comprendre le processus législatif
+          </h4>
+          <p class="formations-card__description">
+            Découvrez les étapes clés du processus législatif, de la proposition
+            de loi à son adoption, pour améliorer votre efficacité en tant que
+            parlementaire. Découvrez les étapes clés du processus législatif, de
+            la proposition de loi à son adoption, pour améliorer votre
+            efficacité en tant que parlementaire.
+          </p>
+        </div>
+
+        <button routlink="">Modifier</button>
+      </div>
+    </div>
+  </div>
+</body>

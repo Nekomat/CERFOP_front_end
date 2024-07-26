@@ -1,27 +1,57 @@
-  <nz-skeleton [nzActive]="sekeleton" *ngIf="sekeleton"></nz-skeleton> 
- 
- <div *ngIf="!sekeleton">
-    <nz-table #basicTable [nzData]="dataSet">
+<body>
+  <div class="header">
+    <div class="retourner">
+      <a (click)="goBack()">
+        <i class="fa-solid fa-arrow-left"></i>
+        Voir les groupes</a
+      >
+    </div>
+
+    <div class="header__button">
+      <button routerLink="/admin_portail/utilisateurs">
+        Ajouter un utilisateur
+      </button>
+    </div>
+
+    <div class="header__search">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input type="text" nz-input placeholder="Rechercher un utilisateur" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="content">
+    <nz-skeleton [nzActive]="sekeleton" *ngIf="sekeleton"></nz-skeleton>
+
+    <div *ngIf="!sekeleton">
+      <nz-table #basicTable [nzData]="dataSet">
         <thead>
           <tr>
-            <th>Prenom</th>
-            <th>Nom</th>
-            <th> Email </th>
-            <th>Numero de telephone</th>
-            <th>Action</th>
+            <th>Prenom(s)</th>
+            <th>Nom de famille</th>
+            <th>E-mail</th>
+            <th>Téléphone</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let data of basicTable.data">
-            <td>{{data.first_name}}</td>
-            <td>{{data.last_name}}</td>
-            <td>{{data.email}}</td>
-            <td> {{data.phone_number}} </td>
+            <td>{{ data.first_name }}</td>
+            <td>{{ data.last_name }}</td>
+            <td>{{ data.email }}</td>
+            <td>{{ data.phone_number }}</td>
             <td>
-              <button nz-button nzType="primary"> Detail</button>
+              <div class="content__button">
+                <button nz-button>Modifier</button>
+                <button nz-button>Supprimer</button>
+              </div>
             </td>
           </tr>
         </tbody>
       </nz-table>
- </div>
-
+    </div>
+  </div>
+</body>

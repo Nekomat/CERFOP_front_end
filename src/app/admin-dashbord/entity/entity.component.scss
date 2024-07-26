@@ -1,0 +1,45 @@
+@use "../../../assets/partial_mixins/flex-mixin" as *;
+@use "../../../assets/partial_mixins/button-mixin" as *;
+
+body {
+  background-color: transparent;
+}
+
+.header {
+  @include row-between;
+
+  &__button {
+    display: flex;
+    gap: 1rem;
+    button {
+      @include nz-button;
+      @include primary-button;
+    }
+  }
+
+  &__search {
+    .ant-input-affix-wrapper {
+      width: 20vw;
+    }
+  }
+}
+
+.content {
+  margin-top: 1rem;
+
+  ::ng-deep .ant-table-thead > tr > th {
+    background-color: rgb(#1d8c56, 0.2);
+    font-size: 1rem;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  &__button {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}

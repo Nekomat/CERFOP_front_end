@@ -1,49 +1,235 @@
-
-<div class="tous-module" *ngIf="skeleton==false">
-    <!-- <h4 style="justify-self: left;">Formations <span style="color: #1D8C56; font-weight: bold;">  Terminées(3)</span></h4> -->
-  
-
-
-<div class="card-term">
-    <nz-card *ngFor="let i of [1,2,3,4]" nzHoverable class="cours" style=" flex-direction: row; background: #1D8C56; width:20rem; border-radius: 0.5rem;" [nzCover]="coverTemplate">
-
+<!-- <div class="tous-module" *ngIf="skeleton == false"> -->
+<!-- <h4 style="justify-self: left;">Formations <span style="color: #1D8C56; font-weight: bold;">  Terminées(3)</span></h4> -->
+<!-- 
+  <div class="card-term">
+    <nz-card
+      *ngFor="let i of [1, 2, 3, 4]"
+      nzHoverable
+      class="cours"
+      style="
+        flex-direction: row;
+        background: #1d8c56;
+        width: 20rem;
+        border-radius: 0.5rem;
+      "
+      [nzCover]="coverTemplate"
+    >
       <div class="mon-content">
+        <nz-card-meta
+          class="c-term"
+          style="height: 6.5rem; max-height: 100%; color: white !important"
+          [nzTitle]="titleTemplate"
+          nzDescription="Apprenez a devenir le leader dont votre equipe a besoin pour diriger "
+        ></nz-card-meta>
 
-    
-        <nz-card-meta style="height: 6.5rem; max-height: 100%;" nzTitle="Devenir un Leader dans votre milieu de travail" nzDescription="Apprenez a devenir le leader dont votre equipe a besoin pour diriger "></nz-card-meta>
-  
-        <button style="background-color: #fff; color: #1D8C56; display: flex; width: fit-content; align-items: center;"  nz-button nzType="primary">
+        <ng-template #titleTemplate>
+          <span style="color: white"
+            >Devenir un Leader dans votre milieu de travail</span
+          >
+        </ng-template>
+
+        <button
+          style="
+            background-color: #fff;
+            color: #1d8c56;
+            display: flex;
+            width: fit-content;
+            align-items: center;
+          "
+          nz-button
+          nzType="primary"
+        >
           Terminé
         </button>
-    </div>
-      </nz-card>
-      <ng-template #coverTemplate>
-        
-      </ng-template>
-    
-    </div>
+      </div>
+    </nz-card>
+    <ng-template #coverTemplate> </ng-template>
+  </div>
 
-    <h4 style="justify-self: left;">Formations <span style="color: #1D8C56; font-weight: bold;">  en Cours({{userHisCourse.length}})</span></h4>
+  <h4 style="justify-self: left">
+    Formations
+    <span style="color: #1d8c56; font-weight: bold">
+      en Cours({{ userHisCourse.length }})</span
+    >
+  </h4>
 
-<div class="card-cours">
-    <nz-card routerLink="/user_portail/cours_detail/{{i.id}}" *ngFor="let i of userHisCourse" nzHoverable class="cours" style="width:30%; min-width: 16rem; border-radius: 0.5rem;" [nzCover]="coverTemplate">
+  <div class="card-cours">
+    <nz-card
+      routerLink="/user_portail/cours_detail/{{ i.id }}"
+      *ngFor="let i of userHisCourse"
+      nzHoverable
+      class="cours"
+      style="width: 30%; min-width: 16rem; border-radius: 0.5rem"
+      [nzCover]="coverTemplate"
+    >
+      <div class="mon-content">
+        <nz-card-meta
+          style="height: 6.5rem; max-height: 100%"
+          nzTitle="{{ i.name }}"
+          nzDescription="{{ i.description }}"
+        ></nz-card-meta>
 
-      <div class="mon-content"> 
-
-    
-        <nz-card-meta style="height: 6.5rem; max-height: 100%;" nzTitle="{{i.name}}" nzDescription="{{i.description}}"></nz-card-meta>
-  
-        <button style="display: flex; width: fit-content; align-items: center;"  nz-button nzType="primary">
-          <span nz-icon nzType="right" nzTheme="outline" ></span>
+        <button
+          style="display: flex; width: fit-content; align-items: center"
+          nz-button
+          nzType="primary"
+        >
+          <span nz-icon nzType="right" nzTheme="outline"></span>
           Continuer
         </button>
-    </div>
-      </nz-card>
-      <ng-template #coverTemplate>
-        
-      </ng-template>
-    
-    </div>
-</div>  
+      </div>
+    </nz-card>
+    <ng-template #coverTemplate> </ng-template>
+  </div>
+</div>
 
-<nz-skeleton *ngIf="skeleton" [nzActive]="true" ></nz-skeleton> 
+<nz-skeleton *ngIf="skeleton" [nzActive]="true"></nz-skeleton>
+ -->
+
+<div class="body">
+  <div *ngif="false" class="empty">
+    <p>Vous n'avez aucune formation en cours</p>
+  </div>
+  <div class="body-content">
+    <div class="body-content-formations">
+      <div class="body-content-formations-content">
+        <!-- En cours -->
+        <div class="body-content-formations-content-card">
+          <div class="body-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+          <div
+            class="body-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">Comprendre le processus législatif</h4>
+            <p class="formation-description">
+              Découvrez les étapes clés du processus législatif, de la
+              proposition de loi à son adoption, pour améliorer votre efficacité
+              en tant que parlementaire. Découvrez les étapes clés du processus
+              législatif, de la proposition de loi à son adoption, pour
+              améliorer votre efficacité en tant que parlementaire.
+            </p>
+          </div>
+          <nz-progress [nzPercent]="80"></nz-progress>
+
+          <button
+            class="bg-secondary"
+            routerLink="/user_portail/cours_detail/:2"
+          >
+            Continuer
+          </button>
+        </div>
+        <!-- En cours -->
+        <div class="body-content-formations-content-card">
+          <div class="body-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+          <div
+            class="body-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">Comprendre le processus législatif</h4>
+            <p class="formation-description">
+              Découvrez les étapes clés du processus législatif, de la
+              proposition de loi à son adoption, pour améliorer votre efficacité
+              en tant que parlementaire. Découvrez les étapes clés du processus
+              législatif, de la proposition de loi à son adoption, pour
+              améliorer votre efficacité en tant que parlementaire.
+            </p>
+          </div>
+          <nz-progress [nzPercent]="56"></nz-progress>
+
+          <button
+            class="bg-secondary"
+            routerLink="/user_portail/cours_detail/1"
+          >
+            Continuer
+          </button>
+        </div>
+        <!-- En cours -->
+        <div class="body-content-formations-content-card">
+          <div class="body-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+          <div
+            class="body-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">Comprendre le processus législatif</h4>
+            <p class="formation-description">
+              Découvrez les étapes clés du processus législatif, de la
+              proposition de loi à son adoption, pour améliorer votre efficacité
+              en tant que parlementaire. Découvrez les étapes clés du processus
+              législatif, de la proposition de loi à son adoption, pour
+              améliorer votre efficacité en tant que parlementaire.
+            </p>
+          </div>
+          <nz-progress [nzPercent]="20"></nz-progress>
+
+          <button
+            class="bg-secondary"
+            routerLink="/user_portail/cours_detail/1"
+          >
+            Continuer
+          </button>
+        </div>
+        <!-- En cours -->
+        <div class="body-content-formations-content-card">
+          <div class="body-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+          <div
+            class="body-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">Comprendre le processus législatif</h4>
+            <p class="formation-description">
+              Découvrez les étapes clés du processus législatif, de la
+              proposition de loi à son adoption, pour améliorer votre efficacité
+              en tant que parlementaire. Découvrez les étapes clés du processus
+              législatif, de la proposition de loi à son adoption, pour
+              améliorer votre efficacité en tant que parlementaire.
+            </p>
+          </div>
+          <nz-progress [nzPercent]="07"></nz-progress>
+
+          <button
+            class="bg-secondary"
+            routerLink="/user_portail/cours_detail/:1"
+          >
+            Continuer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

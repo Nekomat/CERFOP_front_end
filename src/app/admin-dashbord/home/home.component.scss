@@ -1,0 +1,167 @@
+@import "../../../assets/mixins.scss";
+
+body {
+  background-color: transparent;
+}
+
+.home {
+  &__statistique {
+    @include row-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  &__card {
+    background-color: rgb(#1d8c56, 15%);
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+
+    @include column-between;
+    width: 20rem;
+
+    span:last-child {
+      font-size: 3rem;
+      color: var(--primary);
+      font-weight: 700;
+      text-align: end;
+    }
+
+    &:hover {
+      transform: scale(1.04);
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  /* évenements à venir */
+  &__events {
+    margin-bottom: 2rem;
+
+    .events {
+      padding: 1rem 0;
+
+      @include scroll;
+
+      @include grid-list-home(10rem);
+
+      &__card {
+        @include event-card;
+      }
+
+      &__head {
+        @include row-between;
+        align-items: center;
+      }
+
+      &__categorie {
+        display: flex;
+        color: var(--primary);
+        gap: 0.5rem;
+        align-items: center;
+        font-size: 1.2rem;
+      }
+
+      &__body {
+        @include column-between;
+        gap: 0.5rem;
+      }
+    }
+  }
+
+  /* formations en cours */
+
+  .formations {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+
+    @include scroll;
+
+    &-card {
+      background-color: white;
+      width: 22rem;
+      padding: 1rem;
+      border-radius: 0.5rem;
+
+      &:hover {
+        transform: scale(1.02);
+        transition: all 0.3s ease-in-out;
+      }
+
+      p.color-primary {
+        @include couper-la-phrase;
+      }
+
+      &__image-and-time {
+        position: relative;
+        img {
+          width: 20rem;
+          height: 15rem;
+          border-radius: 0.2rem;
+        }
+
+        span {
+          position: absolute;
+          top: 0;
+          right: 0;
+          font-weight: 600;
+          padding: 0.3rem;
+
+          background-color: white;
+          margin-top: 0.5rem;
+          margin-right: 0.5rem;
+        }
+
+        margin-bottom: 2rem;
+      }
+
+      &__title-and-description {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+
+        h4 {
+          margin-bottom: 0.5rem;
+
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 2;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        p {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          -webkit-line-clamp: 4;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      ::ng-deep .ant-progress-bg {
+        background-color: var(--secondary) !important;
+      }
+
+      /* ::ng-deep .ant-progress-status-success .ant-progress-text {
+              color: rgb(#1d8c56, 0.7);
+            } */
+
+      button {
+        border: none;
+        margin-top: 1rem;
+        background-color: var(--primary);
+        color: white;
+        padding: 0.3rem 2rem;
+        border-radius: 0.3rem;
+        font-size: 1.1rem;
+
+        &:hover {
+          transform: scale(1.05);
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
+  }
+}

@@ -1,16 +1,89 @@
+@use "../../../assets/partial_mixins/flex-mixin" as *;
+@use "../../../assets/partial_mixins/button-mixin" as *;
 
-    img {
-        width: 100%;
-        height: 8rem;
-        object-fit: cover;
+img {
+  width: 100%;
+  height: 8rem;
+  object-fit: cover;
+}
 
-    }
+.card-cours {
+  display: flex;
+  flex-flow: row wrap;
 
- .card-cours {
+  .cours {
+    margin: 1rem;
+  }
+}
+
+body {
+  background-color: transparent;
+}
+
+.header {
+  @include row-between;
+  margin: 1rem 0 2rem 0;
+
+  &__button {
     display: flex;
-    flex-flow: row wrap;
-    
-    .cours {
-        margin: 1rem;
+    gap: 1rem;
+    button {
+      @include nz-button;
+      @include primary-button;
     }
- }
+  }
+
+  &__search {
+    .ant-input-affix-wrapper {
+      width: 20vw;
+    }
+  }
+}
+
+.content {
+  margin-top: 1rem;
+
+  ::ng-deep .ant-table-thead > tr > th {
+    background-color: rgb(#1d8c56, 0.2);
+    font-size: 1rem;
+  }
+
+  &__name {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  &__button {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+}
+
+/* modal add user */
+.form {
+  $self: &;
+  &__content {
+    @include column-between;
+    gap: 1rem;
+
+    #{$self}__elem {
+      p {
+        margin-bottom: 0.5rem;
+      }
+
+      &:has(input:focus) {
+        p {
+          color: var(--primary);
+          font-weight: 500;
+        }
+      }
+
+      &--select {
+        ::ng-deep .ant-select {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

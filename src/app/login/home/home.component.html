@@ -1,42 +1,97 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <div class="container">
-       
-
-    <header>
-         <!-- <div class="logo-container">
-            <img src="" alt="">
-            <img src="" alt="">
-        </div>  -->
-
-    </header>
-    <div class="content">
-        <div class="text-container">
-            <p class="titre">Plateforme
-                de renforcement de Capacité</p>
-
-            <button style="cursor: pointer;" routerLink="/signin">
-                <h5  class="color-primary">Accéder à mon portail</h5>
-            </button>
-
-            <p class="sous-titre">Accéder à votre portail pour suivre des formation ...</p>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="body-content">
+      <header>
+        <div class="content-logo animate__animated animate__slideInDown">
+          <a href="#"><img src="../../../assets/logocerfop.webp" alt="" /></a>
         </div>
-        <div class="animation-container">
-            
-            <div class="cercle-1">
-                <div class="cercle-2"></div>
-            </div>
-            
+
+        <div class="links animate__animated animate__slideInDown">
+          <a
+            href="https://cnt.gov.gn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >CNT
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+          <p>/</p>
+          <a
+            href="https://cnt.gov.gn/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >CERFOP
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
         </div>
+      </header>
+      <main>
+        <h1>
+          Bienvenue sur la <span class="particular-secondary">plateforme</span>
+          <br />
+          de formation parlementaire
+        </h1>
+
+        <div class="div-button animate__animated animate__fadeInDown">
+          <button routerLink="/signin" class="blobby-button">
+            Accéder à mon portail
+            <i class="fa-solid fa-arrow-right"></i>
+            <span class="inner">
+              <span class="blobs">
+                <span class="blob"></span>
+                <span class="blob"></span>
+                <span class="blob"></span>
+
+                <span class="blob"></span>
+              </span>
+            </span>
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+              <defs>
+                <filter id="goo">
+                  <feGaussianBlur
+                    in="SourceGraphic"
+                    result="blur"
+                    stdDeviation="10"
+                  ></feGaussianBlur>
+                  <feColorMatrix
+                    in="blur"
+                    mode="matrix"
+                    values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
+                    result="goo"
+                  ></feColorMatrix>
+                  <feBlend in2="goo" in="SourceGraphic" result="mix"></feBlend>
+                </filter>
+              </defs>
+            </svg>
+          </button>
+        </div>
+
+        <div class="animer-background">
+          <div class="circle circle1"></div>
+          <div class="circle circle2"></div>
+          <div class="circle circle3"></div>
+          <div class="square square1"></div>
+          <div class="square square2"></div>
+          <div class="square square3"></div>
+          <div class="dot dot1"></div>
+          <div class="dot dot2"></div>
+          <div class="dot dot3"></div>
+        </div>
+      </main>
+      <footer class="animate__animated animate__slideInUp">
+        <p><span>&#xa9; </span> 2024 CERFOP | CNT - République de Guinée</p>
+        <p class="love">
+          Conçu et developpé avec &#9829; par
+          <a href="#"
+            >Nekomat
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </p>
+      </footer>
     </div>
-    <footer>
-        © 2024 Plateforme de formation - CNT | République de Guinée 
-    </footer>
-</div>
-</body>
+  </body>
 </html>

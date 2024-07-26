@@ -1,70 +1,590 @@
-
-<div class="content" *ngIf="skeleton==false">
-
-
-<div class="v-content">
-
-
+<!-- <div class="content"> -->
+<!-- *ngIf="skeleton == true" -->
+<!-- <div class="v-content"> -->
 <!-- Video -->
-<div class="v-video">
-<video #videoPlayer  controls  src="{{videoLink}}" (ended)="videoEnded()"></video>
-</div>
-
-
-
+<!--  <div class="v-video">
+      <video
+        #videoPlayer
+        controls
+        src="{{ videoLink }}"
+        (ended)="videoEnded()"
+      ></video>
+    </div> -->
 
 <!-- Tab -->
-<nz-tabset style="text-align: left;" >
-    <nz-tab nzTitle="Description"> {{oneCourse.description}} </nz-tab>
-    <nz-tab nzTitle="Passer à l'évaluation"> 
+<!-- <nz-tabset style="text-align: left">
+      <nz-tab nzTitle="Description"> {{ oneCourse.description }} </nz-tab>
+      <nz-tab nzTitle="Passer à l'évaluation">
+        <div [align]="'center'" *ngIf="oneCourse.userCourse.courseCompleted">
+          <button nz-button nzType="primary" (click)="openQuizModal()">
+            ouvrir l'évaluation
+          </button>
+        </div>
 
-    <div [align]="'center'" *ngIf="oneCourse.userCourse.courseCompleted">
-       <button nz-button nzType="primary" (click)="openQuizModal()"> ouvrir l'évaluation </button>
-    </div>
+        <div
+          [align]="'center'"
+          *ngIf="oneCourse.userCourse.courseCompleted == false"
+        >
+          <p>Vous n'avez pas encore fini le cours</p>
+        </div>
+      </nz-tab>
+    </nz-tabset>
+  </div> -->
 
-    <div [align]="'center'" *ngIf="oneCourse.userCourse.courseCompleted == false">
-        <p> Vous n'avez pas encore fini le cours </p> 
-    </div>
+<!-- Sidebar -->
 
-    </nz-tab>
-  </nz-tabset>
-</div>
+<!-- <div class="sidebar">
+    <nz-collapse style="overflow-y: auto" nzAccordion>
+      @for (chapiter of oneCourse.userCourse.chapiter; track chapiter ;let i =
+      $index) {
+      <nz-collapse-panel
+        style="text-align: left; font-weight: bold"
+        nzHeader="Chapitre {{ i }} - {{ chapiter.name }}"
+        [nzActive]="true"
+      >
+        <ul style="font-weight: normal">
+          <li
+            (click)="clickOneCourse(data)"
+            [ngClass]="{ active: data.active }"
+            *ngFor="let data of chapiter.videos"
+          >
+            <span
+              style="font-size: 20px"
+              nz-icon
+              nzType="play-circle"
+              nzTheme="outline"
+            ></span>
+            <button [disabled]="data.disable" nz-button nzType="link">
+              {{ data.name }} : {{ data.duration }} minutes
+            </button>
+          </li>
+        </ul>
+      </nz-collapse-panel>
+      }
+    </nz-collapse>
+  </div>
+</div> -->
 
-
-  <!-- Sidebar -->
-  
- <div class="sidebar"> 
-    <nz-collapse style="overflow-y: auto;" nzAccordion> 
-        @for (chapiter of oneCourse.userCourse.chapiter; track chapiter ;let i = $index) {
-          <nz-collapse-panel style="text-align: left; font-weight: bold;" nzHeader="Chapitre {{i}} - {{chapiter.name}}" [nzActive]="true">
-            <ul style="font-weight: normal;"> 
-                <li (click)="clickOneCourse(data)"  [ngClass]="{'active':data.active}"  *ngFor="let data of chapiter.videos"> <span style="font-size: 20px;" nz-icon nzType="play-circle" nzTheme="outline"></span> <button [disabled]="data.disable" nz-button nzType="link" > {{data.name}} : {{data.duration}} minutes </button></li>
-            </ul> 
-          </nz-collapse-panel> 
-        }
-      </nz-collapse>  
- </div>
-</div>
-
-<nz-skeleton *ngIf="skeleton"></nz-skeleton> 
+<!-- <nz-skeleton *ngIf="skeleton"></nz-skeleton> -->
 
 <!-- control de de quiz  -->
 
-<nz-modal [(nzVisible)]="isVisible" nzTitle="The first Modal" nzCancelText="fermé" nzOkText="Suivant" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()" [nzOkDisabled]="!allQuiz[0]">
-    <ng-container *nzModalContent> 
-        @if (allQuiz[0]) {
-            @for (item of allQuiz; track $index) {
-                @if (item.active) {
-                    <h6> {{item.question}} ?</h6>
-                <p>Chosir la reponse</p> 
-               <nz-radio-group  nzName="radiogroup" [(ngModel)]="chosedResponse">
-                   <label *ngFor="let response of item.quiz_choix" nz-radio nzValue="{{response.isCorrect}}"> {{response.text}} </label> 
-                 </nz-radio-group>
-                }
-            }
-        } @else {
-            <p>Votre resultat est de  {{compteTrueResponse}} </p>
-        }
+<body>
+  <div class="retourner">
+    <a (click)="goBack()">
+      <i class="fa-solid fa-arrow-left"></i>
+      Mes cours</a
+    >
+  </div>
+  <div class="course">
+    <!-- Course title -->
+    <div class="head">
+      <h1 class="head__title">Comprendre le processus législatif</h1>
+      <div class="head__footer">
+        <p class="head__category">Processus Législatif et Gouvernance</p>
+        <div class="dot"></div>
+        <p>Durée : 6h 25 min</p>
+        <div class="dot"></div>
+        <p>Formateur : Cabinet Karamo Conseil</p>
+      </div>
+
+      <div class="head__progress">
+        <nz-progress [nzPercent]="20"></nz-progress>
+      </div>
+    </div>
+
+    <div class="content">
+      <!-- Video and now chapter -->
+      <div class="content__video">
+        <video controls src="../../../assets/video.mp4"></video>
+      </div>
+
+      <!-- sidebar -->
+      <div class="content__sidebar">
+        <!-- now chapter -->
+        <div class="chapter">
+          <h4 class="chapter__title">
+            Chapitre 2 : Les Acteurs du Processus Législatif
+          </h4>
+          <div class="chapter__description">
+            <p>6 lecture(s)</p>
+            <div class="dot"></div>
+            <p>12% Complété(s)</p>
+          </div>
+          <div class="chapter__steps">
+            <nz-steps [nzCurrent]="1" nzDirection="vertical">
+              <nz-step
+                nzTitle="Introduction au Processus Législatif"
+                nzDescription="10 min"
+              ></nz-step>
+              <nz-step
+                nzTitle="Initiation d'un Projet de Loi"
+                nzDescription="10 min"
+              ></nz-step>
+              <nz-step
+                nzTitle="Débats et Discussions Parlementaires"
+                nzDescription="5 min"
+              ></nz-step>
+              <nz-step
+                nzTitle="Votes et Approbations"
+                nzDescription="8 min"
+              ></nz-step>
+              <nz-step
+                nzTitle="Rôle des Commissions Parlementaires
     
-    </ng-container>
-  </nz-modal>
+                  "
+                nzDescription="20 min"
+              ></nz-step>
+              <nz-step
+                nzTitle="Promulgation et Application des Lois"
+                nzDescription="30 min"
+              ></nz-step>
+            </nz-steps>
+          </div>
+        </div>
+      </div>
+
+      <!-- tabset -->
+      <nz-tabset class="tabset">
+        <nz-tab
+          class="tabset__elem tabset__elem--description"
+          nzTitle="Description"
+        >
+          <!-- <div [innerHTML]="oneCourse.description"></div> -->
+          <p class="tabset__description-text">
+            Ce module de formation "Comprendre le processus législatif" est
+            conçu pour offrir une compréhension approfondie des mécanismes par
+            lesquels les lois sont élaborées, débattues, adoptées et mises en
+            œuvre.
+            <br />
+            À travers une série de chapitres bien structurés, les apprenants
+            seront guidés à travers chaque étape clé du processus législatif,
+            des premiers stades de la proposition de loi jusqu'à son application
+            finale. Les participants exploreront le rôle et les responsabilités
+            des principaux acteurs, notamment les
+            <br />
+            parlementaires, le gouvernement, les commissions parlementaires, et
+            les citoyens. Ils découvriront également les différents types de
+            lois, les procédures législatives en détail, et les mécanismes de
+            contrôle de la constitutionnalité. Enfin, ce module abordera la mise
+            en œuvre des lois, incluant les règlements d'application, le
+            contrôle de l'exécution, et l'évaluation des lois en vigueur. Grâce
+            à cette formation, les participants acquerront les compétences et
+            les connaissances nécessaires pour naviguer efficacement dans le
+            paysage législatif, et comprendre l'impact des lois sur la société.
+          </p>
+        </nz-tab>
+        <nz-tab class="tabset__elem tabset__elem--chapters" nzTitle="Contenu">
+          <nz-collapse [nzBordered]="false">
+            <nz-collapse-panel
+              nzHeader="Chapitre 1 : Introduction au Processus Législatif"
+              [nzActive]="false"
+              [nzExtra]="extraTpl"
+            >
+              <div class="chapter">
+                <div class="chapter__steps">
+                  <nz-steps [nzCurrent]="6" nzDirection="vertical">
+                    <nz-step
+                      nzTitle="Introduction au Processus Législatif"
+                      nzDescription="10 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Initiation d'un Projet de Loi"
+                      nzDescription="10 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Débats et Discussions Parlementaires"
+                      nzDescription="5 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Votes et Approbations"
+                      nzDescription="8 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Rôle des Commissions Parlementaires
+        
+                      "
+                      nzDescription="20 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Promulgation et Application des Lois"
+                      nzDescription="30 min"
+                    ></nz-step>
+                  </nz-steps>
+                </div>
+              </div>
+              <ng-template #extraTpl>
+                <span class="color-primary" (click)="$event.stopPropagation()"
+                  >Complété</span
+                >
+              </ng-template>
+            </nz-collapse-panel>
+          </nz-collapse>
+          <nz-collapse [nzBordered]="false">
+            <nz-collapse-panel
+              nzHeader="Chapitre 2 : Les Acteurs du Processus Législatif"
+              [nzActive]="true"
+              [nzExtra]="extraTpl2"
+            >
+              <div class="chapter">
+                <div class="chapter__steps">
+                  <nz-steps [nzCurrent]="1" nzDirection="vertical">
+                    <nz-step
+                      nzTitle="Introduction au Processus Législatif"
+                      nzDescription="10 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Initiation d'un Projet de Loi"
+                      nzDescription="10 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Débats et Discussions Parlementaires"
+                      nzDescription="5 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Votes et Approbations"
+                      nzDescription="8 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Rôle des Commissions Parlementaires
+        
+                      "
+                      nzDescription="20 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Promulgation et Application des Lois"
+                      nzDescription="30 min"
+                    ></nz-step>
+                  </nz-steps>
+                </div>
+              </div>
+              <ng-template #extraTpl2>
+                <span class="color-primary" (click)="$event.stopPropagation()"
+                  >En cours</span
+                >
+              </ng-template>
+            </nz-collapse-panel>
+          </nz-collapse>
+          <nz-collapse [nzBordered]="false">
+            <nz-collapse-panel
+              nzHeader="Chapitre 3 : Les Différents Types de Lois"
+              [nzActive]="false"
+              [nzExtra]="extraTpl3"
+            >
+              <div class="chapter">
+                <div class="chapter__steps">
+                  <nz-steps [nzCurrent]="-1" nzDirection="vertical">
+                    <nz-step
+                      nzTitle="Introduction au Processus Législatif"
+                      nzDescription="10 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Initiation d'un Projet de Loi"
+                      nzDescription="10 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Débats et Discussions Parlementaires"
+                      nzDescription="5 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Votes et Approbations"
+                      nzDescription="8 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Rôle des Commissions Parlementaires
+        
+                      "
+                      nzDescription="20 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Promulgation et Application des Lois"
+                      nzDescription="30 min"
+                    ></nz-step>
+                  </nz-steps>
+                </div>
+              </div>
+              <ng-template #extraTpl3>
+                <span class="color-primary" (click)="$event.stopPropagation()"
+                  >Non complété</span
+                >
+              </ng-template>
+            </nz-collapse-panel>
+          </nz-collapse>
+          <nz-collapse [nzBordered]="false">
+            <nz-collapse-panel
+              nzHeader="Chapitre 4 : La Procédure Législative en Détail"
+              [nzActive]="false"
+              [nzExtra]="extraTpl4"
+            >
+              <div class="chapter">
+                <div class="chapter__steps">
+                  <nz-steps [nzCurrent]="-1" nzDirection="vertical">
+                    <nz-step
+                      nzTitle="Introduction au Processus Législatif"
+                      nzDescription="10 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Initiation d'un Projet de Loi"
+                      nzDescription="10 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Débats et Discussions Parlementaires"
+                      nzDescription="5 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Votes et Approbations"
+                      nzDescription="8 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Rôle des Commissions Parlementaires
+        
+                      "
+                      nzDescription="20 min"
+                    ></nz-step>
+                    <nz-step
+                      nzTitle="Promulgation et Application des Lois"
+                      nzDescription="30 min"
+                    ></nz-step>
+                  </nz-steps>
+                </div>
+              </div>
+              <ng-template #extraTpl4>
+                <span class="color-primary" (click)="$event.stopPropagation()"
+                  >Non complété</span
+                >
+              </ng-template>
+            </nz-collapse-panel>
+          </nz-collapse>
+        </nz-tab>
+        <nz-tab
+          class="tabset__elem tabset__elem--ressources"
+          nzTitle="Ressources (3)"
+        >
+          <div class="tabset__ressource">
+            <div class="">
+              <img src="../../../assets/pdf-image.webp" alt="" />
+              <p>Description générale et objectifs pédagogiques</p>
+            </div>
+            <a href="#">Télécharger </a>
+          </div>
+          <div class="tabset__ressource">
+            <div class="">
+              <img src="../../../assets/pdf-image.webp" alt="" />
+              <p>Contenu du cours</p>
+            </div>
+            <a href="#">Télécharger </a>
+          </div>
+          <div class="tabset__ressource">
+            <div class="">
+              <img src="../../../assets/pdf-image.webp" alt="" />
+              <p>Informations pratiques</p>
+            </div>
+            <a href="#">Télécharger </a>
+          </div>
+        </nz-tab>
+        <nz-tab class="tabset__elem" nzTitle="Quiz">
+          <div class="quiz-container">
+            <!-- Chapitre 1 -->
+            <h5>Chapitre 1 : Introduction au Processus Législatif</h5>
+            <h6>Questions à Choix Multiples</h6>
+            <div class="question" *ngFor="let question of chapitre1.mcq">
+              <p>{{ question.text }}</p>
+              <label *ngFor="let option of question.options">
+                <input
+                  type="radio"
+                  [name]="question.id"
+                  [value]="option.value"
+                  [(ngModel)]="question.userAnswer"
+                />{{ option.text }}
+              </label>
+              <p
+                *ngIf="question.feedback"
+                [ngClass]="{
+                  correct: question.feedback === 'correct',
+                  incorrect: question.feedback === 'incorrect'
+                }"
+              >
+                {{ question.feedbackMessage }}
+              </p>
+            </div>
+
+            <h6>Vrai/Faux</h6>
+            <div class="question" *ngFor="let question of chapitre1.trueFalse">
+              <p>{{ question.text }}</p>
+              <label>
+                <input
+                  type="radio"
+                  [name]="question.id"
+                  value="true"
+                  [(ngModel)]="question.userAnswer"
+                />
+                Vrai
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  [name]="question.id"
+                  value="false"
+                  [(ngModel)]="question.userAnswer"
+                />
+                Faux
+              </label>
+              <p
+                *ngIf="question.feedback"
+                [ngClass]="{
+                  correct: question.feedback === 'correct',
+                  incorrect: question.feedback === 'incorrect'
+                }"
+              >
+                {{ question.feedbackMessage }}
+              </p>
+            </div>
+
+            <!-- Chapitre 2 -->
+            <h5>Chapitre 2 : Les Acteurs du Processus Législatif</h5>
+            <h6>Questions à Choix Multiples</h6>
+            <div class="question" *ngFor="let question of chapitre2.mcq">
+              <p>{{ question.text }}</p>
+              <label *ngFor="let option of question.options">
+                <input
+                  type="radio"
+                  [name]="question.id"
+                  [value]="option.value"
+                  [(ngModel)]="question.userAnswer"
+                />{{ option.text }}
+              </label>
+              <p
+                *ngIf="question.feedback"
+                [ngClass]="{
+                  correct: question.feedback === 'correct',
+                  incorrect: question.feedback === 'incorrect'
+                }"
+              >
+                {{ question.feedbackMessage }}
+              </p>
+            </div>
+
+            <h6>Vrai/Faux</h6>
+            <div class="question" *ngFor="let question of chapitre2.trueFalse">
+              <p>{{ question.text }}</p>
+              <label>
+                <input
+                  type="radio"
+                  [name]="question.id"
+                  value="true"
+                  [(ngModel)]="question.userAnswer"
+                />
+                Vrai
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  [name]="question.id"
+                  value="false"
+                  [(ngModel)]="question.userAnswer"
+                />
+                Faux
+              </label>
+              <p
+                *ngIf="question.feedback"
+                [ngClass]="{
+                  correct: question.feedback === 'correct',
+                  incorrect: question.feedback === 'incorrect'
+                }"
+              >
+                {{ question.feedbackMessage }}
+              </p>
+            </div>
+
+            <!-- Chapitre 3 -->
+            <h5>Chapitre 3 : Les Différents Types de Lois</h5>
+            <h6>Questions à Choix Multiples</h6>
+            <div class="question" *ngFor="let question of chapitre3.mcq">
+              <p>{{ question.text }}</p>
+              <label *ngFor="let option of question.options">
+                <input
+                  type="radio"
+                  [name]="question.id"
+                  [value]="option.value"
+                  [(ngModel)]="question.userAnswer"
+                />{{ option.text }}
+              </label>
+              <p
+                *ngIf="question.feedback"
+                [ngClass]="{
+                  correct: question.feedback === 'correct',
+                  incorrect: question.feedback === 'incorrect'
+                }"
+              >
+                {{ question.feedbackMessage }}
+              </p>
+            </div>
+
+            <h6>Vrai/Faux</h6>
+            <div class="question" *ngFor="let question of chapitre3.trueFalse">
+              <p>{{ question.text }}</p>
+              <label>
+                <input
+                  type="radio"
+                  [name]="question.id"
+                  value="true"
+                  [(ngModel)]="question.userAnswer"
+                />
+                Vrai
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  [name]="question.id"
+                  value="false"
+                  [(ngModel)]="question.userAnswer"
+                />
+                Faux
+              </label>
+              <p
+                *ngIf="question.feedback"
+                [ngClass]="{
+                  correct: question.feedback === 'correct',
+                  incorrect: question.feedback === 'incorrect'
+                }"
+              >
+                {{ question.feedbackMessage }}
+              </p>
+            </div>
+
+            <button (click)="submitQuiz()">Soumettre</button>
+          </div>
+        </nz-tab>
+      </nz-tabset>
+    </div>
+  </div>
+</body>
+
+<!-- <nz-modal
+  [(nzVisible)]="isVisible"
+  nzTitle="The first Modal"
+  nzCancelText="fermé"
+  nzOkText="Suivant"
+  (nzOnCancel)="handleCancel()"
+  (nzOnOk)="handleOk()"
+  [nzOkDisabled]="!allQuiz[0]"
+>
+  <ng-container *nzModalContent>
+    @if (allQuiz[0]) { @for (item of allQuiz; track $index) { @if (item.active)
+    {
+    <h6>{{ item.question }} ?</h6>
+    <p>Chosir la reponse</p>
+    <nz-radio-group nzName="radiogroup" [(ngModel)]="chosedResponse">
+      <label
+        *ngFor="let response of item.quiz_choix"
+        nz-radio
+        nzValue="{{ response.isCorrect }}"
+      >
+        {{ response.text }}
+      </label>
+    </nz-radio-group>
+    } } } @else {
+    <p>Votre resultat est de {{ compteTrueResponse }}</p>
+    }
+  </ng-container>
+</nz-modal> -->

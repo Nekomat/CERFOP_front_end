@@ -1,0 +1,72 @@
+@import "../../../assets/mixins.scss";
+
+.home {
+  padding: 2rem;
+
+  &-content {
+    /* statistique */
+
+    &-statistique {
+      @include row-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 2rem;
+
+      &-card {
+        background-color: rgb(#1d8c56, 15%);
+        padding: 1rem 2rem;
+        border-radius: 0.5rem;
+
+        @include column-between;
+        width: 20rem;
+
+        span:last-child {
+          font-size: 3rem;
+          color: var(--primary);
+          font-weight: 700;
+          text-align: end;
+        }
+
+        &:hover {
+          transform: scale(1.04);
+          transition: all 0.2s ease-in-out;
+        }
+      }
+    }
+
+    /* évenements à venir */
+    &-events {
+      margin-bottom: 2rem;
+
+      &-content {
+        padding: 1rem 0;
+
+        @include scroll;
+
+        @include grid-list-home(10rem);
+
+        &-card {
+          @include event-card;
+        }
+      }
+    }
+
+    /* formations en cours */
+
+    &-formations {
+      margin-top: 2rem;
+      &-content {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        display: flex;
+        gap: 2rem;
+
+        @include scroll;
+
+        &-card {
+          @include formation-card;
+        }
+      }
+    }
+  }
+}

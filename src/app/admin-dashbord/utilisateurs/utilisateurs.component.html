@@ -1,89 +1,168 @@
+<body>
+  <div class="header">
+    <div class="header__button">
+      <button nz-button (click)="UaddModal = true">
+        Ajouter un nouvel utilisateur
+      </button>
+      <button nz-button nzType="primary" (click)="importModal = true">
+        Importer une liste d'utilisateurs via Excel
+      </button>
+    </div>
 
- 
- <nz-skeleton [nzActive]="skeleton" *ngIf="skeleton"></nz-skeleton>
- 
- <div *ngIf="!skeleton">
-    <div style="margin-bottom: 8px;">
-        <button style="margin-right: 10px;" nz-button nzType="primary" (click)="UaddModal=true" >Ajout unitaire</button> 
-        <button nz-button nzType="primary" (click)="importModal=true"> Importer un fichier excel </button>
-      </div>
-    <div>
+    <div class="header__search">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input type="text" nz-input placeholder="Rechercher un utilisateur" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="content">
+    <nz-skeleton [nzActive]="skeleton" *ngIf="skeleton"></nz-skeleton>
+
+    <div *ngIf="!skeleton">
+      <div>
         <nz-table #basicTable [nzData]="dataSet" [nzPageSize]="6">
-            <thead>
-              <tr>
-                <th>Prenom</th>
-                <th>Nom</th>
-                <th>Email</th>
-                <th>Téléphone</th>
-                <th>Organisation</th>
-                <th>Action</th> 
-              </tr>
-            </thead>
-            <tbody> 
-              <tr *ngFor="let data of basicTable.data">
-                <td>{{data.first_name}}</td>
-                <td>{{data.last_name}}</td>
-                  <td> {{data.email}} </td>
-                <td>{{data.phone_number}}</td>
-                 <td> {{data.entity.name}} </td> 
-                <td>
-                  <button nz-button nzType="primary">detail</button>
-                </td>
-              </tr>
-            </tbody>
-          </nz-table>
-    </div> 
- </div>
- 
+          <thead>
+            <tr>
+              <th>Prenom(s)</th>
+              <th>Nom de famille</th>
+              <th>E-mail</th>
+              <th>Téléphone</th>
+              <th>Groupe</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of basicTable.data">
+              <td>{{ data.first_name }}</td>
+              <td>{{ data.last_name }}</td>
+              <td>{{ data.email }}</td>
+              <td>{{ data.phone_number }}</td>
+              <td>
+                <!-- {{ data.entity.name }} -->
+                Nekomat
+              </td>
+              <td>
+                <div class="content__button">
+                  <button nz-button>Modifier</button>
+                  <button nz-button>Voir le groupe</button>
+                  <button nz-button>Supprimer</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+    </div>
+  </div>
 
-<nz-modal [(nzVisible)]="UaddModal" nzTitle="Ajout unitaire d'un utilisateur" (nzOnCancel)="UCancel()" (nzOnOk)="UOk()"
- nzOkText="Ajouter"
- nzCancelText="Fermé"
- [nzOkDisabled]="!addForm.valid"
- [nzOkLoading]="loader"
->
+  <nz-modal
+    [(nzVisible)]="UaddModal"
+    nzTitle="Ajouter un nouvel utilisateur"
+    (nzOnCancel)="UCancel()"
+    (nzOnOk)="UOk()"
+    nzOkText="Ajouter l'utilisateur"
+    nzCancelText="Annuler"
+    [nzOkDisabled]="!addForm.valid"
+    [nzOkLoading]="loader"
+  >
     <ng-container *nzModalContent>
-        <form [formGroup]="addForm">
-            <div class="row">
-                <div class="col-md-4">
-                   <input nz-input formControlName="first_name"  type="text" placeholder="Prénom" >
-                </div>
-                <div class="col-md-4">
-                   <input nz-input formControlName="last_name"  type="text" placeholder="Nom" >
-                </div>
-                <div class="col-md-4">
-                   <input nz-input formControlName="email"  type="text" placeholder="Email" >
-                </div>
-                <div class="col-md-4">
-                   <input nz-input formControlName="phone_number"  type="text" placeholder="Numero de téléphone" >
-             </div>
-             <div class="col-md-4">
-               <nz-select nzShowSearch nzAllowClear nzPlaceHolder="choisir l'organisation" formControlName="entityId" >
-                   <nz-option *ngFor="let data of allEntity" nzLabel="{{data.name}}" nzValue="{{data.id}}"></nz-option>
-                 </nz-select>
-             </div>
-             </div>
-        </form>
-      
-      
+      <form class="form" [formGroup]="addForm">
+        <div class="form__content">
+          <div class="form__elem">
+            <p>Prénom(s)</p>
+            <input
+              nz-input
+              formControlName="first_name"
+              type="text"
+              placeholder="Entrer le prénom de l'utilisateur"
+            />
+          </div>
+          <div class="form__elem">
+            <p>Nom de famille</p>
+            <input
+              nz-input
+              formControlName="last_name"
+              type="text"
+              placeholder="Entrer le nom de famille de l'utilisateur"
+            />
+          </div>
+          <div class="form__elem">
+            <p>Adresse E-mail</p>
+            <input
+              nz-input
+              formControlName="email"
+              type="text"
+              placeholder="Entrer l'adresse E-mail"
+            />
+          </div>
+          <div class="form__elem">
+            <p>Numéro de téléphone</p>
+            <input
+              nz-input
+              formControlName="phone_number"
+              type="text"
+              placeholder="Entrer le numéro de téléphone"
+            />
+          </div>
+          <div class="form__elem form__elem--select">
+            <p>Groupe</p>
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              nzPlaceHolder="choisir un groupe"
+              formControlName="entityId"
+            >
+              <nz-option
+                *ngFor="let data of allEntity"
+                nzLabel="{{ data.name }}"
+                nzValue="{{ data.id }}"
+              ></nz-option>
+            </nz-select>
+          </div>
+        </div>
+      </form>
     </ng-container>
   </nz-modal>
 
-  <nz-modal [(nzVisible)]="importModal" nzTitle="Import d'utilisateur en groupe" (nzOnCancel)="handleCancelImport()" (nzOnOk)="handleOkImport()"
-    nzOkText="Enregistrer"
-    nzCancelText="Fermé" 
+  <nz-modal
+    [(nzVisible)]="importModal"
+    nzTitle="Import d'utilisateur en groupe"
+    (nzOnCancel)="handleCancelImport()"
+    (nzOnOk)="handleOkImport()"
+    nzOkText="Importer"
+    nzCancelText="Annuler"
     [nzOkLoading]="loader2"
   >
     <ng-container *nzModalContent>
-       <div class="row"> 
-         <div class="col-md-6">
-            <nz-select nzShowSearch nzAllowClear nzPlaceHolder="choisir l'organisation" [(ngModel)]="entityId" >
-                <nz-option *ngFor="let data of allEntity" nzLabel="{{data.name}}" nzValue="{{data.id}}"></nz-option>
-              </nz-select>
-         </div>
-         <div class="col-md-6">
-        <input type="file" (change)="handleChangeImport($event)" class="form-control">
-         </div>
-       </div>
+      <div class="form__content">
+        <div class="form__elem form__elem--select">
+          <p>Groupe</p>
+          <nz-select
+            nzShowSearch
+            nzAllowClear
+            nzPlaceHolder="choisir le groupe"
+            [(ngModel)]="entityId"
+          >
+            <nz-option
+              *ngFor="let data of allEntity"
+              nzLabel="{{ data.name }}"
+              nzValue="{{ data.id }}"
+            ></nz-option>
+          </nz-select>
+        </div>
+        <div class="form__elem">
+          <p>Charger le fichier excel</p>
+          <input
+            type="file"
+            (change)="handleChangeImport($event)"
+            class="form-control"
+          />
+        </div>
+      </div>
     </ng-container>
-  </nz-modal> 
+  </nz-modal>
+</body>

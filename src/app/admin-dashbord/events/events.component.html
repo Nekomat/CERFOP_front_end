@@ -1,0 +1,136 @@
+<body>
+  <div class="header">
+    <div class="header__button">
+      <button nz-button (click)="openModal()">
+        Ajouter un nouvel évènement
+      </button>
+    </div>
+
+    <div class="header__search">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input
+          type="text"
+          nz-input
+          placeholder="Rechercher un évènement"
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="filterEvents()"
+        />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+    </div>
+  </div>
+
+  <nz-table [nzData]="events" [nzBordered]="false">
+    <thead>
+      <tr>
+        <th>Titre</th>
+        <th>Catégorie</th>
+        <th>Date</th>
+        <th>Durée</th>
+        <th>Lieu</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{ event.title }}</td>
+        <td>{{ event.category }}</td>
+        <td>{{ event.date }}</td>
+        <td>{{ event.duration }}</td>
+        <td>{{ event.location }}</td>
+        <td>
+          <button nz-button nzType="link" (click)="openModal(event)">
+            Modifier
+          </button>
+          <button nz-button nzType="link" (click)="deleteEvent(event.id)">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <nz-modal
+    [(nzVisible)]="isVisible"
+    nzTitle="Ajouter/Modifier un événement"
+    (nzOnCancel)="closeModal()"
+    (nzOnOk)="submitForm()"
+    nzCancelText="Annuler"
+    nzOkText="Enregistrer"
+    [nzOkLoading]="loader"
+  >
+    <ng-container *nzModalContent>
+      <form [formGroup]="validateForm" nz-form nzLayout="vertical">
+        <nz-form-item>
+          <nz-form-label nzFor="category" nzRequired>Catégorie</nz-form-label>
+          <nz-form-control>
+            <nz-select
+              nzShowSearch
+              nzAllowClear
+              formControlName="category"
+              [nzDropdownRender]="renderTemplate"
+              nzPlaceHolder="Choisir une catégorie"
+            >
+              <nz-option
+                *ngFor="let item of listOfItem"
+                [nzLabel]="item"
+                [nzValue]="item"
+              ></nz-option>
+            </nz-select>
+            <ng-template #renderTemplate>
+              <nz-divider></nz-divider>
+              <div class="select__elem">
+                <input
+                  class="select__input"
+                  type="text"
+                  placeholder="Entrer le nom de la nouvelle catégorie"
+                  nz-input
+                  #inputElement
+                />
+
+                <button (click)="addItem(inputElement)">
+                  Ajouter une nouvelle
+                </button>
+              </div>
+            </ng-template>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="title" nzRequired>Titre</nz-form-label>
+          <nz-form-control>
+            <textarea
+              nz-input
+              nzAutosize
+              formControlName="title"
+              id="title"
+            ></textarea>
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="date" nzRequired>Date</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="date" id="date" type="date" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="duration" nzRequired>Durée</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="duration" id="duration" />
+          </nz-form-control>
+        </nz-form-item>
+
+        <nz-form-item>
+          <nz-form-label nzFor="location" nzRequired>Lieu</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="location" id="location" />
+          </nz-form-control>
+        </nz-form-item>
+      </form>
+    </ng-container>
+  </nz-modal>
+</body>

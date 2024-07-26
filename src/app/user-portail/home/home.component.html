@@ -1,1 +1,645 @@
-<p>home works!</p>
+<div class="home">
+  <div class="home-content">
+    <div class="home-content-statistique">
+      <div class="home-content-statistique-card">
+        <span>Formation(s) disponible(s)</span>
+        <span>
+          {{ formationsDisponibles }}
+        </span>
+      </div>
+
+      <div class="home-content-statistique-card">
+        <span>Formation(s) terminée(s)</span>
+        <span> {{ formationsTerminees }} </span>
+      </div>
+      <div class="home-content-statistique-card">
+        <span>Formation(s) en cours</span>
+        <span> {{ formationsEncours }} </span>
+      </div>
+      <div class="home-content-statistique-card">
+        <span>Inscription aux formations</span>
+        <span> {{ inscription }} </span>
+      </div>
+      <div class="home-content-statistique-card">
+        <span>Certificat(s) obtenu(s)</span>
+        <span> {{ certificatsObtenus }} </span>
+      </div>
+
+      <div class="home-content-statistique-card">
+        <span>Evenement(s) disponible(s)</span>
+        <span> {{ evenementsDisponibles }} </span>
+      </div>
+    </div>
+
+    <!-- Événement à venir -->
+
+    <div class="home-content-events">
+      <div class="title">
+        <h3>Événement(s) à venir</h3>
+        <div>
+          <div class="icon-scroll">
+            <span
+              ><i class="fa-solid fa-arrow-left" (click)="scrollLeft()"></i
+            ></span>
+            <span
+              ><i class="fa-solid fa-arrow-right" (click)="scrollRight()"></i
+            ></span>
+          </div>
+          <a class="voir-plus" routerLink="/user_portail/events"
+            >Voir plus
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="home-content-events-content scroll-content" #events>
+        <!-- card -->
+        <div class="home-content-events-content-card">
+          <div class="home-content-events-content-card-head">
+            <div class="home-content-events-content-card-head-type">
+              <i class="fa-solid fa-calendar-days"></i>
+              <p>Atelier</p>
+            </div>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div
+            routerLink="/user_portail/events"
+            class="home-content-events-content-card-body"
+          >
+            <h5>Législation et les politiques publiques</h5>
+            <p>Date : 15 / 07 / 2024</p>
+            <p>Durée : 2 jours</p>
+            <p>Lieu : Palais du congrès, Conakry</p>
+          </div>
+        </div>
+        <div
+          class="home-content-events-content-card"
+          routerLink="/user_portail/events"
+        >
+          <div class="home-content-events-content-card-head">
+            <div class="home-content-events-content-card-head-type">
+              <i class="fa-solid fa-calendar-days"></i>
+              <p>Seminaire</p>
+            </div>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="home-content-events-content-card-body">
+            <h5>Gouvernance et la transparence</h5>
+            <p>Date : 15 / 07 / 2024</p>
+            <p>Durée : 2 jours</p>
+            <p>Lieu : Palais du congrès, Conakry</p>
+          </div>
+        </div>
+        <div
+          routerLink="/user_portail/events"
+          class="home-content-events-content-card"
+        >
+          <div class="home-content-events-content-card-head">
+            <div class="home-content-events-content-card-head-type">
+              <i class="fa-solid fa-calendar-days"></i>
+              <p>Conférence</p>
+            </div>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="home-content-events-content-card-body">
+            <h5>Sécurité et la défence</h5>
+            <p>Date : 15 / 07 / 2024</p>
+            <p>Durée : 2 jours</p>
+            <p>Lieu : Palais du congrès, Conakry</p>
+          </div>
+        </div>
+        <div
+          class="home-content-events-content-card"
+          routerLink="/user_portail/events"
+        >
+          <div class="home-content-events-content-card-head">
+            <div class="home-content-events-content-card-head-type">
+              <i class="fa-solid fa-calendar-days"></i>
+              <p>Forum</p>
+            </div>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="home-content-events-content-card-body">
+            <h5>Développement Durable et l'Environnement</h5>
+            <p>Date : 15 / 07 / 2024</p>
+            <p>Durée : 2 jours</p>
+            <p>Lieu : Palais du congrès, Conakry</p>
+          </div>
+        </div>
+        <div
+          class="home-content-events-content-card"
+          routerLink="/user_portail/events"
+        >
+          <div class="home-content-events-content-card-head">
+            <div class="home-content-events-content-card-head-type">
+              <i class="fa-solid fa-calendar-days"></i>
+              <p>Colloque</p>
+            </div>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="home-content-events-content-card-body">
+            <h5>Économie et les Finances Publiques</h5>
+            <p>Date : 15 / 07 / 2024</p>
+            <p>Durée : 2 jours</p>
+            <p>Lieu : Palais du congrès, Conakry</p>
+          </div>
+        </div>
+        <div
+          class="home-content-events-content-card"
+          routerLink="/user_portail/events"
+        >
+          <div class="home-content-events-content-card-head">
+            <div class="home-content-events-content-card-head-type">
+              <i class="fa-solid fa-calendar-days"></i>
+              <p>Atelier</p>
+            </div>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="home-content-events-content-card-body">
+            <h5>Santé Publique et le Bien-être</h5>
+            <p>Date : 15 / 07 / 2024</p>
+            <p>Durée : 2 jours</p>
+            <p>Lieu : Palais du congrès, Conakry</p>
+          </div>
+        </div>
+        <div
+          class="home-content-events-content-card"
+          routerLink="/user_portail/events"
+        >
+          <div class="home-content-events-content-card-head">
+            <div class="home-content-events-content-card-head-type">
+              <i class="fa-solid fa-calendar-days"></i>
+              <p>Atelier</p>
+            </div>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="home-content-events-content-card-body">
+            <h5>Santé Publique et le Bien-être</h5>
+            <p>Date : 15 / 07 / 2024</p>
+            <p>Durée : 2 jours</p>
+            <p>Lieu : Palais du congrès, Conakry</p>
+          </div>
+        </div>
+        <div
+          class="home-content-events-content-card"
+          routerLink="/user_portail/events"
+        >
+          <div class="home-content-events-content-card-head">
+            <div class="home-content-events-content-card-head-type">
+              <i class="fa-solid fa-calendar-days"></i>
+              <p>Atelier</p>
+            </div>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="home-content-events-content-card-body">
+            <h5>Santé Publique et le Bien-être</h5>
+            <p>Date : 15 / 07 / 2024</p>
+            <p>Durée : 2 jours</p>
+            <p>Lieu : Palais du congrès, Conakry</p>
+          </div>
+        </div>
+        <div
+          class="home-content-events-content-card"
+          routerLink="/user_portail/events"
+        >
+          <div class="home-content-events-content-card-head">
+            <div class="home-content-events-content-card-head-type">
+              <i class="fa-solid fa-calendar-days"></i>
+              <p>Atelier</p>
+            </div>
+            <i class="fa-solid fa-eye"></i>
+          </div>
+          <div class="home-content-events-content-card-body">
+            <h5>Santé Publique et le Bien-être</h5>
+            <p>Date : 15 / 07 / 2024</p>
+            <p>Durée : 2 jours</p>
+            <p>Lieu : Palais du congrès, Conakry</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dernière formations ajoutées  -->
+    <div class="home-content-formations">
+      <div class="title">
+        <h3>Dernières formations ajoutées</h3>
+        <div>
+          <div class="icon-scroll">
+            <span
+              ><i class="fa-solid fa-arrow-left" (click)="scrollLeft3()"></i
+            ></span>
+            <span
+              ><i class="fa-solid fa-arrow-right" (click)="scrollRight3()"></i
+            ></span>
+          </div>
+          <a class="voir-plus" routerLink="./user_portail/events"
+            >Voir plus
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div
+        class="home-content-formations-content scroll-content"
+        #dernieresFormations
+      >
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">Comprendre le processus législatif</h4>
+            <p class="formation-description">
+              Découvrez les étapes clés du processus législatif, de la
+              proposition de loi à son adoption, pour améliorer votre efficacité
+              en tant que parlementaire. Découvrez les étapes clés du processus
+              législatif, de la proposition de loi à son adoption, pour
+              améliorer votre efficacité en tant que parlementaire.
+            </p>
+          </div>
+
+          <button routlink="">S'inscrire</button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Éthique et Transparence dans le Service Public
+            </h4>
+            <p class="formation-description">
+              Apprenez à promouvoir l'éthique et la transparence dans votre
+              travail parlementaire pour renforcer la confiance publique.
+              Apprenez à promouvoir l'éthique et la transparence dans votre
+              travail parlementaire pour renforcer la confiance publique.
+              Apprenez à promouvoir l'éthique et la transparence dans votre
+              travail parlementaire pour renforcer la confiance publique.
+            </p>
+          </div>
+
+          <button>S'inscrire</button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Communication et Leadership</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Techniques Avancées de Communication
+            </h4>
+            <p class="formation-description">
+              Maîtrisez les compétences de communication essentielles pour
+              défendre vos idées et interagir efficacement avec les médias et le
+              public. Maîtrisez les compétences de communication essentielles
+              pour défendre vos idées et interagir efficacement avec les médias
+              et le public.
+            </p>
+          </div>
+
+          <button>S'inscrire</button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">Comprendre le Processus Législatif</h4>
+            <p class="formation-description">
+              Découvrez les étapes clés du processus législatif, de la
+              proposition de loi à son adoption, pour améliorer votre efficacité
+              en tant que parlementaire. Découvrez les étapes clés du processus
+              législatif, de la proposition de loi à son adoption, pour
+              améliorer votre efficacité en tant que parlementaire.
+            </p>
+          </div>
+
+          <button>S'inscrire</button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Processus Législatif et Gouvernance</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Éthique et Transparence dans le Service Public
+            </h4>
+            <p class="formation-description">
+              Apprenez à promouvoir l'éthique et la transparence dans votre
+              travail parlementaire pour renforcer la confiance publique.
+              Apprenez à promouvoir l'éthique et la transparence dans votre
+              travail parlementaire pour renforcer la confiance publique.
+              Apprenez à promouvoir l'éthique et la transparence dans votre
+              travail parlementaire pour renforcer la confiance publique.
+            </p>
+          </div>
+
+          <button>S'inscrire</button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Communication et Leadership</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Techniques Avancées de Communication
+            </h4>
+            <p class="formation-description">
+              Maîtrisez les compétences de communication essentielles pour
+              défendre vos idées et interagir efficacement avec les médias et le
+              public. Maîtrisez les compétences de communication essentielles
+              pour défendre vos idées et interagir efficacement avec les médias
+              et le public.
+            </p>
+          </div>
+
+          <button routerlink="/user_portail/cours_detail/:2">S'inscrire</button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Communication et Leadership</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Techniques Avancées de Communication
+            </h4>
+            <p class="formation-description">
+              Maîtrisez les compétences de communication essentielles pour
+              défendre vos idées et interagir efficacement avec les médias et le
+              public. Maîtrisez les compétences de communication essentielles
+              pour défendre vos idées et interagir efficacement avec les médias
+              et le public.
+            </p>
+          </div>
+
+          <button>S'inscrire</button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Communication et Leadership</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Techniques Avancées de Communication
+            </h4>
+            <p class="formation-description">
+              Maîtrisez les compétences de communication essentielles pour
+              défendre vos idées et interagir efficacement avec les médias et le
+              public. Maîtrisez les compétences de communication essentielles
+              pour défendre vos idées et interagir efficacement avec les médias
+              et le public.
+            </p>
+          </div>
+
+          <button>S'inscrire</button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Communication et Leadership</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Techniques Avancées de Communication
+            </h4>
+            <p class="formation-description">
+              Maîtrisez les compétences de communication essentielles pour
+              défendre vos idées et interagir efficacement avec les médias et le
+              public. Maîtrisez les compétences de communication essentielles
+              pour défendre vos idées et interagir efficacement avec les médias
+              et le public.
+            </p>
+          </div>
+
+          <button>S'inscrire</button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Communication et Leadership</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Techniques Avancées de Communication
+            </h4>
+            <p class="formation-description">
+              Maîtrisez les compétences de communication essentielles pour
+              défendre vos idées et interagir efficacement avec les médias et le
+              public. Maîtrisez les compétences de communication essentielles
+              pour défendre vos idées et interagir efficacement avec les médias
+              et le public.
+            </p>
+          </div>
+
+          <button>S'inscrire</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formations en cours -->
+    <div class="home-content-formations">
+      <div class="title">
+        <h3>Fomation(s) en cours</h3>
+        <div>
+          <div class="icon-scroll">
+            <span
+              ><i class="fa-solid fa-arrow-left" (click)="scrollLeft2()"></i
+            ></span>
+            <span
+              ><i class="fa-solid fa-arrow-right" (click)="scrollRight2()"></i
+            ></span>
+          </div>
+          <a class="voir-plus" routerLink="/events"
+            >Voir plus
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+      <div class="home-content-formations-content scroll-content" #formations>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Relations Internationales et Diplomatie</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Coopération et Développement International
+            </h4>
+            <p class="formation-description">
+              Renforcez vos compétences diplomatiques et apprenez à naviguer
+              dans le paysage complexe des relations internationales.
+            </p>
+          </div>
+          <nz-progress [nzPercent]="80"></nz-progress>
+
+          <button class="continuer" routerlink="/cours_detail/:2">
+            Continuer
+          </button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">Leadership</p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Commerce International et Politiques Économiques
+            </h4>
+            <p class="formation-description">
+              Comprenez les dynamiques du commerce international et leur impact
+              sur les politiques économiques nationales.
+            </p>
+          </div>
+          <nz-progress [nzPercent]="40"></nz-progress>
+
+          <button class="continuer">Continuer</button>
+        </div>
+        <div class="home-content-formations-content-card">
+          <div class="home-content-formations-content-card-image-and-time">
+            <img src="../../../assets/test-leader.jpeg" alt="image du cours" />
+            <span>
+              <i class="fa-regular fa-clock"></i>
+
+              6 heures 25 mins
+            </span>
+          </div>
+
+          <p class="color-primary">
+            Engagement Communautaire et Participation Citoyenne
+          </p>
+
+          <div
+            class="home-content-formations-content-card-title-and-description"
+          >
+            <h4 class="formation-title">
+              Engagement Communautaire et Participation Citoyenne
+            </h4>
+            <p class="formation-description">
+              Explorez les méthodes pour encourager la participation citoyenne
+              et engager efficacement avec votre communauté.
+            </p>
+          </div>
+          <nz-progress [nzPercent]="05"></nz-progress>
+
+          <button class="continuer" routerlink="/user_portail/cours_detail">
+            Continuer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

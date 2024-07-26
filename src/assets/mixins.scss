@@ -1,0 +1,490 @@
+//centrer totalement
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//en column
+
+@mixin column {
+  display: flex;
+  flex-direction: column;
+}
+
+//espacé en ligne
+@mixin row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+//espacé en column
+@mixin column-between {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+/* ul */
+
+@mixin none-style-ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Animation links */
+
+@mixin link-animated-underline($bg) {
+  a {
+    position: relative;
+    padding: 0.2rem 0;
+
+    //fade In
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 0.2rem;
+      background-color: $bg;
+      opacity: 1;
+      transform: scale(0);
+      transform-origin: center;
+      transition: opacity 500ms, transform 500ms;
+    }
+    //scale from center
+    &:hover::after,
+    &:focus::after {
+      transform: scale(1);
+    }
+  }
+}
+
+/* icon outside in link */
+
+@mixin icon-in-link($color) {
+  i {
+    font-size: 1rem;
+    width: 0;
+    opacity: 0;
+    color: $color;
+  }
+
+  &:hover {
+    i {
+      width: auto;
+      opacity: 1;
+      transition: all 0.8s ease-in-out;
+    }
+  }
+}
+
+/* icon animation tada */
+
+@mixin tada {
+  i {
+    animation-name: tada;
+    animation-duration: 1s;
+  }
+}
+
+/* scroll */
+
+@mixin scroll {
+  overflow: auto;
+  position: relative;
+
+  /* Cacher la barre de défilement */
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+  }
+
+  /* Pour Firefox */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* couper la phrase */
+
+@mixin couper-la-phrase {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Grid of list */
+
+@mixin grid-list-home($min) {
+  display: grid;
+  grid-template-columns: repeat(minmax($min, 1fr));
+  grid-auto-flow: column;
+  overflow: auto;
+  grid-gap: 2rem;
+}
+
+@mixin grid-list($min) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min, 1fr));
+  grid-gap: 2rem;
+}
+
+/* event card */
+
+@mixin event-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: white;
+  width: 28rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  justify-self: center;
+
+  &:hover {
+    transform: scale(1.02);
+
+    @include tada;
+
+    .fa-eye {
+      opacity: 1;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  &-head {
+    @include row-between;
+
+    &-type {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.3rem;
+      color: var(--primary);
+      p {
+        margin: 0;
+      }
+    }
+
+    .fa-eye {
+      color: var(--primary);
+      font-size: 1.3rem;
+      opacity: 0;
+    }
+  }
+
+  &-body {
+    @include column;
+
+    gap: 0.5rem;
+    h5,
+    p {
+      @include couper-la-phrase;
+    }
+  }
+}
+
+/* formation card */
+
+@mixin formation-card {
+  background-color: white;
+  width: 22rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  &:hover {
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
+  }
+
+  p.color-primary {
+    @include couper-la-phrase;
+  }
+
+  &-image-and-time {
+    position: relative;
+    img {
+      width: 20rem;
+      height: 15rem;
+      border-radius: 0.2rem;
+    }
+
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-weight: 600;
+      padding: 0.3rem;
+
+      background-color: white;
+      margin-top: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    margin-bottom: 2rem;
+  }
+
+  &-title-and-description {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    h4.formation-title {
+      margin-bottom: 0.5rem;
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    p.formation-description {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  ::ng-deep .ant-progress-bg {
+    background-color: var(--secondary) !important;
+  }
+
+  /* ::ng-deep .ant-progress-status-success .ant-progress-text {
+    color: rgb(#1d8c56, 0.7);
+  } */
+
+  button {
+    border: none;
+    margin-top: 1rem;
+    background-color: var(--primary);
+    color: white;
+    padding: 0.3rem 2rem;
+    border-radius: 0.3rem;
+    font-size: 1.1rem;
+
+    &:hover {
+      transform: scale(1.05);
+      transition: all 0.2s ease-in-out;
+
+      /* background-color: var(--secondary);
+      color: black; */
+    }
+  }
+
+  .continuer {
+    background-color: var(--secondary);
+  }
+
+  .voir {
+    background-color: white;
+    color: black;
+  }
+}
+
+@mixin formation-card-terminee {
+  .terminee {
+    background-color: rgb(#1d8c56, 0.1);
+  }
+}
+
+/* certificat */
+
+@mixin certificat {
+  width: 1125px;
+  height: 795px;
+  position: relative;
+
+  background-color: white;
+  padding: 2rem;
+  &-content {
+    padding: 2rem;
+    border: 0.5rem solid var(--secondary);
+    @include column-between;
+    align-items: center;
+
+    height: 100%;
+    &-head {
+      width: 100%;
+      @include row-between;
+      align-items: center;
+      text-align: center;
+
+      img {
+        width: 4.5rem;
+      }
+
+      h1 {
+        font-size: 3.2rem;
+        font-weight: 700;
+      }
+    }
+
+    &-body {
+      text-align: center;
+      width: 100%;
+
+      p:first-child {
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 1.2rem;
+      }
+
+      h2 {
+        font-family: "Parisienne", cursive;
+        font-weight: 550;
+        font-size: 4rem;
+        margin: 2.5rem 0;
+        text-transform: capitalize;
+      }
+
+      p.info {
+        font-size: 1.2rem;
+        font-weight: 500;
+
+        span.course {
+          font-weight: 600;
+          font-size: 1.2em;
+          color: var(--primary);
+        }
+
+        span.strong {
+          font-weight: 700;
+        }
+      }
+
+      p.foi {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-top: 1rem;
+      }
+    }
+
+    &-footer {
+      @include row-between;
+      align-items: center;
+      width: 98%;
+
+      .signature {
+        text-align: center;
+        margin-bottom: 0.4rem;
+
+        img {
+          width: 4rem;
+        }
+      }
+
+      .success {
+        img {
+          width: 9rem;
+        }
+      }
+
+      .responsable {
+        max-width: 40%;
+        .underline {
+          background-color: black;
+          height: 0.2rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .name {
+          font-weight: 500;
+          font-size: 1.2rem;
+          text-align: center;
+        }
+
+        .function {
+          font-weight: 400;
+          font-size: 1rem;
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .corner-bar {
+    position: absolute;
+
+    width: 2rem;
+    height: 45%;
+    background-color: var(--primary);
+
+    &.top-left {
+      top: 0;
+      left: 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1.982rem;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 2rem 2rem;
+        border-color: transparent transparent var(--primary) transparent;
+        transform: rotate(270deg);
+      }
+    }
+
+    &.top-top {
+      top: -10.15rem;
+      left: 11rem;
+      transform: rotate(-90deg);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1.982rem;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 2rem 2rem;
+        border-color: transparent transparent transparent var(--primary);
+      }
+    }
+
+    &.bottom-right {
+      bottom: 0;
+      right: 0;
+      transform: rotate(180deg);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1.982rem;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 2rem 0 0 2rem;
+        border-color: var(--primary) red transparent transparent;
+      }
+    }
+
+    &.bottom-bottom {
+      bottom: -10.2rem;
+      right: 12rem;
+      transform: rotate(90deg);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -1.982rem;
+        left: 0;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 0 2rem 2rem;
+        border-color: transparent transparent transparent var(--primary);
+      }
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<body>
+  <div class="header">
+    <div class="header__search">
+      <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input type="text" nz-input placeholder="Rechercher un certificat" />
+      </nz-input-group>
+      <ng-template #suffixIconSearch>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+    </div>
+  </div>
+
+  <nz-table>
+    <thead>
+      <tr>
+        <th>Nom complet</th>
+        <th>Certificat</th>
+        <th>Date</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bangaly Kourouma</td>
+        <td>Comprendre le processus législatif</td>
+        <td>21/07/2024</td>
+        <td>
+          <div class="certificat__button">
+            <button nz-button>Voir</button>
+            <button nz-button>Télécharger</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+</body>

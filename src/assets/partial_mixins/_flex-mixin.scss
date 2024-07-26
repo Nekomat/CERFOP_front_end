@@ -1,0 +1,27 @@
+//centrer totalement
+@mixin center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+//en column
+
+@mixin column {
+  display: flex;
+  flex-direction: column;
+}
+
+//espacé en ligne
+@mixin row-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+//espacé en column
+@mixin column-between {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}

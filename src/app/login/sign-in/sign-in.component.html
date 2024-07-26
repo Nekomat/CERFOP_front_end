@@ -1,59 +1,158 @@
-<div class="n-container">
-  <div class="calc-vert">
-
-    <div class="all-content">
-
- 
-   <div class="content">
-      
-      
-       <div class="text-container">
-          <div class="text-entete">
-            <h1 class="titre" style="color: #fff; max-width: 100%;">Connectez-vous !</h1>
-          </div>
-          
-          
-          <div [align]="'center'" style="width: 18rem; max-width: 100%; margin-top: 3rem;" >
-              <form  [formGroup]="loginForm">
-                  <input style="background: transparent; color: #fff; border: none; border-bottom: 1px solid #fff;" nz-input  type="text" formControlName="email" placeholder="Email"> 
-                  <nz-input-group class="n-input" [nzSuffix]="suffixTemplate">
-                      <input 
-                      class="all-input"
-                        [type]="passwordVisible ? 'text' : 'password'"
-                        nz-input
-                        placeholder="Mot de passe"
-                         formControlName="password"
-                      />
-          
-                    </nz-input-group>
-                    <ng-template #suffixTemplate>
-                      <span 
-                      style="cursor: pointer; color: #fff;"
-                        nz-icon
-                        [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
-                        (click)="passwordVisible = !passwordVisible"
-                      ></span>
-                    </ng-template>
-              </form>
-          
-              <button style="margin-top: 1rem; width: 100%; max-width: 100%;" class="btn-secondary" nz-button nzType="primary" (click)="login()" [disabled]="!loginForm.valid" [nzLoading]="loader"> Se connecter </button> 
-          </div>
-          
-          </div>
-          <!-- <div class="animation-container">
-          
-            <div class="cercle-1">
-                <div class="cercle-2"></div>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="body-content">
+      <main>
+        <div class="first">
+          <div class="first-content">
+            <div class="content-logo animate__animated animate__slideInLeft">
+              <a href="#"
+                ><img src="../../../assets/logocerfop.webp" alt="logo cerfop"
+              /></a>
             </div>
-            
-        </div> -->
+
+            <h1>
+              Plateforme de
+              <span class="particular-secondary">formation</span> parlementaire
+            </h1>
+
+            <p class="animate__animated animate__slideInUp">
+              <span>&#xa9; </span> 2024 CERFOP | CNT - République de Guinée
+            </p>
           </div>
-      
-  </div>
-</div>
+        </div>
+        <div class="form">
+          <a routerLink="/" class="back">
+            <i class="fa-solid fa-arrow-left"></i>
+            <p>Retourner</p>
+          </a>
+          <div class="div-logo">
+            <a href="#"
+              ><img src="../../../assets/logocerfop.webp" alt="logo cerfop"
+            /></a>
+          </div>
+          <div class="form-content">
+            <div class="form-content-title">
+              <h2>Se connecter</h2>
+              <p>à mon portail de formation</p>
+            </div>
 
-  <footer>
-      © 2024 Plateforme de formation - CNT | République de Guinée 
-  </footer>
-</div>
+            <form nz-form [formGroup]="loginForm">
+              <nz-form-item>
+                <nz-form-control
+                  nzErrorTip="Veuillez saisir une adresse e-mail valide !"
+                >
+                  <nz-input-group
+                    class="custom-input-group custom-suffix-icon"
+                    nzPrefixIcon="user"
+                  >
+                    <input
+                      type="text"
+                      nz-input
+                      formControlName="email"
+                      placeholder="Adresse E-mail"
+                    />
+                  </nz-input-group>
+                </nz-form-control>
+              </nz-form-item>
+              <nz-form-item>
+                <nz-form-control
+                  nzErrorTip="Veuillez saisir un mot de passe valide !"
+                >
+                  <nz-input-group
+                    class="custom-input-group custom-suffix-icon"
+                    nzPrefixIcon="lock"
+                    [nzSuffix]="suffixTemplate"
+                  >
+                    <input
+                      [type]="passwordVisible ? 'text' : 'password'"
+                      nz-input
+                      formControlName="password"
+                      placeholder="Mot de passe"
+                    />
+                  </nz-input-group>
+                </nz-form-control>
+                <ng-template #suffixTemplate>
+                  <span
+                    nz-icon
+                    [nzType]="passwordVisible ? 'eye-invisible' : 'eye'"
+                    (click)="passwordVisible = !passwordVisible"
+                    class="custom-suffix-icon"
+                  ></span>
+                </ng-template>
+              </nz-form-item>
+              <div nz-row class="">
+                <div>
+                  <label nz-checkbox formControlName="rememberMe">
+                    <span>Se souvenir de moi la prochaine fois</span>
+                  </label>
+                </div>
+              </div>
+              <div class="div-button">
+                <button
+                  class="login-form-button"
+                  (mouseenter)="onMouseEnter()"
+                  (mouseleave)="onMouseLeave()"
+                  nz-button
+                  nzType="primary"
+                  (click)="login()"
+                  [disabled]="!loginForm.valid"
+                  [nzLoading]="loader"
+                >
+                  Connexion
+                  <i class="fa-solid fa-arrow-right"></i>
+                  <span class="inner">
+                    <span class="blobs">
+                      <span class="blob"></span>
+                      <span class="blob"></span>
+                      <span class="blob"></span>
 
+                      <span class="blob"></span>
+                    </span>
+                  </span>
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+                    <defs>
+                      <filter id="goo">
+                        <feGaussianBlur
+                          in="SourceGraphic"
+                          result="blur"
+                          stdDeviation="10"
+                        ></feGaussianBlur>
+                        <feColorMatrix
+                          in="blur"
+                          mode="matrix"
+                          values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"
+                          result="goo"
+                        ></feColorMatrix>
+                        <feBlend
+                          in2="goo"
+                          in="SourceGraphic"
+                          result="mix"
+                        ></feBlend>
+                      </filter>
+                    </defs>
+                  </svg>
+                </button>
+              </div>
+            </form>
+
+            <hr />
+
+            <p class="animate__animated animate__slideInDown">
+              Avez-vous de la difficulté à vous connecter ? Contactez votre
+              administrateur pour régler le problème via
+              <a href="#"
+                >admin&#64;cerfop-formation.com
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

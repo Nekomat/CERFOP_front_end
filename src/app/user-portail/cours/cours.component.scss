@@ -1,82 +1,186 @@
+@import "../../../assets/mixins.scss";
 
-img {
-    width: 100%;
-    height: 8rem;
-    object-fit: cover;
-
+/* img {
+  width: 100%;
+  height: 8rem;
+  object-fit: cover;
 }
 
 .card-cours {
-display: flex;
-flex-flow: row wrap;
-text-align: left;
+  display: flex;
+  flex-flow: row wrap;
+  text-align: left;
 
-.cours {
+  .cours {
     margin: 1rem;
-}
+  }
 }
 
 button {
-    margin-top: 1rem;
-   
-    
+  margin-top: 1rem;
 }
 
 .timing {
-    background: #eee;
-    border-radius: 0.2rem;
-    width: auto;
-    padding: 0.1rem 0.4rem;
-    margin: 0.3rem;
-    position: absolute;
-    top: 0;
-    right: 0;
+  background: #eee;
+  border-radius: 0.2rem;
+  width: auto;
+  padding: 0.1rem 0.4rem;
+  margin: 0.3rem;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
 .mon-content {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-term {
-    display: flex;
-    flex-flow: row;
+  display: flex;
+  flex-flow: row;
 
-    overflow-x: auto;
-    text-align: left;
-    width: 100%;
-    
-    .cours {
-        margin: 1rem;
-    }
-    }
-    
-    button {
-        margin-top: 1rem;
-       
-        
-    }
-    
-    .timing {
-        background: #eee;
-        border-radius: 0.2rem;
-        width: auto;
-        padding: 0.1rem 0.4rem;
-        margin: 0.3rem;
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-    
-    .mon-content {
-        display: flex;
-        flex-direction: column;
-    }
+  overflow-x: auto;
+  text-align: left;
+  width: 100%;
 
-    .tous-module {
-        text-align: left;
+  .cours {
+    margin: 1rem;
+  }
+}
 
-        h4 {
-            margin: 1rem;
+button {
+  margin-top: 1rem;
+}
+
+.timing {
+  background: #eee;
+  border-radius: 0.2rem;
+  width: auto;
+  padding: 0.1rem 0.4rem;
+  margin: 0.3rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.mon-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.tous-module {
+  text-align: left;
+
+  h4 {
+    margin: 1rem;
+  }
+}
+ */
+.body {
+  &-content {
+    &-formations {
+      &-content {
+        padding-top: 1rem;
+        padding-bottom: 2rem;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+        grid-auto-flow: auto;
+        padding-right: 2rem;
+
+        gap: 3rem;
+
+        &-card {
+          background-color: white;
+          width: 22rem;
+          padding: 1rem;
+          border-radius: 0.5rem;
+
+          &:hover {
+            transform: scale(1.02);
+            transition: all 0.4s ease-in-out;
+          }
+
+          p.color-primary {
+            @include couper-la-phrase;
+          }
+
+          &-image-and-time {
+            position: relative;
+            img {
+              width: 20rem;
+              height: 15rem;
+              border-radius: 0.2rem;
+            }
+
+            span {
+              position: absolute;
+              top: 0;
+              right: 0;
+              font-weight: 600;
+              padding: 0.3rem;
+
+              background-color: white;
+              //border-radius: 0.2rem;
+              //color: white;
+              margin-top: 0.5rem;
+              margin-right: 0.5rem;
+            }
+
+            margin-bottom: 2rem;
+          }
+
+          &-title-and-description {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+
+            h4.formation-title {
+              margin-bottom: 0.5rem;
+
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+            p.formation-description {
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 4;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+
+          ::ng-deep .ant-progress-bg {
+            background-color: var(--secondary) !important;
+          }
+
+          button {
+            border: none;
+            margin-top: 1rem;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.3rem 2rem;
+            border-radius: 0.3rem;
+            //font-weight: 600;
+            font-size: 1.1rem;
+
+            &:hover {
+              transform: scale(1.05);
+              transition: all 0.2s ease-in-out;
+
+              background-color: var(--secondary);
+              color: black;
+            }
+          }
         }
+
+        .terminee {
+          background-color: rgb(black, 4%);
+        }
+      }
     }
+  }
+}

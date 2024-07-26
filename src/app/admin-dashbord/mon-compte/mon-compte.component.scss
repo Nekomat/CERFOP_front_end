@@ -1,0 +1,64 @@
+@import "../../../assets/mixins.scss";
+
+.body {
+  background-color: transparent;
+  &-content {
+    &-info {
+      form {
+        max-width: 60%;
+        border: 1px solid var(--primary);
+        border-radius: 0.5rem;
+        padding: 1rem;
+        margin: 2rem 0;
+
+        position: relative;
+
+        .ant-col-sm-6 {
+          display: block;
+          flex: 0 0 100%;
+          max-width: 100%;
+        }
+
+        h5 {
+          color: var(--primary);
+          font-size: 1.2rem;
+          padding: 0 0.3rem;
+          position: absolute;
+          top: -0.8rem;
+          left: 1rem;
+
+          background-color: var(--white-dark);
+        }
+
+        input {
+          font-size: 1.2rem;
+        }
+
+        button {
+          padding: 0.5rem 2rem;
+          @include center;
+
+          &:hover {
+            transform: scale(1.04);
+          }
+        }
+
+        @media (max-width: 768px) {
+          max-width: 90%;
+        }
+
+        @media (min-width: 769px) and (max-width: 1300px) {
+          max-width: 90%;
+        }
+
+        @media (min-width: 1301px) and (max-width: 1800px) {
+          max-width: 60%;
+        }
+
+        @media (min-width: 1801px) {
+          max-width: 40%;
+        }
+      }
+    }
+  }
+}

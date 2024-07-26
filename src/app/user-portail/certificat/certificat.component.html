@@ -1,21 +1,96 @@
+<div class="body">
+  <div class="body-content">
+    <div *ngIf="false" class="empty">
+      <p>Aucun certificat obtenu pour le moment</p>
+    </div>
 
+    <!-- card -->
+    <div class="body-content-card">
+      <div class="body-content-card-head">
+        <h4>Comprendre le processus législatif</h4>
+      </div>
 
-<div class="card-cours">
-    <nz-card routerLink="/user_portail/certi" *ngFor="let i of [1,2,3,4]" nzHoverable class="cours" style="width:30%; min-width: 16rem; border-radius: 0.5rem;" [nzCover]="coverTemplate">
+      <div class="body-content-card-content">
+        <p>Durée : 6 heures 30 min</p>
+        <p>Date : 21 / 07 / 2024</p>
+      </div>
 
-      <div class="mon-content">
-
-    
-        <nz-card-meta style="height: 6.5rem; max-height: 100%;" nzTitle="Attestation- CEFORP" nzDescription="Devenir le leader dont votre equipe a besoin pour diriger "></nz-card-meta>
-  
-        <button style="display: flex; width: fit-content; align-items: center;"  nz-button nzType="primary">
-            <span nz-icon nzType="vertical-align-bottom" nzTheme="outline"></span>
+      <div class="body-content-card-footer">
+        <button>
+          <i class="fa-solid fa-download"></i>
           Télécharger
         </button>
+        <button routerLink="/user_portail/certi">
+          Voir
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
     </div>
-      </nz-card>
-      <ng-template #coverTemplate>
-        
-      </ng-template>
-    
+    <!-- card -->
+    <div class="body-content-card">
+      <div class="body-content-card-head">
+        <h4>Éthique et Transparence dans le Service Public</h4>
+      </div>
+
+      <div class="body-content-card-content">
+        <p>Durée : 6 heures 30 min</p>
+        <p>Date : 21 / 07 / 2024</p>
+      </div>
+
+      <div class="body-content-card-footer">
+        <button>
+          <i class="fa-solid fa-download"></i>
+          Télécharger
+        </button>
+        <button routerLink="/user_portail/certi">
+          Voir
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
     </div>
+    <!-- card -->
+    <div class="body-content-card">
+      <div class="body-content-card-head">
+        <h4>Engagement Communautaire et Participation Citoyenne</h4>
+      </div>
+
+      <div class="body-content-card-content">
+        <p>Durée : 6 heures 30 min</p>
+        <p>Date : 21 / 07 / 2024</p>
+      </div>
+
+      <div class="body-content-card-footer">
+        <button>
+          <i class="fa-solid fa-download"></i>
+          Télécharger
+        </button>
+        <button routerLink="/user_portail/certi">
+          Voir
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
+    </div>
+    <!-- card -->
+    <div class="body-content-card">
+      <div class="body-content-card-head">
+        <h4>Engagement Communautaire et Participation Citoyenne</h4>
+      </div>
+
+      <div class="body-content-card-content">
+        <p>Durée : 6 heures 30 min</p>
+        <p>Date : 21 / 07 / 2024</p>
+      </div>
+
+      <div class="body-content-card-footer">
+        <button>
+          <i class="fa-solid fa-download"></i>
+          Télécharger
+        </button>
+        <button routerLink="/user_portail/certi">
+          Voir
+          <i class="fa-solid fa-eye"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

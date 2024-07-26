@@ -11,26 +11,33 @@ import { LoginServiceService } from './login-service.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { LoginInterceptor } from './login.interceptor';
-
+import { NzCheckboxModule } from 'ng-zorro-antd/checkbox';
+import { NzFormModule } from 'ng-zorro-antd/form';
+import { NzGridModule } from 'ng-zorro-antd/grid';
 
 @NgModule({
-  declarations: [HomeComponent , SignInComponent , ResetPasswordComponent],
+  declarations: [HomeComponent, SignInComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
-    LoginRouterModule ,
-    NzInputModule ,
-    NzButtonModule ,
+    LoginRouterModule,
+    NzInputModule,
+    NzButtonModule,
     FormsModule,
-    ReactiveFormsModule ,
-    HttpClientModule ,
-    NzIconModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NzIconModule,
+    NzIconModule,
+    NzCheckboxModule,
+    NzFormModule,
+    NzGridModule,
   ],
-  providers:[LoginServiceService , 
+  providers: [
+    LoginServiceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoginInterceptor,
       multi: true,
     },
-  ]
+  ],
 })
 export class LoginModule {}

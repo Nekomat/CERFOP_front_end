@@ -1,144 +1,353 @@
+@import "../../../assets/mixins.scss";
 
-
-    .calc-vert {
-        display: flex;
-        flex-direction: column;
-        background: #1d8c56cb;
-        width: 100%;
-        height: 100%;
-        justify-content: center;
-        margin: 0px;
-        
-
-      
-    }
-
-
-
-
-form {
-    margin: 0px;
-
-    .n-input {
-        display: flex;
-       
-        background: transparent;
-        margin-bottom: 2rem;
-        justify-content: space-around;
-        margin: 1rem 0rem;
-        border: none;
-        border-bottom: 1px solid #fff ;
-
-        
-    }
+body {
+  p {
+    font-size: 1rem;
+  }
 }
 
-.all-input {
-    background: transparent;
-    color: #fff;
-    border: none;
-    align-self: left;
-}
+/* container */
 
+.body-content {
+  @include column-between;
+  position: relative;
 
-.n-container {
-    min-height: 100vh;
-    background-image: url(https://i0.wp.com/www.lemagazineafrique.com/wp-content/uploads/2024/01/Col-Mamadi-Doumbouya-1-jpg.webp?fit=871%2C661&ssl=1);
-    object-fit: cover;
+  /* main */
+  main {
     display: grid;
-    grid:
-      
-      "content" 1fr
-      "footer" auto /
-      auto;
-  
-     
-  }
+    grid-template-columns: 40% 60%;
+    .first {
+      min-height: 100vh;
+      background-image: url("../../../assets/bg-home.webp");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
 
-  .content {
-    display: flex;
-    flex-direction: row;
-    margin: 2rem;
-    align-items: center;
-    position: relative;
-    
-    
-    
-      .text-container {
-        display: flex;
-        flex-direction: column;
-        flex: 4;
-        padding: 1.5rem;
-        justify-content: center;
-        justify-self: center;
-        align-items: center;
+      &-content {
+        background-color: var(--primary);
+        min-height: 100vh;
+        padding: 1rem;
+        opacity: 0.9;
+        @include column-between;
+        color: white;
 
-        .titre {
-            color: var(--White, #FFF);
-            font-size: 3rem;
-            font-weight: 400;
-            line-height: 4rem; 
-
-            
-            
+        img {
+          width: 6rem;
         }
 
-        .sous-titre {
-            color: var(--White, #FFF);
+        h1 {
+          color: white;
+          font-size: 2.5vw;
+        }
+
+        a {
+          color: var(--secondary);
+          @include icon-in-link(white);
+        }
+      }
+    }
+
+    .form {
+      @include center;
+      flex-direction: column;
+      position: relative;
+      padding-bottom: 1rem;
+
+      .back {
+        @include row-between;
+        gap: 1rem;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        color: black;
+
+        i {
+          font-size: 1.2rem;
+        }
+
+        p {
+          opacity: 0;
+        }
+
+        &:hover {
+          i {
+            animation: bounce;
+            animation-duration: 1s;
+          }
+          p {
+            opacity: 1;
+            transition: all 1s;
+          }
+        }
+      }
+
+      .div-logo {
+        display: none;
+        padding-bottom: 3rem;
+      }
+
+      &-content {
+        background-color: rgb(#1d8c56, 20%);
+        padding: 2rem;
+        text-align: center;
+        max-width: 30rem;
+        border-radius: 0.5rem;
+
+        &-title {
+          padding-bottom: 3rem;
+          h2 {
+            font-weight: 600;
+          }
+          p {
+            font-weight: 500;
+          }
+        }
+
+        form {
+          @include center;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          .custom-input-group {
+            border-radius: 0.3rem;
+            border: 1px solid rgb(#f9c718, 30%);
+            width: 26rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            height: 3rem;
+
+            input {
+              margin-left: 0.3rem;
+            }
+
+            &:focus {
+              border-color: var(--primary) !important;
+              box-shadow: 0 0 0 2px rgba(102, 187, 106, 0.2);
+            }
+          }
+
+          .custom-suffix-icon {
+            color: var(--secondary);
             font-size: 1.2rem;
-            font-weight: 200;
-            line-height: normal;
+            transition: color 0.3s, transform 0.3s;
+
+            &:hover {
+              color: var(--primary);
+              transform: scale(1.06);
+            }
+          }
+
+          .div-button {
+            padding: 1rem 0;
+            width: 100%;
+            height: 3rem;
+            border-radius: 0.3rem;
+            margin-top: 1rem;
+
+            color: white;
+            font-size: 1.2rem;
+            border-color: var(--primary);
+
+            .login-form-button {
+              width: 100%;
+              height: 3rem;
+              overflow: hidden;
+              outline: none;
+              display: flex;
+              color: white;
+              background-color: var(--primary);
+              text-align: center;
+              position: relative;
+              border: none;
+              padding: 1em 4em;
+              border-radius: 4px;
+              transition: color calc(0.5s * 0.75);
+              align-items: center;
+              justify-content: center;
+              z-index: 1;
+              font-size: 1.1rem;
+
+              i {
+                opacity: 0;
+                margin-left: 0.4rem;
+              }
+            }
+
+            .login-form-button .blobs {
+              position: relative;
+              display: block;
+              height: 100%;
+              filter: url("#goo");
+            }
+
+            .login-form-button .blob:nth-child(1) {
+              left: 0;
+              transition-delay: 0;
+            }
+
+            .login-form-button .blob:nth-child(2) {
+              left: calc(120% / 4);
+              transition-delay: calc((0.5s * 0.12) * 1);
+            }
+
+            .login-form-button .blob:nth-child(3) {
+              left: calc(2 * (120% / 4));
+              transition-delay: calc((0.5s * 0.12) * 2);
+            }
+
+            .login-form-button:hover .blob {
+              transform: translateZ(0) scale(1.7);
+            }
+
+            .login-form-button .blob:nth-child(4) {
+              left: calc(3 * (120% / 4));
+              transition-delay: calc((0.5s * 0.12) * 3);
+            }
+
+            .login-form-button:before {
+              width: 100%;
+              left: 0;
+              height: 100%;
+              position: absolute;
+              border-radius: 4px;
+              top: 0;
+              content: "";
+              z-index: 1;
+            }
+
+            .login-form-button .blob {
+              position: absolute;
+              top: 3px;
+              width: calc(100% / 4);
+              height: 100%;
+              background: white;
+              border-radius: 100%;
+              transform: translate3d(0, 150%, 0) scale(1.7);
+              transition: transform 0.5s;
+            }
+
+            .login-form-button:hover {
+              color: black;
+
+              i {
+                opacity: 1;
+                transition: opacity 1s;
+                animation: slideInLeft;
+                animation-duration: 1s;
+                //animation-delay: 1.5s;
+              }
+            }
+
+            .login-form-button > svg {
+              display: none;
+            }
+
+            .login-form-button .inner {
+              z-index: -1;
+              overflow: hidden;
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          .login-form-button:disabled {
+            background-color: rgb(#1d8c56, 20%) !important;
+            border: none;
+            width: 100%;
+            height: 3rem;
+
+            .blob {
+              width: 0 !important;
+            }
+
+            &:hover {
+              color: white !important;
+              i {
+                opacity: 0 !important;
+                transition: none;
+                animation: none;
+              }
+            }
+          }
         }
-
-
       }
 
-      .animation-container {
-        display: flex ;
-        justify-content: center;
-        align-items: center;
-        flex: 1;
-        padding: 1rem 1.5rem 1.5rem 2rem;
-        
+      hr {
+        height: 0.15rem;
+        margin: 3rem 0 1rem 0;
+      }
 
-        .cercle-1 {
-            border: 1rem solid #f9c718;
-            width: 24rem;
-            height: 24rem;
-            max-width: 100%;
-            border-radius: 50%;
-            position: absolute;
-            bottom: -3rem;
-            right: -6rem;
-            
-            
-        }
-
-        .cercle-2 {
-            border: 1rem solid #c00029;
-            width: 14rem;
-            height: 14rem;
-            max-width: 100%;
-            border-radius: 50%;
-            position: absolute;
-            top: -6rem;
-            right: -3rem;
+      p:last-child {
+        @include link-animated-underline(#1d8c56);
+        a {
+          @include icon-in-link(#1d8c56);
         }
       }
+    }
   }
 
-header {
-    display: flex;
-    flex-direction: row;
-    height: auto;
-    padding-top: 1.5rem;
-    padding-left: 1.5rem;
-    
+  @media (min-width: 1000px) and (max-width: 1480px) {
+    .first {
+      p {
+        max-width: 25rem;
+      }
+    }
+  }
+
+  @media (max-width: 1000px) {
+    .first {
+      display: none;
+    }
+
+    .form {
+      height: 100%;
+      @include center;
+      width: 100vw;
+
+      align-items: center;
+
+      .div-logo {
+        display: initial !important;
+      }
+
+      &-content {
+        background-color: white !important;
+
+        form {
+          .custom-input-group {
+            border-color: var(--primary) !important;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 500px) {
+    .form {
+      .div-button {
+        @include center;
+
+        .login-form-button {
+          width: 80vw !important;
+        }
+      }
+
+      form {
+        .custom-input-group {
+          width: 80vw !important;
+        }
+      }
+
+      .div-logo {
+        padding-bottom: 0rem !important;
+        padding-top: 1rem;
+      }
+
+      p:last-child {
+        padding: 0;
+      }
+    }
+  }
 }
-
-
-
-
-
-
-

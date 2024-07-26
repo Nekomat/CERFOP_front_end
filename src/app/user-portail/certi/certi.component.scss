@@ -1,82 +1,54 @@
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    background-color: #f7f7f7;
-    font-family: 'Lato', sans-serif;
-}
+@import "../../../assets/mixins.scss";
 
-.certificate-container {
-    width: 900px;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
+@import url("https://fonts.googleapis.com/css2?family=Parisienne&display=swap");
 
-.certificate-border {
-    border: 15px solid #d4af37;
-    padding: 20px;
-    position: relative;
-}
+.body {
+  &-content {
+    @include center;
+    flex-direction: column;
+    &-elem {
+      @include row-between;
+      margin-bottom: 1rem;
+      width: 90%;
 
-.certificate-border::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: 5px solid #fff;
-    margin: 10px;
-}
+      .buttons {
+        display: flex;
+        gap: 1rem;
 
-.certificate-content {
-    text-align: center;
-    padding: 40px;
-    border: 5px solid #d4af37;
-}
+        button {
+          background-color: var(--primary);
+          outline: none;
+          color: white;
+          border: none;
+          padding: 0.5rem 1rem;
 
-.logo {
-    width: 100px;
-    margin-bottom: 20px;
-}
+          &:hover {
+            background-color: var(--secondary);
+          }
+        }
+      }
+    }
 
-.certificate-content h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 3em;
-    margin-bottom: 0.5em;
-    color: #333;
-}
+    @media (min-width: 1000px) and (max-width: 1200px) {
+      .scale {
+        transform: scale(0.5);
+        transform-origin: top;
+      }
+    }
 
-.certificate-content p {
-    font-size: 1.2em;
-    margin: 0.5em 0;
-    color: #555;
-}
+    @media (max-width: 999px) {
+      .scale {
+        transform: scale(0.4);
+        transform-origin: top;
+      }
+    }
 
-.certificate-content h2 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 2.5em;
-    margin: 0.5em 0;
-    color: #d4af37;
-}
+    .scale-1 {
+      transform: scale(1) !important;
+    }
 
-.certificate-content h3 {
-    font-size: 1.8em;
-    margin: 0.5em 0;
-    color: #333;
-}
-
-.certificate-content h4 {
-    font-size: 1.5em;
-    margin: 0.5em 0;
-    color: #555;
-}
-
-.signature {
-    margin-top: 40px;
-    font-size: 1em;
-    color: #555;
+    &-certificat {
+      @include certificat;
+    }
+  }
 }
