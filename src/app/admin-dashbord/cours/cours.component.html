@@ -148,7 +148,7 @@
     </div>
 
     <!-- contenu - chapitre -->
-    <div class="contenu-chapitre" *ngIf="current == 1">
+    <div class="contenu-chapitre" *ngIf="current == 0">
       <div class="contenu-chapitre__elem contenu-chapitre__elem--head">
         <h3>Choisissez le nombre total des chapitres de la formation</h3>
 
@@ -182,21 +182,21 @@
           </h5>
           <div class="contenu-chapitre__generate-chapter--name">
             <label>
-              Nom de ce chapitre
+              Titre de ce chapitre
               <input
                 nz-input
                 type="text"
                 [(ngModel)]="chapitre.chapitreName"
-                placeholder="Entrer le nom de ce chapitre"
+                placeholder="Entrer le titre de ce chapitre"
               />
             </label>
           </div>
 
-          <div class="contenu-chapitre__generate-chapter--video">
+          <div class="contenu-chapitre__contenu-chapter">
             <h5>Contenu(s) de ce chapitre</h5>
             <div
               *ngFor="let contenu of chapitre.contenus; let j = index"
-              class="contenu-chapitre__generate-cotenu"
+              class="contenu-chapitre__sous-chapitre"
             >
               <label>
                 Sous chapitre <span class="color-primary">{{ j + 1 }}</span> :
@@ -204,28 +204,60 @@
                   nz-input
                   type="text"
                   [(ngModel)]="contenu.sousChapitreName"
-                  placeholder="Entrer le nom de ce sous chapitre"
+                  placeholder="Entrer le titre de ce sous chapitre"
                 />
               </label>
-              <label>
-                Charger la vidéo de ce sous chapitre :
-                <nz-upload
-                  nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                  [nzHeaders]="{ authorization: 'authorization-text' }"
-                  (nzChange)="handleChange($event)"
-                  nzAccept="video/*"
+
+              <div
+                class="contenu-chapitre__generate-chapter--select-content-sous-chapitre"
+              >
+                <p>Selecionner le type decontenu :</p>
+                <!-- Sélection du type de contenu -->
+                <nz-select
+                  [(ngModel)]="contenu.type"
+                  (ngModelChange)="onContenuTypeChange(contenu, i)"
+                  nzPlaceHolder="Sélectionnez le type de contenu"
                 >
-                  <button nz-button>
-                    <span nz-icon nzType="upload"></span>
-                    Charger la vidéo
-                  </button>
-                </nz-upload>
-              </label>
+                  <nz-option
+                    nzLabel="Cours en vidéo"
+                    nzValue="video"
+                  ></nz-option>
+                  <nz-option
+                    nzLabel="Cours théorique"
+                    nzValue="cours"
+                  ></nz-option>
+                </nz-select>
+
+                <!-- Éditeur Quill pour modifier le contenu théorique -->
+                <button
+                  *ngIf="contenu.type === 'cours' && contenu.cours"
+                  nz-button
+                  (click)="openQuillModal(contenu)"
+                >
+                  Modifier le cours théorique
+                </button>
+
+                <!-- Champ de téléchargement de vidéo -->
+                <label *ngIf="contenu.type === 'video'">
+                  Vidéo de ce sous chapitre :
+                  <nz-upload
+                    nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+                    [nzHeaders]="{ authorization: 'authorization-text' }"
+                    (nzChange)="handleChange($event)"
+                    nzAccept="video/*"
+                  >
+                    <button nz-button>
+                      <span nz-icon nzType="upload"></span>
+                      Téléverser la vidéo
+                    </button>
+                  </nz-upload>
+                </label>
+              </div>
             </div>
 
-            <div class="contenu-chapitre__generate-contenu--button">
+            <div class="contenu-chapitre__generate-chapter--button">
               <button nz-button (click)="addContenu(i)">
-                Ajouter un autre contenu
+                Ajouter un autre sous chapitre
               </button>
             </div>
           </div>
@@ -365,7 +397,7 @@
 
     <!-- Quiz -->
 
-    <div class="quiz" *ngIf="current == 0">
+    <div class="quiz" *ngIf="current == 3">
       <h5>Ajouter une à une chaque question par chapitre</h5>
 
       <div class="quiz__head">
@@ -479,3 +511,20 @@
     </div>
   </div>
 </body>
+
+<!-- Éditeur Quill pour le contenu théorique -->
+<nz-modal
+  [(nzVisible)]="isQuillModalVisible"
+  nzTitle="Ajouter / Modifier un cours théorique"
+  (nzOnCancel)="closeQuillModal()"
+  (nzOnOk)="saveQuillContent()"
+  nzOkText="Ajouter / Modifier"
+>
+  <ng-container *nzModalContent>
+    <quill-editor
+      [(ngModel)]="editorContent"
+      [modules]="editorModules"
+      [placeholder]="'Cours théorique...'"
+    ></quill-editor>
+  </ng-container>
+</nz-modal>

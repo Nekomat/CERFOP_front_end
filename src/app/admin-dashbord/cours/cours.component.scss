@@ -118,6 +118,22 @@ body {
         padding: 0.2rem 0.5rem;
       }
 
+      &--select-content-sous-chapitre {
+        @include column-between;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+
+        nz-select {
+          max-width: 20rem;
+        }
+      }
+
+      &--button {
+        button {
+          border: 0.01px solid var(--secondary);
+        }
+      }
+
       label {
         width: 90%;
         margin: 0.5rem 0;
@@ -298,4 +314,22 @@ body {
 
 ::ng-deep .ant-upload-list-item:hover .ant-upload-list-item-info {
   background-color: rgb(#1d8c56, 0.1);
+}
+
+/* editeur quill pour le contenu theorique */
+
+::ng-deep .ant-modal {
+  width: 90% !important;
+  max-width: none;
+}
+
+::ng-deep .ant-modal-content {
+  height: 80vh; /* Full screen height */
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .ant-modal-body {
+  flex: 1;
+  overflow: auto;
 }

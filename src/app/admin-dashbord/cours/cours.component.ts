@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AdminService } from '../admin.service';
 import Swal from 'sweetalert2';
@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadChangeParam } from 'ng-zorro-antd/upload';
+import { NzModalService } from 'ng-zorro-antd/modal';
 
 @Component({
   selector: 'app-cours',
@@ -19,7 +20,8 @@ export class CoursComponent {
     private formCtrl: FormBuilder,
     private adminService: AdminService,
     private location: Location,
-    private msg: NzMessageService
+    private msg: NzMessageService,
+    private modalService: NzModalService
   ) {}
 
   goBack(): void {
@@ -183,7 +185,7 @@ export class CoursComponent {
       /* [{ font: [] }], */
       [{ align: [] }],
       ['clean'],
-      ['link', 'image' /* 'video' */],
+      ['link', 'image', 'video'],
     ],
   };
 
@@ -265,6 +267,32 @@ export class CoursComponent {
       correctAnswer: '',
       incorrectAnswers: ['', '', ''],
     });
+  }
+
+  /* ajouter un cours theorique */
+
+  //modal
+  isQuillModalVisible = false;
+  currentContenu: any = {};
+
+  onContenuTypeChange(contenu: any, index: number) {
+    if (contenu.type === 'cours') {
+      this.openQuillModal(contenu);
+    }
+  }
+
+  openQuillModal(contenu: any) {
+    this.currentContenu = contenu;
+    this.isQuillModalVisible = true;
+  }
+
+  closeQuillModal() {
+    this.isQuillModalVisible = false;
+  }
+
+  saveQuillContent() {
+    this.currentContenu.cours = this.editorContent;
+    this.isQuillModalVisible = false;
   }
 
   // pre(): void {

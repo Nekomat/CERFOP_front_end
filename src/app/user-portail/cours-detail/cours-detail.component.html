@@ -95,9 +95,9 @@
 
     <div class="content">
       <!-- Video and now chapter -->
-      <div class="content__video">
+      <!--  <div class="content__video">
         <video controls src="../../../assets/video.mp4"></video>
-      </div>
+      </div> -->
 
       <!-- sidebar -->
       <div class="content__sidebar">
@@ -147,6 +147,34 @@
       <!-- tabset -->
       <nz-tabset class="tabset">
         <nz-tab
+          class="tabset__elem tabset__elem--cours-theorique"
+          nzTitle="Cours théorique"
+        >
+          <!-- <div [innerHTML]="oneCourse.description"></div> -->
+          <p class="tabset__cours-theorique-text">
+            Ce module de formation "Comprendre le processus législatif" est
+            conçu pour offrir une compréhension approfondie des mécanismes par
+            lesquels les lois sont élaborées, débattues, adoptées et mises en
+            œuvre.
+            <br />
+            À travers une série de chapitres bien structurés, les apprenants
+            seront guidés à travers chaque étape clé du processus législatif,
+            des premiers stades de la proposition de loi jusqu'à son application
+            finale. Les participants exploreront le rôle et les responsabilités
+            des principaux acteurs, notamment les
+            <br />
+            parlementaires, le gouvernement, les commissions parlementaires, et
+            les citoyens. Ils découvriront également les différents types de
+            lois, les procédures législatives en détail, et les mécanismes de
+            contrôle de la constitutionnalité. Enfin, ce module abordera la mise
+            en œuvre des lois, incluant les règlements d'application, le
+            contrôle de l'exécution, et l'évaluation des lois en vigueur. Grâce
+            à cette formation, les participants acquerront les compétences et
+            les connaissances nécessaires pour naviguer efficacement dans le
+            paysage législatif, et comprendre l'impact des lois sur la société.
+          </p>
+        </nz-tab>
+        <nz-tab
           class="tabset__elem tabset__elem--description"
           nzTitle="Description"
         >
@@ -174,6 +202,7 @@
             paysage législatif, et comprendre l'impact des lois sur la société.
           </p>
         </nz-tab>
+
         <nz-tab class="tabset__elem tabset__elem--chapters" nzTitle="Contenu">
           <nz-collapse [nzBordered]="false">
             <nz-collapse-panel
